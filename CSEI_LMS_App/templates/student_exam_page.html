@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ exam.name }} - Exam</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            padding-top: 80px; /* Adjusted for fixed header */
+            margin: 0;
+        }
+        header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 15px 20px;
+            text-align: left; /* Align text to the left */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 80px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center; /* Align items vertically centered */
+            color: #ffffff; /* White text */
+        }
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .sitename {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white; /* White text color */
+        }
+        .container {
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: #08005e;
+            color: white;
+            border-radius: 0 0 8px 8px;
+            margin-top: 20px;
+        }
+        #countdown {
+            font-size: 1.5rem;
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        window.addEventListener('beforeunload', function (e) {
+            const confirmationMessage = 'Leaving this page may automatically redirect you. Are you sure you want to leave?';
+            e.preventDefault();
+            e.returnValue = confirmationMessage; // For some browsers
+            return confirmationMessage; // For others
+        });
+
+        function preventFormResubmission() {
+            window.history.replaceState(null, null, window.location.href);
+        }
+        window.addEventListener('load', preventFormResubmission);
+
+        // Countdown timer logic
+        let countdownTimer;
+        window.onload = function() {
+            const endTime = {{ end_time }} * 1000; // Convert to milliseconds
+            countdownTimer = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result in the element with id="countdown"
+                document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+
+                // If the countdown is finished, redirect or alert the user
+                if (distance < 0) {
+                    clearInterval(countdownTimer);
+                    document.getElementById("countdown").innerHTML = "Time's up!";
+                    // Optionally, submit the form automatically
+                    document.getElementById("examForm").submit();
+                }
+            }, 1000);
+        };
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="{% static 'images/img.png' %}" alt="CSEI Academy LMS Logo" class="logo-image"/>
+            <h1 class="sitename">CSEI Academy</h1>
+        </div>
+    </header>
+
+    <main class="container mt-5">
+        <p><strong>Batch:</strong> {{ exam.batch.name }}</p>
+        <p><strong>Date:</strong> {{ exam.date }}</p>
+        <p><strong>Duration:</strong> {{ exam.duration_hours }} hours and {{ exam.duration_minutes }} minutes</p>
+        <p id="countdown"></p> <!-- Countdown display -->
+
+        <form id="examForm" method="post" action="{% url 'student_exam_page' exam.id %}">
+            {% csrf_token %}
+            {% for question in questions %}
+                <div class="form-group">
+                    <fieldset>
+                        <legend>{{ forloop.counter }}. {{ question.question }}</legend>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ question.id }}" value="Option1" id="option1_{{ question.id }}">
+                            <label class="form-check-label" for="option1_{{ question.id }}">
+                                {{ question.option1 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ question.id }}" value="Option2" id="option2_{{ question.id }}">
+                            <label class="form-check-label" for="option2_{{ question.id }}">
+                                {{ question.option2 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ question.id }}" value="Option3" id="option3_{{ question.id }}">
+                            <label class="form-check-label" for="option3_{{ question.id }}">
+                                {{ question.option3 }}
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ question.id }}" value="Option4" id="option4_{{ question.id }}">
+                            <label class="form-check-label" for="option4_{{ question.id }}">
+                                {{ question.option4 }}
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-primary">Submit Exam</button>
+        </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

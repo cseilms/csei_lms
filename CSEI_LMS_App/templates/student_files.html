@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Files for Batch: {{ batch.name }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: #08005e; /* Custom blue color */
+            color: white;
+            padding: 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #dc3545; /* Button color */
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        header a:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: #ffffff;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        li:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            text-decoration: none;
+            color: white;
+            background-color: #08005e; /* Custom blue color */
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease, transform 0.2s;
+        }
+
+        .btn:hover {
+            background-color: #06003c; /* Darker blue on hover */
+            transform: scale(1.05); /* Slight zoom effect on hover */
+        }
+
+        @media (max-width: 600px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            li {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 400px) {
+            header h1 {
+                font-size: 1.3em;
+            }
+
+            header a {
+                font-size: 0.9em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Files for Batch: {{ batch.name }}</h1>
+            <a href="{% url 'student_page' student_id %}" class="btn">Back to Dashboard</a>
+        </header>
+
+        <ul>
+            {% for file in files %}
+                <li>
+                    <strong>{{ file.title }}</strong><br>
+                    <a href="{{ file.file.url }}" download>Download</a>
+                    {% with file.file.url|slice:"-4:" as file_extension %}
+                        {% if file_extension in ".pdf,.jpg,.png,.txt,.xls,.xlsx" %}
+                            <a href="{{ file.file.url }}" target="_blank">View</a>
+                        {% elif file_extension in ".mp3" %}
+                            <audio controls style="width: 100%;">
+                                <source src="{{ file.file.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        {% elif file_extension in ".mp4" %}
+                            <video controls width="100%">
+                                <source src="{{ file.file.url }}" type="video/mp4">
+                                Your browser does not support the video element.
+                            </video>
+                        {% endif %}
+                    {% endwith %}
+                </li>
+            {% empty %}
+                <li>No files available for this batch.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

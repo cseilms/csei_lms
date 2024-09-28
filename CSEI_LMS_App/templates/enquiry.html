@@ -1,0 +1,229 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Enquiry Form{% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    background-color: #f8f9fa; /* Light background color for contrast */
+    font-family: Arial, sans-serif; /* Set a clean font */
+  }
+
+  .enquiry-container {
+    position: relative; /* Needed for the absolute positioning of the overlay */
+    background-image: url("{% static 'images/logos/academic.jpg' %}"); /* Change to your image path */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: space-between; /* Space out the content */
+    width: 90%; /* Increased width */
+    min-height: 400px; /* Added minimum height */
+    margin: 30px auto; /* Center the container horizontally */
+    border-radius: 10px;
+    overflow: hidden; /* Prevents content from overflowing the rounded corners */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); /* Darker shadow around the container */
+    transition: transform 0.3s; /* Smooth hover effect */
+  }
+
+  .enquiry-container:hover {
+    transform: scale(1.02); /* Slight zoom effect on hover */
+  }
+
+  .enquiry-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Black transparent overlay */
+    border-radius: 10px; /* Match form rounding */
+    z-index: 1; /* Ensure it sits above the background but below the text */
+  }
+
+  .enquiry-background {
+    flex: 1; /* Allow this area to grow */
+    position: relative; /* For text to sit above the overlay */
+    padding: 20px; /* Add padding for the text */
+    z-index: 2; /* Ensure text is above the overlay */
+    color: #ffffff; /* White text for contrast */
+    text-align: right; /* Align text to the right */
+    transition: transform 0.3s ease; /* Add smooth transition for zoom effect */
+  }
+
+  .enquiry-background:hover {
+    transform: scale(1.05); /* Zoom effect on hover */
+  }
+
+  .institute-title {
+    font-size: 24px; /* Increased font size for emphasis */
+    margin: 0; /* Remove default margin */
+    color: #ffffff; /* Change to white */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Deeper shadow for better visibility */
+    margin-top: 100px;
+  }
+
+  .institute-subtitle {
+    font-size: 14px; /* Slightly increase font size for subtitle */
+    margin: 5px 0 0; /* Space above the subtitle */
+    color: #ffffff; /* Keep subtitle white */
+    text-align: left; /* Align text to the left */
+    font-style: italic; /* Italic for distinction */
+    line-height: 1.5; /* Adjust line height for better spacing */
+  }
+
+  .enquiry-form {
+    flex: 1; /* Allow this area to grow */
+    background: linear-gradient(to bottom, #0056b3, #001f4d); /* Gradient from blue to navy blue */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s; /* Smooth hover effect */
+    font-size: 14px; /* Reduced font size for the entire form */
+    margin: 20px; /* Margin around the form */
+    z-index: 2; /* Ensure form is above the overlay */
+  }
+
+  .enquiry-form:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+  }
+
+  .enquiry-form h2 {
+    margin-bottom: 20px;
+    color: #ffffff; /* Change heading color to white for better contrast */
+    font-size: 18px; /* Reduced font size for the heading */
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    font-size: 12px; /* Smaller font size for labels */
+    color: #ffffff; /* Change label color to white */
+  }
+
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth border color change */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Input shadow */
+    font-size: 14px; /* Font size for input fields */
+  }
+
+  .form-control:focus {
+    border-color: #ffffff; /* Change border color on focus */
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); /* Enhanced focus shadow */
+  }
+
+  .btn-submit {
+    background-color: #ffffff; /* Change button background to white */
+    color: #0056b3; /* Change button text color */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+    font-size: 14px; /* Font size for button */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Button shadow */
+  }
+
+  .btn-submit:hover {
+    background-color: #e0e0e0; /* Light grey on hover */
+    transform: scale(1.05); /* Slightly enlarge button on hover */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3); /* Enhance button shadow on hover */
+  }
+
+  .consent-label {
+    font-size: 11px; /* Smaller font size for consent label */
+    color: #ffffff; /* Change consent label color to white */
+  }
+
+  /* Animation for form elements */
+  .form-group {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Move down */
+    animation: fadeInUp 0.5s forwards; /* Fade in animation */
+  }
+
+  /* Delay animations for form elements */
+  .form-group:nth-child(1) { animation-delay: 0.1s; }
+  .form-group:nth-child(2) { animation-delay: 0.2s; }
+  .form-group:nth-child(3) { animation-delay: 0.3s; }
+  .form-group:nth-child(4) { animation-delay: 0.4s; }
+  .form-group:nth-child(5) { animation-delay: 0.5s; }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<div class="container">
+  <div class="row enquiry-container">
+    <div class="col-md-6 enquiry-background">
+      <h2 class="institute-title">Creative Star Education Institutes</h2>
+      <p class="institute-subtitle">Center for the learning enthusiast, approved by the Government of Dubai.</p>
+    </div>
+
+    <div class="col-md-6 enquiry-form">
+      <h2>Share your details and we’ll get back to you</h2>
+      <form method="POST" id="enquiryForm">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="name">Enter your name*</label>
+          <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Your email*</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="mobile">Enter mobile number*</label>
+          <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="+971" required>
+        </div>
+        <div class="form-group">
+          <label for="course">Select course applying for*</label>
+          <select class="form-control" id="course" name="course" required>
+            <option value="">Select a course</option>
+            <option value="hospitality">Hospitality and Tourism</option>
+            <option value="hr">Human Resource Management</option>
+            <option value="culinary">Culinary Arts</option>
+            <!-- Add more courses as needed -->
+          </select>
+        </div>
+        <div class="form-group">
+          <input type="checkbox" id="consent" name="consent" required>
+          <label for="consent" class="consent-label">
+            I authorize contact me with updates & notifications via email, SMS, WhatsApp, and voice call.
+          </label>
+        </div>
+        <button type="submit" class="btn-submit" onclick="return validateForm()">Submit Enquiry</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function validateForm() {
+    const consentCheckbox = document.getElementById('consent');
+    if (!consentCheckbox.checked) {
+      alert("You must agree to the terms before submitting the form.");
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission
+  }
+</script>
+
+{% endblock %}

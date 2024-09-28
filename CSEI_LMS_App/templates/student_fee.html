@@ -1,0 +1,82 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Student Fee{% endblock %}
+
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    .fee {
+        height: 400px;
+        background-image: url("{% static 'images/fees.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff; /* White text color for better contrast */
+        text-align: center; /* Center text horizontally */
+        padding: 2rem;
+    }
+
+    .content_fee {
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+        border-radius: 8px; /* Rounded corners */
+        padding: 2rem;
+        max-width: 600px; /* Maximum width for content */
+        margin: auto; /* Center content horizontally */
+    }
+
+    .content_fee h3 {
+        font-size: 2rem; /* Font size for headings */
+        margin-bottom: 1rem; /* Space below each heading */
+        font-family: "Playfair Display", serif; /* Elegant font */
+        font-weight: 700; /* Bold headings */
+    }
+
+    .content_fee a {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.125rem;
+        color: #fff; /* White text color for links */
+        background-color: #08005e; /* Dark blue background */
+        text-decoration: none;
+        border-radius: 5px; /* Rounded corners for the button */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    .content_fee a:hover {
+        background-color: #060046; /* Darker blue on hover */
+        transform: scale(1.05); /* Slightly enlarge the button on hover */
+    }
+
+    @media (max-width: 768px) {
+        .content_fee {
+            padding: 1rem; /* Less padding on smaller screens */
+            max-width: 90%; /* Full width with margins on small screens */
+        }
+
+        .content_fee h3 {
+            font-size: 1.5rem; /* Smaller font size on small screens */
+        }
+
+        .content_fee a {
+            font-size: 1rem; /* Smaller font size for the button on small screens */
+            padding: 0.5rem 1rem; /* Adjust padding for the button */
+        }
+    }
+</style>
+
+<div class="fee">
+    <div class="content_fee">
+        <h3>For brochures & fee structure email at admission@cseiacademy.ae</h3>
+        <h3>Scholarships Available for 2024 Batch</h3>
+        <a href="#">Register now</a>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Essay Exam</title>
+    <style>
+        /* Reset some default browser styles */
+        body, h1, form, input, textarea, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 60px; /* Adjust padding to avoid overlap with fixed header */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        /* Main container styling */
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 80px auto 20px; /* Margin-top adjusted for fixed header */
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            color: white;
+            background-color: #08005e;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #06003c;
+        }
+
+        .alert {
+            color: #d9534f;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            border-radius: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'teacher_page' %}" style="color:white; text-decoration:none;">Dashboard</a>
+            <a href="{% url 'view_essay_exams' batch.id %}" class="btn">Back to Exam</a>
+
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Edit Essay Exam for Batch {{ batch.name }}</h1>
+
+
+
+        <form method="post">
+            {% csrf_token %}
+            <label for="exam-name">Exam Name:</label>
+            <input type="text" id="exam-name" name="name" value="{{ exam.name }}" required>
+
+            <label for="exam-description">Description:</label>
+        <textarea id="exam-description" name="description" required>{{ exam.description }}</textarea>
+
+        <label for="exam-date">Exam Date:</label>
+        <input type="date" id="exam-date" name="date" value="{{ formatted_exam_date }}" required min="{{ current_date }}">
+
+        <label for="duration-hours">Duration Hours:</label>
+        <input type="number" id="duration-hours" name="duration_hours" value="{{ exam.duration_hours }}" min="0" required>
+
+        <label for="duration-minutes">Duration Minutes:</label>
+        <input type="number" id="duration-minutes" name="duration_minutes" value="{{ exam.duration_minutes }}" min="0" required>
+
+        <label for="total-marks">Total Marks:</label>
+        <input type="number" id="total-marks" name="max_marks" value="{{ exam.max_marks }}" required>
+
+        <!-- New fields for max_words and instructions -->
+        <label for="max-words">Max Words:</label>
+        <input type="number" id="max-words" name="max_words" value="{{ exam.max_words }}" required>
+
+        <label for="instructions">Instructions:</label>
+        <textarea id="instructions" name="instructions">{{ exam.instructions }}</textarea>
+
+        <button type="submit" class="btn">Save Changes</button>
+        </form>
+    </div>
+
+</body>
+</html>

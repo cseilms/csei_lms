@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .form-section {
+            margin-top: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .alert-danger {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">Mark Attendance</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="batch">Batch:</label>
+                {{ form.batch|add_class:"form-control" }}
+            </div>
+
+            <div id="attendance-form" class="form-section">
+                <!-- Attendance form fields will be injected here -->
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit Attendance</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const batchSelect = form.querySelector('select[name="batch"]');
+            const attendanceFormDiv = document.getElementById('attendance-form');
+
+            batchSelect.addEventListener('change', function() {
+                const batchId = batchSelect.value;
+
+                fetch(`/attendance/form/${batchId}/`)
+                    .then(response => response.text())
+                    .then(html => {
+                        attendanceFormDiv.innerHTML = html;
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

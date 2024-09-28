@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results for {{ exam.name }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* Reset some default browser styles */
+        body, h1, h2, p, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 80px; /* Space for fixed header */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 60px; /* Header height */
+        }
+
+        /* Main container styling */
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 80px; /* Margin to create space below the header */
+        }
+
+        h1, h2 {
+            color: #08005e; /* Dark blue text color */
+        }
+
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc; /* Light border for separation */
+            border-radius: 4px; /* Rounded corners */
+            background: #f9f9f9; /* Light background for items */
+        }
+
+        .text-danger {
+            color: red; /* Error message color */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Results for {{ exam.name }}</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <h2>Batch: {{ batch.name }}</h2>
+
+            <ul>
+                {% for result in results %}
+                    <li>
+                        <h3>{{ result.student.name }}: {{ result.marks_scored }} / {{ exam.max_marks }} marks</h3>
+                        <p>Date: {{ result.date|date:"Y-m-d H:i" }}</p>  <!-- Format the date as needed -->
+                    </li>
+                {% empty %}
+                    <li>No results available for this exam.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

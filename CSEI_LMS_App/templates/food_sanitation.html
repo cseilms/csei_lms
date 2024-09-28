@@ -1,0 +1,244 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Food Safety and Sanitation{% endblock %}
+
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* General styles */
+.food_safety {
+    padding: 4rem 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.food_safety h3 {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.food_safety h3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: orange;
+    transition: width 0.3s ease;
+}
+
+.food_safety h3:hover::after {
+    width: 100%;
+}
+
+.food_safety .content {
+    margin: auto;
+    max-width: 1000px;
+    margin: 20px;
+    padding: 2rem;
+    background-color: #fff; /* White background for content box */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for zoom effect */
+}
+
+.food_safety .content:hover {
+    transform: scale(1.03); /* Zoom in effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+}
+
+.food_safety .content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.food_safety .apply-button {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    color: #fff;
+    background-color: #08005e;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.food_safety .apply-button:hover {
+    background-color: #05003a;
+}
+
+.food_safety .documents,
+.food_safety .requirements,
+.food_safety .study-mode {
+    margin-top: 2rem;
+}
+
+.food_safety .documents ul,
+.food_safety .requirements ul,
+.food_safety .study-mode ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+.course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #fff; /* Changed to white for contrast */
+    color: #08005e; /* Course title background */
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.course-title:hover {
+    background-color: orange; /* Highlight on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.food_safety .documents li,
+.food_safety .requirements li,
+.food_safety .study-mode li {
+    margin-bottom: 0.5rem;
+}
+
+/* Background for top section */
+.food_safety_top {
+    height: 500px;
+    background-image: url("{% static 'images/food3.jpg' %}"); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Added for positioning the overlay */
+}
+
+.food_safety_top h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    position: relative; /* Added for background positioning */
+    z-index: 1; /* Ensure the text is above the overlay */
+    color: #fff; /* Keep text color white */
+}
+
+.food_safety_top h2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent shade */
+    border-radius: 15px; /* Match with h2 rounded edges */
+    z-index: -1; /* Place it below the text */
+    padding: 20px; /* Add padding for spacing */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .food_safety_top h2 {
+        font-size: 2.5rem;
+    }
+
+    .food_safety .content {
+        padding: 1rem;
+    }
+}
+</style>
+
+<section id="food_safety_training" class="food_safety_top">
+    <h2>Food Safety and Sanitation</h2>
+</section>
+
+<!-- Main Content Section -->
+<section id="food-safety-content" class="food_safety">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+        <h1 class="course-title">Food Safety and Sanitation</h1>
+        <div class="content mt-3">
+            <p>This is a basic Food safety & Sanitization that complies with Dubai Municipality regulation. This course is mandatory for anyone working in food establishments and ensures that personnel are adequately trained in food safety protocols.</p>
+            <p><strong>Course Duration:</strong> 35 hours</p>
+        </div>
+        <div class="content">
+            <h3>Learning Objectives</h3>
+            <p>At the end of the Food Safety & Sanitization course:</p>
+            <ul>
+                <li>Awareness of food safety</li>
+                <li>Ability to perform proper sanitization, storage, preparation, and serving of food.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Outline</h3>
+            <ul>
+                <li>Introduction to Food Safety</li>
+                <li>Benefits of Good Food Hygiene</li>
+                <li>Costs of Poor Food Hygiene</li>
+                <li>Food Safety Hazards and their Control</li>
+                <li>Factors for Bacterial Growth and their Control</li>
+                <li>Food Safety Control Measures in Operation</li>
+                <li>Personal Hygiene Practices</li>
+                <li>Pest Control Methods and Prevention of Pest Infestation</li>
+                <li>Waste Disposal</li>
+                <li>Cleaning and Disinfection</li>
+                <li>Food Safety</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Benefit</h3>
+            <p>This program will award you a Food Safety and Sanitation Completion Certificate from the Academy. Upon successful completion of 35 hours of course duration, learners will also receive certification from KHDA.</p>
+        </div>
+
+        <div class="content">
+            <h3>Required Documents</h3>
+            <ul class="documents">
+                <li>Higher Academic Certificates</li>
+                <li>Passport copy</li>
+                <li>Photograph</li>
+                <li>Local identity (Citizenship)</li>
+                <li>Experience letter (Optional)</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Requirements</h3>
+            <ul class="requirements">
+                <li>Students must demonstrate evidence of numeracy and literacy skills through their last studied high school report.</li>
+                <li>Work experience demonstrated through an updated resume (for working professionals).</li>
+                <li>Additional English language proficiency may apply where the medium of teaching is not English.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Study Mode</h3>
+            <ul class="study-mode">
+                <li>Full-Time / Part-Time: Weekend based</li>
+                <li>Location: ON CAMPUS</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Career Opportunities</h3>
+            <p>This course is essential for learners seeking certification in food safety and sanitization; it's mandatory for restaurant staff and individuals handling food in kitchen departments of hotels or restaurants.</p>
+        </div>
+        <a href="{% url 'apply_online' %}" class="apply-button">Apply Now</a>
+    </div>
+</section>
+
+{% endblock %}

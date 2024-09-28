@@ -1,0 +1,202 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Culinary Arts Program{% endblock %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+{% block content %}
+<style>
+    /* General styles */
+    .culinary-arts {
+        padding: 4rem 0;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9; /* Light background for contrast */
+    }
+
+    .culinary-arts h3 {
+        position: relative;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #08005e;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .culinary-arts h3::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: orange;
+        transition: width 0.3s ease;
+    }
+
+    .culinary-arts h3:hover::after {
+        width: 100%;
+    }
+
+    .culinary-arts .content {
+        margin: auto;
+        max-width: 1000px;
+        margin: 20px;
+        padding: 2rem;
+        background-color: #fff; /* White background for content box */
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+    }
+
+    .culinary-arts .content:hover {
+        transform: scale(1.03); /* Zoom in effect on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+    }
+
+    .culinary-arts .apply-button {
+        display: block;
+        width: fit-content;
+        margin: 2rem auto;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        color: #fff;
+        background-color: #08005e;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .culinary-arts .apply-button:hover {
+        background-color: #05003a;
+    }
+
+    /* Background for top section */
+    .culinary_top {
+        height: 500px;
+        background-image: url("{% static 'images/th.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        position: relative; /* Added for overlay positioning */
+    }
+
+    .culinary_top h2 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin: 0;
+        position: relative; /* Added for overlay positioning */
+        z-index: 1; /* Ensure text is above the overlay */
+    }
+
+    .culinary_top h2::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Dark transparent shade */
+        z-index: -1; /* Place it below the text */
+    }
+
+    .course-title {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 30px;
+        color: #fff; /* Changed to white for contrast */
+        color: #08005e; /* Course title background */
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .course-title:hover {
+        background-color: orange; /* Highlight on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        .culinary_top h2 {
+            font-size: 2.5rem;
+        }
+
+        .culinary-arts .content {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<!-- Culinary Arts Top Section -->
+<section id="culinary-arts" class="culinary_top">
+    <h2>Culinary Arts Program</h2>
+</section>
+
+<!-- Culinary Arts Course Section -->
+<section id="culinary-arts-details" class="culinary-arts section">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+        <h1 class="course-title">Culinary Arts Program</h1>
+        <div class="content mt-3">
+            <p>The Culinary Arts Program is designed for aspiring chefs and culinary enthusiasts who wish to develop foundational skills and advanced techniques in the culinary field.</p>
+        </div>
+        <div class="content">
+            <h3>Course Overview</h3>
+            <p>This comprehensive program combines hands-on experience, theoretical knowledge, and exposure to the culinary industry. Participants will learn about ingredients, cooking methods, food safety, plating techniques, and menu design, preparing them for various roles within the culinary sector.</p>
+            <p><strong>Course Duration:</strong> 1 Month (Part-Time)</p>
+            <p><strong>Tuition Fees:</strong> 17,000 AED</p>
+        </div>
+        <div class="content">
+            <h3>Course Objectives</h3>
+            <ul>
+                <li>Demonstrate fundamental cooking techniques and skills.</li>
+                <li>Understand the properties and functions of various ingredients.</li>
+                <li>Apply food safety and sanitation practices.</li>
+                <li>Create and design menus for different cuisines and dining experiences.</li>
+                <li>Develop skills in pastry, baking, and dessert-making.</li>
+                <li>Understand market trends and customer preferences in the culinary industry.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Modules</h3>
+            <ul class="modules">
+                <li>Introduction to Culinary Arts</li>
+                <li>Kitchen Fundamentals</li>
+                <li>Food Safety and Sanitation</li>
+                <li>Culinary Techniques</li>
+                <li>Baking and Pastry Arts</li>
+                <li>Nutrition and Menu Planning</li>
+                <li>Global Cuisines</li>
+                <li>Plating and Presentation</li>
+                <li>Culinary Management</li>
+                <li>Capstone Project</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Assessment and Certification</h3>
+            <p>Continuous assessment through practical exams, written tests, and participation. Certification awarded upon successful completion of the program.</p>
+        </div>
+        <div class="content">
+            <h3>Career Opportunities</h3>
+            <ul class="career-opportunities">
+                <li>Chef or Cook</li>
+                <li>Pastry Chef</li>
+                <li>Food Stylist or Photographer</li>
+                <li>Restaurant Management</li>
+                <li>Catering and Event Planning</li>
+                <li>Food and Beverage Consultant</li>
+            </ul>
+        </div>
+        <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
+    </div>
+</section>
+{% endblock %}

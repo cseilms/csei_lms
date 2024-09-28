@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Files</title>
+    <style>
+        /* Reset some default browser styles */
+        body, h1, form, label, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 60px; /* Adjust padding to avoid overlap with fixed header */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height:60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.6em;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        /* Main container styling */
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 80px auto 20px; /* Margin-top adjusted to account for fixed header */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            background-color: #08005e;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1em;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #06003c;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+        .file-actions {
+            margin-top: 10px;
+        }
+
+        .file-actions form {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .file-actions input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .file-actions button {
+            padding: 8px 12px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <header>
+
+        <nav>
+            <a href="{% url 'teacher_page' %}">Dashboard</a>
+            <a href="{% url 'batch_details' batch.id %}">Batch Details</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <ul>
+            {% for file in files %}
+                <li>
+                    <strong>{{ file.title }}</strong><br>
+                    <a href="{{ file.file.url }}" target="_blank">View</a><br>
+                    <div class="file-actions">
+                        <!-- Form to replace file -->
+                        <form method="post" action="{% url 'replace_batch_file' batch.id file.id %}" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="file" name="file" required>
+                            <button type="submit" class="btn">Replace</button>
+                        </form>
+                        <!-- Form to delete file -->
+                        <form method="post" action="{% url 'delete_batch_file' batch.id file.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </li>
+            {% empty %}
+                <li>No files available for this batch.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+
+</body>
+</html>

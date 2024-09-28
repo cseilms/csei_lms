@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Submission Success</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 80px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Added margin to create space below the header */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem; /* Adjust font size */
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #dc3545; /* Button color */
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+        .container {
+            margin-top: 100px; /* Adjust to avoid overlap with fixed header */
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .container:hover {
+            transform: scale(1); /* Zoom-in effect on hover */
+        }
+        .result {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-top: 40px; /* Added margin for spacing */
+            text-align: center;
+        }
+        .result h2 {
+            color: #28a745; /* Green for success */
+            margin-bottom: 20px;
+        }
+        .btn-home {
+            margin-top: 20px;
+            background-color: #08005e; /* Custom blue color */
+            color: white;
+            font-weight: bold;
+            padding: 12px 24px; /* Larger button size */
+            font-size: 1.1rem; /* Increased font size */
+            width: 100%; /* Full width button */
+            border: none; /* Remove border */
+            border-radius: 4px; /* Rounded corners */
+        }
+        .btn-home:hover {
+            background-color: #06003c; /* Darker blue on hover */
+        }
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.2rem; /* Smaller font size for smaller screens */
+            }
+            header a {
+                padding: 6px 12px;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CSEI Academy</h1>
+        <a href="{% url 'student_page' student.id %}" class="btn btn-outline-info text-white">Back to Dashboard</a>
+    </header>
+
+    <main class="container" style="margin-top:100px">
+        <div class="result">
+            <h2>Exam Submission Successful!</h2>
+            <p>Your total marks: <strong>{{ total_marks }}</strong> out of <strong>{{ max_marks }}</strong></p>
+            <p>Passing marks: <strong>{{ passing_marks }}</strong></p>
+            <p>Your result: <strong>{% if passed %}Passed{% else %}Failed{% endif %}</strong></p>
+            <a href="{% url 'student_page' student.id %}" class="btn btn-home">Go to Dashboard</a>
+        </div>
+    </main>
+</body>
+</html>

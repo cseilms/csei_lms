@@ -1,0 +1,21 @@
+<!-- templates/emails/assignment_notification.html -->
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Assignment Notification</title>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+
+</head>
+<body>
+    <p>Dear {{ student.name }},</p>
+    <p>There is a new assignment added to your batch:</p>
+    <p><strong>Assignment:</strong> {{ assignment.title }}</p>
+    <p><strong>Description:</strong> {{ assignment.description }}</p>
+    <p><strong>Due Date:</strong> {{ assignment.due_date }}</p>
+    <p>Best regards,<br>Your School</p>
+</body>
+</html>

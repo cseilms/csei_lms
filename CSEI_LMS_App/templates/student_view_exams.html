@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="icon" type="image/x-icon" href="{% static 'images/downloaddp.jpg' %}">
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <title>Exams for Batch: {{ batch.name }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 0 0 8px 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 80px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem; /* Adjust font size */
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #dc3545; /* Button color */
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+        }
+        header a:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+        .container {
+            margin-top: 100px; /* Adjust to avoid overlap with fixed header */
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .list-group-item {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 20px; /* Increase space between exams */
+        }
+        .list-group-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-success {
+            background-color: #28a745; /* Green color */
+            border-color: #28a745;
+        }
+        .btn-success:hover {
+            background-color: #218838; /* Darker green on hover */
+            border-color: #1e7e34;
+        }
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.2rem; /* Smaller font size for smaller screens */
+            }
+            header a {
+                padding: 6px 12px;
+                font-size: 0.875rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exams for Batch: {{ batch.name }}</h1>
+        <a href="{% url 'student_page' student.id %}" class="btn btn-outline-info text-white">Back to Dashboard</a>
+    </header>
+
+    <main class="container mt-5">
+        <ul class="list-group mt-4">
+            {% for exam in exams %}
+                <li class="list-group-item">
+                    <h4 class="mb-1">{{ exam.name }}</h4>
+                    <p class="mb-2"><strong>Date:</strong> {{ exam.date }}</p>
+                    <a href="{% url 'student_exam_page' exam.id %}" class="btn btn-success">Take Exam</a>
+                </li>
+            {% empty %}
+                <li class="list-group-item text-center">No exams available for this batch.</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

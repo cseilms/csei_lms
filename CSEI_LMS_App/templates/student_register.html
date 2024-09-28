@@ -1,0 +1,107 @@
+{% extends 'basepage.html' %}
+
+{% block title %}Student Registration{% endblock %}
+
+{% block extra_css %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .form-container {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(8, 0, 94, 0.2);
+            transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+        }
+
+        .form-container:hover {
+            box-shadow: 0 6px 12px rgba(8, 0, 94, 0.3);
+            background-color: #f8f9fa;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #08005e;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #08005e;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            border-color: #08005e;
+            box-shadow: 0 0 8px rgba(8, 0, 94, 0.3);
+            outline: none;
+        }
+
+        .link-button {
+            display: inline-block;
+            background-color: #08005e;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .link-button:hover {
+            background-color: #05004b;
+        }
+
+        .text-danger {
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container m-4">
+        <div class="form-container">
+            <h2>Student Registration</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
+                {% for field in form %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% if field.errors %}
+                            <div class="text-danger">{{ field.errors }}</div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="link-button">Register</button>
+            </form>
+            <p class="mt-3">
+                Already have an account?
+                <a href="{% url 'student_login' %}" class="link-button">Login here</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'basepage.html' %}
+  {% load static %}
+
+{% block title %}Creative Star Education Institutes{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="carouseldiv">
+      <!-- Carousel -->
+      <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'images/social3.jpg' %}" alt="Education" class="d-block w-100" style="height: 400px;">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Discover Your Potential</h3>
+              <p>Unlock your intellectual curiosity and embrace a journey of discovery at CSEI</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/wall3.jpg' %}" alt="Learning" class="d-block w-100" style="height: 400px;">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Transform Learning into Action</h3>
+              <p>Beyond the classroom: Apply knowledge to real-world challenges and make an impact</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/food6.jpg' %}" alt="Future" class="d-block w-100" style="height: 400px;">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Global Education, Local Impact</h3>
+              <p>Gain world-class skills and insights, and shape your future in the heart of Dubai</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="about_div" style="margin-top:30px">
+        <div class="row align-items-center">
+          <!-- About Text -->
+          <div class="col-md-6 about-text">
+            <h2>Welcome to CSEI Academy</h2>
+            <p>Creative Star Education Institutes (CSEI) is an educational center for the learning enthusiast which is an open space for intellectual discovery. We, at CSEI, are committed to providing innovative methods of learning and evaluation to the students, making them qualified professionals. CSEI has been established for students from all over the world to enhance and improve—not just educational knowledge but also the skills required to deal with the outside world.</p>
+
+            <a href="#" class="read-more text-light">Read More</a>
+          </div>
+          <!-- About Image -->
+          <div class="col-md-6 about-image">
+            <img src="{% static 'images/stdnets.jpg' %}" alt="CSEI Academy Campus">
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="course_card">
+  <div class="container">
+    <div class="row mt-3">
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-logo">
+            <img src="{% static 'images/card/img_1.png' %}" alt="Logo" />
+          </div>
+          <img src="{% static 'images/card/hotelcard13.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Hospitality and Tourism</h5>
+            <p class="card-text">The course covers HR theories, functions, employee motivation, organizational culture, industry-society relationships, and HR research methods.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-logo">
+            <img src="{% static 'images/card/ho.png' %}" alt="Logo" />
+          </div>
+          <img src="{% static 'images/card/hrcard1.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Human Resource Management</h5>
+            <p class="card-text">Learners will explore contemporary human capital management issues in the hotel and tourism industry from all perspectives.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-logo">
+            <img src="{% static 'images/card/cu.png' %}" alt="Logo" />
+          </div>
+          <img src="{% static 'images/card/culcard2.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Culinary Arts</h5>
+            <p class="card-text">The Culinary Arts Program provides aspiring chefs with hands-on skills, theoretical knowledge, and industry exposure for a successful culinary career.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  {% endblock %}
+
+
+<!--  footer-->
+

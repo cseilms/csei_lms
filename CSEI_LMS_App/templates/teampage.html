@@ -1,0 +1,33 @@
+{% extends 'basepage.html' %}
+  {% load static %}
+
+{% block title %}Meet Our Team{% endblock %}
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+</style>
+  <section id="team" class="team section m-4" >
+
+       <div class="six">
+      <h1>Meet Our Team</h1>
+    <p>Check Our Team Behind CSEI</p>
+</div>
+
+    <div class="row m-4">
+      {% for i in teachers %}
+        <div class="col-md-3">
+          <div class="card h-200">
+            <img src="{{ i.profile_picture.url }}" class="card-img-top" alt="Profile Picture" style="height:240px;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">{{ i.name }}</h5>
+              <p class="card-text">{{ i.department }}</p>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endblock %}

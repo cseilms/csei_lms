@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Details</title>
+    <style>
+        /* Reset some default browser styles */
+        body, h1, a, ul, li {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 80px; /* Padding for header height */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 50px; /* Consistent header height */
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+
+        /* Main container styling */
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        button, .btn {
+            padding: 10px 15px;
+            background-color: #08005e; /* Updated button color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+
+        button:hover, .btn:hover {
+            background-color: #05003a; /* Slightly darker shade for hover effect */
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        /* Dropdown styling */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #ffffff;
+            min-width: 220px; /* Slightly wider dropdown for better readability */
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            z-index: 1;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-bottom: 1px solid #eee; /* Adds a border between items */
+            transition: background-color 0.2s ease, padding-left 0.2s ease;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            padding-left: 20px; /* Adds a slight indentation on hover */
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .dropdown > a {
+            position: relative;
+            background-color: #08005e; /* Consistent button color */
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown > a:hover {
+            background-color: #0056b3; /* Darker shade for dropdown button on hover */
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'teacher_page' %}">Dashboard</a>
+            <!-- Add more navigation links as needed -->
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>Batch Details</h1>
+            <ul>
+                {% for batch in batches %}
+                    <li>
+                        <a href="{% url 'add_exam' batch.id %}" class="btn">Add Exam for {{ batch.name }}</a>
+                        <a href="{% url 'view_exams' batch.id %}" class="btn">View Exams</a>
+                        <div class="dropdown">
+                            <a href="#" class="btn">View Results</a>
+                            <div class="dropdown-content">
+                                {% for exam in batch.exam_batch.all %}
+                                    <a href="{% url 'exam_results_page' batch_id=batch.id exam_id=exam.id %}">View Results for {{ exam.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </li>
+                {% empty %}
+                    <li>No batches available.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+</body>
+</html>

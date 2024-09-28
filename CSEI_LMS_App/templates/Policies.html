@@ -1,0 +1,168 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Who We Are{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    .policies_para {
+        height: auto; /* Allow the height to adjust based on content */
+        background-image: linear-gradient(to right, gray, white);
+        padding: 20px; /* Add padding for spacing */
+        margin-bottom: 100px; /* Ensure there's space for the footer */
+    }
+
+    .policies_img img {
+        height: 400px;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .policies_items, .policies_terms {
+        margin: 20px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .policies_items h3, .policies_items h5,
+    .policies_terms h3, .policies_terms h5 {
+        text-align: center;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .policies_items h5, .policies_terms h5 {
+        text-decoration: underline;
+        font-style: italic;
+        margin-top: 1rem;
+    }
+
+    .policies_items p, .policies_items .pol,
+    .policies_terms p {
+        font-family: "Playfair Display", "Bookman", serif;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .policies_items .pol, .policies_terms .pol {
+        margin-bottom: 0.5rem;
+        list-style-type: disc;
+        padding-left: 1rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .policies_img img {
+            height: auto;
+        }
+
+        .policies_items, .policies_terms {
+            margin: 10px;
+            padding: 10px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .policies_img img {
+            height: auto;
+        }
+
+        .policies_items, .policies_terms {
+            margin: 5px;
+            padding: 5px;
+        }
+    }
+
+</style>
+
+<div class="policies">
+    <div class="policies_img">
+        <img src="{% static 'images/ab1.jpg' %}" alt="Policies Image">
+    </div>
+
+    <div class="policies_para">
+        <div class="policies_items">
+            <h3>Your Privacy Matters</h3>
+            <p>At CSEI Academy, we understand the importance of your privacy, and we are committed to safeguarding your personal information. This Privacy Policy is designed to explain how we collect, use, and protect your data in a manner that respects your privacy.</p>
+
+            <h5>Information We Collect</h5>
+            <p>We collect various types of information to provide you with the best academic coaching experience:</p>
+            <ul>
+                <li class="pol">Personal Details: This may include your name, email address, phone number, and other contact information, which we use to stay in touch with you.</li>
+                <li class="pol">Academic Insights: To offer tailored coaching services, we may collect academic information about you or your child, such as grade levels and subjects of interest.</li>
+                <li class="pol">Secure Payments: When you make payments for our services, we collect only the necessary payment details to process transactions securely.</li>
+                <li class="pol">Website Interaction: We gather data about your interactions with our website, including your device type and pages you visit. This helps us enhance your browsing experience.</li>
+            </ul>
+
+            <h5>How We Use Your Information</h5>
+            <p>We use the information we collect in the following ways:</p>
+            <ul>
+                <li class="pol">Personalized Coaching: To deliver coaching that meets your unique needs.</li>
+                <li class="pol">Payment Processing: To handle payments and manage billing efficiently.</li>
+                <li class="pol">Website Improvement: To enhance the functionality and usability of our website.</li>
+                <li class="pol">Communication: To keep you informed about appointments, inquiries, and updates.</li>
+                <li class="pol">Compliance: To meet legal and regulatory requirements.</li>
+            </ul>
+
+            <h5>Sharing Your Information</h5>
+            <p>We may share your information under specific circumstances:</p>
+            <ul>
+                <li class="pol">Service Partners: We work with trusted service providers who assist us in delivering our services effectively.</li>
+                <li class="pol">Legal Obligations: We may disclose information when required by law or to protect our rights and the safety of others.</li>
+                <li class="pol">Business Transitions: In the event of a merger, acquisition, or sale of assets, your data may be transferred to another entity.</li>
+            </ul>
+
+            <h5>Your Choices</h5>
+            <p>We respect your choices regarding your personal information:</p>
+            <ul>
+                <li class="pol">Access and Corrections: You can access and correct your data as needed.</li>
+                <li class="pol">Consent Withdrawal: You have the right to withdraw your consent for data collection and processing.</li>
+                <li class="pol">Marketing Opt-Out: You can choose to opt out of receiving marketing communications from us.</li>
+            </ul>
+
+            <h5>Data Security</h5>
+            <p>While we employ security measures to protect your information, please note that no internet transmission can be entirely secure.</p>
+
+            <h5>Updates to this Policy</h5>
+            <p>We may update this Privacy Policy periodically to reflect changes in our practices. Please review it occasionally to stay informed about how we handle your data.</p>
+
+            <h5>Contact Us</h5>
+            <p>If you have any questions, concerns, or requests related to your privacy or this Privacy Policy, please reach out to us at <a href="mailto:admission@cseiacademy.ae">admission@cseiacademy.ae</a>.</p>
+        </div>
+        <div class="policies_terms">
+            <h3>Terms and Conditions CSEI ACADEMY</h3>
+            <p>Welcome to the CSEI ACADEMY website. By accessing and using this website, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before using our website.</p>
+
+            <h5>Acceptance of Terms</h5>
+            <p>By using this website, you acknowledge that you have read, understood, and agreed to these terms and conditions. If you do not agree with any part of these terms, please refrain from using this website.</p>
+
+            <h5>Use of Website</h5>
+            <p>You may use this website for your personal, non-commercial purposes only. Any commercial use is prohibited without our prior written consent.</p>
+            <p>You are responsible for ensuring that your use of this website complies with all applicable laws and regulations.</p>
+
+            <h5>Intellectual Property</h5>
+            <p>The content, design, and graphics on this website are the property of CSEI ACADEMY and are protected by intellectual property laws. You may not reproduce, distribute, modify, or display any part of this website without our prior written consent.</p>
+
+            <h5>User Accounts</h5>
+            <p>If you create an account on our website, you are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
+            <p>You agree to provide accurate and complete information when creating your account and to update it as necessary.</p>
+
+            <h5>Privacy</h5>
+            <p>Your use of this website is also governed by our Privacy Policy. Please review our Privacy Policy to understand how we collect, use, and protect your personal information.</p>
+
+            <h5>Limitation of Liability</h5>
+            <p>CSEI ACADEMY is not liable for any direct, indirect, incidental, consequential, or special damages arising from your use of this website or any content therein. We do not guarantee that this website will be error-free, uninterrupted, or free of viruses or other harmful components.</p>
+
+            <h5>Links to Third-Party Websites</h5>
+            <p>This website may contain links to third-party websites. These links are provided for your convenience and do not endorse or control the content of any third-party websites. Your use of third-party websites is subject to their respective terms and conditions.</p>
+
+            <h5>Changes to Terms and Conditions</h5>
+            <p>CSEI ACADEMY reserves the right to modify or update these terms and conditions at any time. Any changes will be effective immediately upon posting on this website. It is your responsibility to review these terms periodically for updates.</p>
+
+            <h5>Contact Information</h5>
+            <p>If you have any questions or concerns about these terms and conditions, please contact us at <a href="mailto:admission@cseiacademy.ae">admission@cseiacademy.ae</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

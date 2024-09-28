@@ -1,0 +1,232 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Training Diploma in Housekeeping{% endblock %}
+
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* General styles */
+.housekeeping-training {
+    padding: 4rem 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.housekeeping-training h3 {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.housekeeping-training h3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: orange;
+    transition: width 0.3s ease;
+}
+
+.housekeeping-training h3:hover::after {
+    width: 100%;
+}
+
+.housekeeping-training .content {
+    margin: auto;
+    max-width: 1000px;
+    margin: 20px;
+    padding: 2rem;
+    background-color: #fff; /* White background for content box */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for zoom effect */
+}
+
+.housekeeping-training .content:hover {
+    transform: scale(1.03); /* Zoom in effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+}
+
+.housekeeping-training .apply-button {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    color: #fff;
+    background-color: #08005e;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.housekeeping-training .apply-button:hover {
+    background-color: #05003a;
+}
+
+.housekeeping-training .documents,
+.housekeeping-training .requirements,
+.housekeeping-training .study-mode {
+    margin-top: 2rem;
+}
+
+.housekeeping-training .documents ul,
+.housekeeping-training .requirements ul,
+.housekeeping-training .study-mode ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+.housekeeping-training .documents li,
+.housekeeping-training .requirements li,
+.housekeeping-training .study-mode li {
+    margin-bottom: 0.5rem;
+}
+
+/* Background for top section */
+.housekeeping_top {
+    height: 500px;
+    background-image: url("{% static 'images/housekeep1.jpg' %}"); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative; /* Added for positioning the overlay */
+}
+
+.housekeeping_top h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    position: relative; /* Added for overlay positioning */
+    z-index: 1; /* Ensure the text is above the overlay */
+}
+
+.housekeeping_top h2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent shade */
+    border-radius: 15px; /* Match with h2 rounded edges */
+    z-index: -1; /* Place it below the text */
+}
+
+.course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #fff; /* Changed to white for contrast */
+    color: #08005e; /* Course title background */
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.course-title:hover {
+    background-color: orange; /* Highlight on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .housekeeping_top h2 {
+        font-size: 2.5rem;
+    }
+
+    .housekeeping-training .content {
+        padding: 1rem;
+    }
+}
+</style>
+
+<!-- Housekeeping Top Section -->
+<section id="housekeeping-training" class="housekeeping_top">
+    <h2>Training Diploma in Housekeeping</h2>
+</section>
+
+<!-- Main Content Section -->
+<section id="housekeeping-content" class="housekeeping-training section">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+        <h1 class="course-title">Training Diploma in Housekeeping</h1>
+        <div class="content mt-3">
+            <p>This is a short Course on Housekeeping designed and developed by housekeeping industry specialists who have been in the business for years. The Course covers the various aspects of housekeeping to gain valuable insights into the world of Housekeeping.</p>
+            <p><strong>Total Course Duration:</strong> 96 hours</p>
+        </div>
+        <div class="content">
+            <h3>Learning Objectives</h3>
+            <p>At the end of the Course, the learner will:</p>
+            <ul>
+                <li>Be able to perform housekeeping operations efficiently in the hospitality industry.</li>
+                <li>Learn in detail the Hotel Guest Room preparation.</li>
+                <li>Be able to use different cleaning equipment and understand cleaning science.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Outline</h3>
+            <ul>
+                <li>Basics of Housekeeping Operations</li>
+                <li>Housekeeping operation in Hotel Guest Room</li>
+                <li>Essential use of Cleaning Science & Cleaning Equipment</li>
+                <li>Care & Cleaning of Different Surfaces</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Benefit</h3>
+            <p>This program will award you a Training Diploma in Housekeeping Completion Certificate from the Academy. Upon successful completion of 96 hours of course duration, learners will also receive a certification from KHDA. After completion, students can also join OTHM courses related to their field, such as Tourism & Hospitality Management, as part of progression to the course.</p>
+        </div>
+        <div class="content">
+            <h3>Required Documents</h3>
+            <ul class="documents">
+                <li>Higher Academic Certificates</li>
+                <li>Passport copy</li>
+                <li>Photograph</li>
+                <li>Local identity (Citizenship)</li>
+                <li>Experience letter (Optional)</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Requirements</h3>
+            <ul class="requirements">
+                <li>Students must demonstrate evidence of numeracy and literacy skills through last studied high school report.</li>
+                <li>Work experience demonstrated through an updated resume (for working professionals).</li>
+                <li>Additional English language proficiency may apply where the medium of teaching is not English.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Study Mode</h3>
+            <ul class="study-mode">
+                <li>Full-Time / Part-Time: Weekend based</li>
+                <li>Location: ON CAMPUS</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Career Opportunities</h3>
+            <p>The certificate holder can start their careers as Housekeeping Associates or Room Attendants in the hotel & hospitality industry or in cruise liners & tourism industry. With experience, they can then move up the ranks to positions like Floor Supervisor, Executive Housekeeper, and eventually, Director of Housekeeping.</p>
+        </div>
+        <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
+    </div>
+</section>
+
+{% endblock %}

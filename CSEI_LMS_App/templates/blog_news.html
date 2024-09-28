@@ -1,0 +1,196 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Football Tournament Report{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* General Styles */
+    body {
+        font-family: "Arial", sans-serif;
+        background-color: #f7f9fc; /* Light background for contrast */
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Section */
+    .header_section {
+        height: 300px;
+        background-image: url("{% static 'images/blg1.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .header_text {
+        padding: 15px; /* Reduced padding */
+        border-radius: 10px;
+
+        margin-top:50px;
+        margin-left:400px;
+        width: 90%; /* Responsive width */
+        max-width: 500px; /* Smaller max-width */
+        text-align: center;
+        background-color: rgba(255, 165, 0, 0.8); /* Orange background */
+        transition: background-color 0.3s; /* Smooth transition for hover effect */
+        cursor: pointer; /* Pointer cursor to indicate clickable */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    }
+
+    .header_text h1 {
+        font-size: 1rem; /* Reduced header font size */
+        margin: 0;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6); /* Adjusted shadow for better visibility */
+    }
+
+    .header_text p {
+        font-size: 0.85rem; /* Reduced paragraph font size */
+        margin-top: 0.5rem; /* Reduced margin for closer spacing */
+        color: #fff; /* Ensure text is white for readability */
+    }
+
+    .header_text:hover {
+        background-color: rgba(255, 165, 0, 1); /* Change background to solid orange on hover */
+    }
+
+    /* Dropdown Section */
+    .dropdown_content {
+        display: none; /* Hidden by default */
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #fff; /* White background for dropdown */
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        color: #333; /* Dark text for readability */
+    }
+
+    /* Article Section */
+    .article_section {
+        max-width: 800px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    .article_section h2 {
+        color: #333;
+    }
+
+    .article_section p {
+        font-size: 1rem; /* Adjusted font size for better readability */
+        line-height: 1.6;
+        color: #555;
+    }
+
+    /* Image Style */
+    .tournament_image {
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Maintain aspect ratio */
+        max-width: 300px; /* Max width for larger screens */
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s, box-shadow 0.3s;
+        margin: 2rem auto;
+        display: block;
+    }
+
+    .tournament_image:hover {
+        transform: scale(1.05); /* Scale effect on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Share Links Section */
+    .share_links {
+        text-align: center;
+        margin-top: 2rem;
+    }
+
+    .share_links a {
+        margin: 0 1rem;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        color: #fff;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+
+    .share_links a.facebook {
+        background-color: #3b5998;
+    }
+
+    .share_links a.instagram {
+        background-color: #C13584;
+    }
+
+    .share_links a:hover {
+        opacity: 0.8; /* Fade effect on hover */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .header_text h1 {
+            font-size: 2rem; /* Adjust header size for mobile */
+        }
+
+        .header_text p {
+            font-size: 1rem; /* Adjust text size for mobile */
+        }
+
+        .article_section {
+            padding: 1rem; /* Reduced padding for smaller screens */
+        }
+
+        .article_section h2 {
+            font-size: 1.5rem; /* Adjusted h2 size for mobile */
+        }
+
+        .article_section p {
+            font-size: 0.9rem; /* Adjusted paragraph size for mobile */
+        }
+    }
+</style>
+
+<header class="header_section"></header>
+
+<div class="header_text" onclick="toggleDropdown()">
+    <h1>Football Tournament Highlights</h1>
+    <p>Celebrating our achievements and sportsmanship in Dubai</p>
+</div>
+
+<div class="dropdown_content" id="dropdownNews">
+    <section class="article_section">
+        <h2>Royal Gurkha Football Club Shines in Dubai</h2>
+        <p>The latest football match held in Dubai was a momentous occasion for our Academy-sponsored team, the Royal Gurkha Football Club. We were privileged to have the support of Roshan Gautam Sir, the CEO of our Academy, whose guidance and unwavering dedication to our team were instrumental in our success.</p>
+
+        <p>Our team’s performance on the field was nothing short of impressive. The players demonstrated exceptional skill and teamwork, culminating in a well-deserved gameplay. However, what truly set our team apart was our commitment to sportsmanship and fair play, which earned us the prestigious Fair Play Award. This accolade is a testament to our values and principles as a team.</p>
+
+        <p>Beyond the win, our participation in the tournament allowed our players to gain valuable experience, hone their skills, and build important relationships with other teams from around the world. We are proud to have represented our Academy and our country with honor and dignity.</p>
+
+        <img src="{% static 'images/ch.jpg' %}" alt="Tournament Image" class="tournament_image">
+
+        <div class="share_links">
+            <h3>Share This Article</h3>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" class="facebook" target="_blank">Share on Facebook</a>
+            <a href="https://www.instagram.com/?url={{ request.build_absolute_uri }}" class="instagram" target="_blank">Share on Instagram</a>
+        </div>
+    </section>
+</div>
+
+<script>
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdownNews');
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+</script>
+{% endblock %}

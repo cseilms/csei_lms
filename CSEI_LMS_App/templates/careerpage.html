@@ -1,0 +1,234 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Career Page{% endblock %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* General Styles */
+    body {
+        font-family: "Arial", sans-serif;
+
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Header Section with Background Image */
+    .header_section {
+        height: 500px;
+        background-image: url("{% static 'images/card/card1.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        padding: 2rem;
+        border-bottom: 5px solid #007bff; /* Bottom border for emphasis */
+        position: relative;
+    }
+
+    .header_section h3 {
+        font-size: 3rem; /* Increased font size */
+        margin: 0;
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.8); /* Stronger text shadow for depth */
+    }
+
+    .header_section p {
+        font-size: 1.5rem; /* Additional text size */
+        margin-top: 1rem;
+    }
+
+    .header_section a {
+        color: #fff;
+        font-weight: bold;
+        margin-top: 1rem;
+        display: inline-block;
+        padding: 1rem 2rem; /* Increased padding */
+        border-radius: 30px;
+        background-color: #007bff;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .header_section a:hover {
+        background-color: #0056b3;
+        transform: translateY(-3px); /* Slight lift effect on hover */
+    }
+
+    /* Custom Row Containers */
+    .row_div {
+        display: flex;
+        align-items: center;
+        margin: 2rem auto;
+        padding: 2rem;
+        max-width: 1200px;
+        background: #fff;
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        flex-direction: row;
+    }
+
+    .row_div img {
+        border-radius: 15px;
+        width: 320px;
+        height: 320px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-right: 1.5rem;
+        transition: transform 0.3s ease;
+    }
+
+    .row_div img:hover {
+        transform: scale(1.05); /* Scale effect on hover */
+    }
+
+    .row_div p {
+        color: #333;
+        flex: 1;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        margin: 0;
+        font-family: "Playfair Display", serif;
+    }
+
+    .email_section {
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 1.5rem;
+        text-align: center;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Job Listings */
+    .job_container {
+        display: none; /* Initially hidden */
+        max-width: 1200px;
+        margin: 2rem auto;
+        border-radius: 15px; /* Rounded corners */
+        background: linear-gradient(135deg, #f0f8ff, #e6f7ff); /* Gradient background */
+        padding: 1.5rem;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Box shadow */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .job_listing {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1rem;
+        text-align: center;
+        width: 300px; /* Fixed width for job cards */
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .job_listing:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .no_jobs {
+        display: none; /* Initially hidden */
+        text-align: center;
+        margin: 1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .row_div {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .row_div img {
+            width: 100%;
+            height: auto;
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+
+        .header_section h3 {
+            font-size: 2.5rem; /* Adjust header size for mobile */
+        }
+
+        .header_section p {
+            font-size: 1.2rem; /* Adjust text size for mobile */
+        }
+
+        .job_listing {
+            width: 100%; /* Full width on mobile */
+            margin: 1rem 0; /* Adjust margin */
+        }
+    }
+</style>
+
+<header class="header_section">
+    <div class="header_content" style="background: rgba(0, 0, 0, 0.7); padding: 2rem; border-radius: 8px;">
+        <h3>Career Opportunities</h3>
+        <p>Join us on this journey of innovation, growth, and community engagement, <br>and discover your full potential at CSEI.</p>
+    </div>
+</header>
+
+<section>
+    <div class="row_div">
+        <img src="{% static 'images/card/stun1.jpg' %}" alt="Academic Excellence">
+        <p>Founded on the premise of academic excellence and corporate ethics, we provide rich opportunities in professional development that adds value to the personal and professional lives of our students, staff, and faculty members, as well as the communities in which we serve as a vocational institute.</p>
+    </div>
+
+    <div class="row_div">
+        <p>Our recently expanded Academic City campus presents an ideal learning environment conducive to entrepreneurship, creativity, and innovation, where students benefit from state-of-the-art facilities in the heart of Dubai, United Arab Emirates.</p>
+    </div>
+
+    <div class="email_section">
+        <p>You can mail us your updated resumes at <a href="mailto:placement@cseiacademy.ae" style="color: #007bff;">placement@cseiacademy.ae</a></p>
+    </div>
+
+    <button id="viewJobsButton" style="margin: 1rem auto; display: block; padding: 1rem 2rem; border-radius: 30px; background-color: #007bff; color: white; border: none; cursor: pointer;">
+        View Job Openings
+    </button>
+
+    <div class="job_container" id="jobContainer">
+        <h4 style="text-align: center; width: 100%; display: none;" id="joinTeamMessage">Join our team! We are always looking for talented individuals.</h4>
+
+        {% for job in job_vacancies %}
+        <div class="job_listing">
+            <h4>{{ job.title }}</h4>
+            <p>{{ job.short_description }}</p>
+            <p>Location: {{ job.location }}</p>
+            <p>Vacancies: {{ job.vacancies }}</p>
+            <p>Application Deadline: {{ job.application_deadline }}</p>
+            <p>Contact Email: <a href="mailto:{{ job.contact_email }}" style="color: #007bff;">{{ job.contact_email }}</a></p>
+        </div>
+        {% endfor %}
+
+        <div class="no_jobs">
+            <p>No job vacancies available at the moment.</p>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.getElementById('viewJobsButton').addEventListener('click', function() {
+        const jobContainer = document.getElementById('jobContainer');
+        jobContainer.style.display = jobContainer.style.display === 'none' || jobContainer.style.display === '' ? 'flex' : 'none';
+
+        // Show or hide the "Join our team!" message
+        const joinTeamMessage = document.getElementById('joinTeamMessage');
+        joinTeamMessage.style.display = jobContainer.style.display === 'flex' ? 'block' : 'none';
+
+        // Show "No job vacancies available" message if necessary
+        const noJobsMessage = document.querySelector('.no_jobs');
+        noJobsMessage.style.display = jobContainer.style.display === 'flex' && !noJobsMessage.previousElementSibling ? 'none' : 'block';
+    });
+</script>
+
+{% endblock %}

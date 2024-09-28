@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        body {
+            padding-top: 60px; /* Adjust for fixed navbar */
+        }
+        header {
+            background-color: #08005e; /* Blue color shade */
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 60px; /* Same height as header */
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 30px;
+        }
+        .form-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .form-section h2 {
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            margin-top: 20px;
+            background-color: #08005e; /* Blue color shade */
+            border-color: #08005e;
+        }
+        .btn-primary:hover {
+            background-color: #06003c; /* Darker shade of blue */
+            border-color: #06003c;
+        }
+        .alert-danger {
+            margin-top: 20px;
+        }
+        .form-check-label {
+            margin-left: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-top: 1px solid #e9ecef;
+        }
+        .footer p {
+            margin: 0;
+        }
+        .flatpickr-calendar {
+            z-index: 1050 !important; /* Ensure calendar displays over other elements */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{% url 'teacher_page' %}">Dashboard</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="form-section">
+                <h2>Mark Attendance for Batch "{{ batch.name }}"</h2>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error }}</div>
+                {% endif %}
+                <form method="post" action="{% url 'attendance_form_view' batch.id %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="date">Date:</label>
+                        <input type="text" id="date" name="date" class="form-control" placeholder="Select Date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mark_all_present">
+                            <input type="checkbox" id="mark_all_present" name="mark_all_present" value="true"> Mark all students as present
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>Students:</label>
+                        {% for student in students %}
+                            <div class="form-check">
+                                <input type="checkbox" id="student_{{ student.id }}" name="students" value="{{ student.id }}" class="form-check-input">
+                                <label for="student_{{ student.id }}" class="form-check-label">{{ student.name }}</label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Attendance</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            flatpickr('#date', {
+                dateFormat: 'Y-m-d'
+            });
+        });
+    </script>
+</body>
+</html>

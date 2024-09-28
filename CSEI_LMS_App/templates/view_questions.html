@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Questions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* Reset some default browser styles */
+        body, h1, table, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* New font family */
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 80px; /* Increased padding for fixed header */
+        }
+
+        /* Header styling */
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 60px; /* Header height */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Header heading styling */
+        header h1 {
+            margin: 0;
+            font-size: 1.2em; /* Smaller font size */
+            color: white; /* White color for the header text */
+            text-align: center; /* Center align the header text */
+            flex: 1;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            color: white;
+            background-color: #6c757d; /* Gray background */
+            border-radius: 4px;
+            text-decoration: none; /* Remove underline */
+            font-weight: 500;
+            border: none; /* Remove border */
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            text-decoration: none; /* Remove underline */
+        }
+
+        /* Main container styling */
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 30px; /* Padding inside the container */
+            border-radius: 8px;
+            margin-top: 80px; /* Margin to create space below the header */
+        }
+
+        .container h1 {
+            text-align: center; /* Center align the main heading */
+            font-size: 1.75em; /* Adjust font size */
+            color: #08005e; /* Dark blue color for the heading */
+        }
+
+        .alert-info {
+            background-color: #e7f1ff;
+            border-color: #b3d9ff;
+            color: #333;
+            border-radius: 4px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(8, 0, 94, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .table {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .table thead th {
+            background-color: #08005e;
+            color: white;
+            font-weight: 600;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f8ff;
+        }
+
+        .table tbody td {
+            padding: 12px;
+            border-top: 1px solid #ddd;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 10px 20px;
+            color: white;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none; /* Remove underline */
+            font-weight: 500;
+            border: none; /* Remove border */
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+            margin-top: 20px; /* Margin to separate button from table */
+            background-color: #08005e; /* Dark blue background */
+        }
+
+        .btn-primary:hover {
+            background-color: #05003a; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>View Questions</h1>
+        <a href="{% url 'view_exams' exam.batch.id %}" class="btn btn-secondary">Back to Exams</a>
+    </header>
+
+    <div class="container">
+        <h1 class="m-4">Questions for Exam "{{ exam.name }}" (Batch: {{ exam.batch.name }})</h1>
+
+        <!-- Display remaining number of questions -->
+        <div class="alert alert-info">
+            <strong>Remaining Questions:</strong> {{ remaining_questions }}
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th style="width:40px">Question Number</th>
+                    <th>Question</th>
+                    <th>Options</th>
+                    <th>Answer</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for question in questions %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ question.question }}</td>
+                        <td>
+                            <ul>
+                                <li>{{ question.option1 }}</li>
+                                <li>{{ question.option2 }}</li>
+                                <li>{{ question.option3 }}</li>
+                                <li>{{ question.option4 }}</li>
+                            </ul>
+                        </td>
+                        <td>{{ question.answer }}</td>
+                        <td>
+                            <a href="{% url 'edit_question' question.id %}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{% url 'delete_question' question.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5">No questions found for this exam.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Activate Exam Button -->
+        {% if not exam.is_active %}
+            <form action="{% url 'activate_exam' exam.id %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Activate Exam</button>
+            </form>
+        {% endif %}
+
+        <a href="{% url 'add_question' exam.id %}" class="btn btn-primary mt-3">Add Question</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,241 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Food & Beverage Service Training{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* General styles */
+.food_beverage {
+    padding: 4rem 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.food_beverage h3 {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.food_beverage h3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: orange;
+    transition: width 0.3s ease;
+}
+
+.food_beverage h3:hover::after {
+    width: 100%;
+}
+
+.food_beverage .content {
+    margin: auto;
+    max-width: 1000px;
+    margin: 20px;
+    padding: 2rem;
+    background-color: #fff; /* White background for content box */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.food_beverage .content p {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.6;
+}
+
+.food_beverage .apply-button {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    color: #fff;
+    background-color: #08005e;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.food_beverage .apply-button:hover {
+    background-color: #05003a;
+}
+
+.food_beverage .documents,
+.food_beverage .requirements,
+.food_beverage .study-mode {
+    margin-top: 2rem;
+}
+
+.food_beverage .documents ul,
+.food_beverage .requirements ul,
+.food_beverage .study-mode ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+.course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #fff; /* Changed to white for contrast */
+    color: #08005e; /* Course title background */
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.course-title:hover {
+    background-color: orange; /* Highlight on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Background for top section */
+.food_beverage_top {
+    height: 500px;
+    background-image: url("{% static 'images/ser1.jpg' %}"); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative; /* Added for positioning the overlay */
+}
+
+.food_beverage_top h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    position: relative; /* Added for the background */
+    z-index: 1; /* Ensure the text is above the overlay */
+    color: #fff; /* Keep the text color white */
+}
+
+.food_beverage_top h2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent shade */
+    border-radius: 15px; /* Match with h2 rounded edges */
+    z-index: -1; /* Place it below the text */
+    padding: 20px; /* Add padding for spacing */
+    margin: 0; /* Reset margin to avoid overflow */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .food_beverage_top h2 {
+        font-size: 2.5rem;
+    }
+
+    .food_beverage .content {
+        padding: 1rem;
+    }
+}
+</style>
+
+<section id="food_beverage_training" class="food_beverage_top">
+    <h2>Food & Beverage Service Training</h2>
+</section>
+
+<!-- Main Content Section -->
+<section id="food-beverage-content" class="food_beverage">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+        <h1 class="course-title">Food & Beverage Service Training</h1>
+        <div class="content mt-3">
+            <p>Food & Beverage Service Training and Sales Techniques provide the fundamentals needed for a solid foundation in Food & Beverage Service. Upon completion of this course, students will have the skills needed to work autonomously and/or in a team environment in the service industry.</p>
+            <p><strong>Course Duration:</strong> 96 hours</p>
+        </div>
+        <div class="content">
+            <h3>Learning Objectives</h3>
+            <p>At the end of the course, learners will be able to:</p>
+            <ul>
+                <li>Demonstrate appropriate service behaviors for various guest types.</li>
+                <li>Understand the concept and techniques of good service and demonstrate the skills acquired.</li>
+                <li>Program point-of-sale technology for service.</li>
+                <li>Participate in the operation and execution of in-room dining service.</li>
+                <li>Participate in the operation and execution of banquet dining service.</li>
+                <li>Participate in the operation and execution of restaurant dining services.</li>
+                <li>Provide responsible service of alcoholic and non-alcoholic beverages.</li>
+                <li>Demonstrate the English service technique.</li>
+                <li>Demonstrate American Service technique.</li>
+                <li>Demonstrate the Russian Service technique.</li>
+                <li>Demonstrate Continental Service technique.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Outline</h3>
+            <ul>
+                <li>Standard Operating Procedures for Breakfast, Buffet, and Brunch Service</li>
+                <li>POS System Functioning</li>
+                <li>Effective Use of Trolley Service</li>
+                <li>Characteristics of Basic and Informal F&B</li>
+                <li>Work in accordance with the legislation regulating F & B</li>
+                <li>Efficient Order Taking</li>
+                <li>Handle customers’ enquiries on food and beverages during breakfast, brunch, and buffet services.</li>
+                <li>Use sales promotion techniques at points as & when required.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Benefit</h3>
+            <p>This program will award you a Food & Beverage Service Training Completion Certificate from the Academy. Upon successful completion of 96 hours of course duration, learners will also receive certification from KHDA. The student after completion can also join OTHM courses related to their field in Tourism & Hospitality Management as a part of Progression to the course.</p>
+        </div>
+
+        <div class="content">
+            <h3>Required Documents</h3>
+            <ul class="documents">
+                <li>Higher Academic Certificates</li>
+                <li>Passport copy</li>
+                <li>Photograph</li>
+                <li>Local Identity (Citizenship)</li>
+                <li>Experience letter (Optional)</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Requirements</h3>
+            <ul class="requirements">
+                <li>Students must demonstrate evidence of numeracy and literacy skills through last studied high school report.</li>
+                <li>Work experience shown through an updated resume (for professionals).</li>
+                <li>Additional English language proficiency may be required if the medium of teaching is not English.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Study Mode</h3>
+            <ul class="study-mode">
+                <li>Full-Time / Part-Time: Weekend based</li>
+                <li>Location: ON CAMPUS</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Career Opportunities</h3>
+            <p>The learner can excel & get certified & pursue a career as a Senior Steward, Food Service or Restaurant Manager, Beverage Services Manager, Dining Room Manager, Food Production Manager & other various fields related to the F & B department of the hotel & hospitality industry.</p>
+        </div>
+        <a href="{% url 'apply_online' %}" class="apply-button">Apply Now</a>
+    </div>
+</section>
+
+{% endblock %}

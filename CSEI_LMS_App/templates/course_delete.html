@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Course</title>
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light gray background */
+            padding-top: 56px; /* Space for fixed navbar */
+        }
+        .container {
+            max-width: 500px; /* Maximum width for the container */
+            margin: auto; /* Centering the container */
+            padding: 30px; /* Padding around the container */
+            background-color: white; /* White background for the container */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Box shadow */
+        }
+        h1 {
+            color: #08005e; /* Dark blue color */
+        }
+        button {
+            transition: transform 0.2s; /* Smooth transition for zoom effect */
+        }
+        button:hover {
+            transform: scale(1.05); /* Zoom-in effect on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Delete Course</h1>
+        <p>Are you sure you want to delete the course: <strong>{{ course.name }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="{% url 'course_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</body>
+</html>

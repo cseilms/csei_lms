@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Essay Exams</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 80px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem; /* Adjust font size */
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #dc3545; /* Button color */
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        header a:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+        .container {
+            margin-top: 100px; /* Adjust to avoid overlap with fixed header */
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .list-group-item {
+            border: 1px solid #dee2e6;
+            border-radius: 0.25rem;
+            transition: background-color 0.2s;
+        }
+        .list-group-item:hover {
+            background-color: #f1f1f1; /* Light grey on hover */
+        }
+        .btn-primary {
+            background-color: #007bff; /* Blue color */
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Your Essay Exams</h1>
+        <a href="{% url 'student_page' student.id %}" class="btn btn-outline-info text-white">Back to Dashboard</a>
+    </header>
+
+    <div class="container mt-5">
+        <h2>Available Essay Exams</h2>
+
+        {% if essay_exams %}
+            <ul class="list-group mt-4">
+                {% for exam in essay_exams %}
+                    <li class="list-group-item">
+                        <h5>{{ exam.name }}</h5>
+                        <p><strong>Description:</strong> {{ exam.description }}</p>
+                        <p><strong>Date:</strong> {{ exam.date }}</p>
+                        <p><strong>Max Marks:</strong> {{ exam.max_marks }}</p>
+                        <form method="post" action="{% url 'student_attend_essay_exam' exam.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-primary">Attend Exam</button>
+                        </form>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No available essay exams.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

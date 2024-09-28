@@ -1,0 +1,352 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Student Travel{% endblock %}
+
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  /* General Styles */
+  body {
+    font-family: 'Helvetica Neue', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+
+  }
+
+  /* Top Header Section */
+  .accommodation_top {
+    height: 500px;
+    background-image: url("{% static 'images/card/studentacc.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .accommodation_top h2 {
+    font-size: 3rem; /* Increased font size */
+  margin: 0;
+  color: #fff; /* Text color */
+  background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+  padding: 1rem; /* Add some padding */
+  border-radius: 8px; /* Rounded corners */s
+  }
+
+  /* Living Div Styles */
+  .living_div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    margin-top: 2rem;
+  }
+
+  .living_div_para, .living_div_list {
+    flex: 1;
+    min-width: 300px;
+    max-width: 500px;
+    padding: 1.5rem;
+  }
+
+  .living_div_para h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #08005e;
+  }
+
+  .living_div_list ul {
+    list-style-type: disc;
+    padding-left: 20px; /* Added padding for bullets */
+  }
+
+  .living_div_list li {
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0.5rem 0;
+  }
+
+  /* Policies Section */
+  .policies_section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+
+  .policy_card {
+    display: flex;
+    align-items: flex-start;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    width: 300px;
+  }
+
+  .policy_card .icon {
+    font-size: 2rem;
+    color: #08005e;
+    margin-right: 1rem;
+  }
+
+  .policy_card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: #08005e;
+  }
+
+  /* Bottom Section */
+  .accommodation_bottom {
+    height: 500px;
+    background-image: url("{% static 'images/studnetacco.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+  }
+
+  .accommodation_bottom h2 {
+    font-size: 3rem;
+    margin: 0;
+  }
+
+  .accommodation_bottom h5 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .accommodation_bottom p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .accommodation_bottom a {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #08005e;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .accommodation_bottom a:hover {
+    background-color: #0a1c6b;
+    transform: scale(1.05);
+  }
+
+  /* Room Type Styles */
+  .room_type {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    margin-top: 2rem;
+  }
+
+  .room_img {
+    flex: 1;
+    max-width: 300px;
+  }
+
+  .room_img img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .room_para {
+    flex: 2;
+    max-width: 600px;
+    padding: 1.5rem;
+  }
+
+  .room_para h4 {
+    font-size: 2rem;
+    color: #08005e;
+    font-weight: bold;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .accommodation_top h2 {
+      font-size: 3rem;
+    }
+
+    .living_div {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .policies_section {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .policy_card {
+      width: 90%;
+      margin: 1rem 0;
+    }
+
+    .accommodation_bottom h2 {
+      font-size: 2.5rem;
+    }
+
+    .room_type {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .accommodation_top h2 {
+      font-size: 2.5rem;
+    }
+
+    .policy_card h4 {
+      font-size: 1.1rem;
+    }
+
+    .policy_card p {
+      font-size: 0.8rem;
+    }
+
+    .accommodation_bottom a {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+</style>
+
+<div class="accommodation_top">
+  <h2>Accommodation Policy of CSEI Academy</h2>
+</div>
+
+<div class="container">
+  <div class="living_div">
+    <div class="living_div_para">
+      <h3>Living at CSEI Academy</h3>
+      <p>Our halls of residence provide residential students with a safe place to settle into academic life quickly, and our facilities and student association-led activities ensure you will always have something to do!</p>
+      <p>CSEI Academy has off-site hostel & bed space for up to 500 students, fully supported by a 24/7 accommodation manager at various camps & locations in Dubai. Alongside the range of accommodation, onsite facilities include:</p>
+      <p>Any full-time students aged 16 and over may apply for hostel facilities. Places are limited* so please ask for up-to-date details once you have been offered a place on a course.</p>
+      <p>*Priority is given to students who live far away from CSEI Academy and are unable to travel in on a daily basis or would benefit educationally due to personal welfare and social problems.</p>
+    </div>
+
+    <div class="living_div_list">
+      <ul>
+        <li>Multiple catering outlets open at various points between 8 am and Midnight.</li>
+        <li>Access to our state-of-the-art college gym and sports activities within Academic City premises.</li>
+        <li>Free WiFi in all halls & rooms of their respective accommodation.</li>
+        <li>Inbuilt kitchen with modern appliances for students’ welfare.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="policies_section">
+    <div class="policy_card">
+      <div class="icon">📥</div>
+      <div class="policy_text">
+        <h4>Security Deposit</h4>
+        <p>Students are advised to keep a security deposit of 300 AED for hostel accommodation, which will be fully refunded upon leaving the respective accommodation.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">📝</div>
+      <div class="policy_text">
+        <h4>Eligibility</h4>
+        <p>The hostel may require proof of marriage or legal partnership to be eligible for accommodation as a married couple.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">🚷</div>
+      <div class="policy_text">
+        <h4>Visitors</h4>
+        <p>Hostel rules usually outline policies regarding visitor restrictions, including visiting hours and the number of visitors allowed per resident.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">💸</div>
+      <div class="policy_text">
+        <h4>Eligibility for a Refund</h4>
+        <p>To receive the security deposit, students are advised to present the receipt. Failure to produce the receipt will result in ineligibility for a refund.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">🧹</div>
+      <div class="policy_text">
+        <h4>Cleanliness and Maintenance</h4>
+        <p>Students must keep their rooms and common areas clean and tidy. Hostel management may conduct periodic inspections.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">🛏️</div>
+      <div class="policy_text">
+        <h4>Room Occupancy</h4>
+        <p>Hosteliers should stay in the appointed room only. Unauthorized switching of rooms is generally not allowed.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">🔐</div>
+      <div class="policy_text">
+        <h4>Security and Access</h4>
+        <p>Hostel premises are typically secured, and students are provided with access cards or keys for entry.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">🔊</div>
+      <div class="policy_text">
+        <h4>Noise and Disturbance</h4>
+        <p>Students must maintain a quiet and conducive environment within the hostel premises.</p>
+      </div>
+    </div>
+    <div class="policy_card">
+      <div class="icon">🚫</div>
+      <div class="policy_text">
+        <h4>Prohibited Items</h4>
+        <p>Certain items such as drugs, alcohol, weapons, or hazardous materials are strictly prohibited.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="accommodation_bottom">
+  <h5>Accommodation costs</h5>
+  <h2>Applying for accommodation</h2>
+  <p>Please read the Accommodation policy & fill up the accommodation Application form accordingly.</p>
+  <a href="{% url 'apply_accommodation' %}">Apply Now</a>
+</div>
+
+<div class="room_type">
+  <div class="room_img">
+    <img src="{% static 'images/bed3.jpg' %}" alt="Bed Space">
+  </div>
+  <div class="room_para">
+    <h4>Types of Accommodation available</h4>
+    <p><b>Bed Space:</b> Designed in accordance with the hostel mode of accommodation, shoe keeping rack cupboards & kitchen facilities with all modern amenities are provided.</p>
+    <p><b>Room Sharing:</b> Offers private space with the comfort of a living room, accommodated in a flat or apartment, which provides larger space compared to bed space facilities.</p>
+  </div>
+</div>
+
+{% endblock %}

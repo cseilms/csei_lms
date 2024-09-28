@@ -1,0 +1,214 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Health and Social Care Management{% endblock %}
+
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* General styles */
+    .health-social {
+        padding: 4rem 0;
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9; /* Light background for contrast */
+    }
+
+    .health-social h3 {
+        position: relative;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #08005e;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .health-social h3::after {
+        content: "";
+        display: block;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 3px;
+        background-color: orange;
+        transition: width 0.3s ease;
+    }
+
+    .health-social h3:hover::after {
+        width: 100%;
+    }
+
+    .health-social .course-title {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 2rem;
+        font-weight: bold;
+        margin: 30px;
+        color: #fff; /* Changed to white for contrast */
+        color: #08005e; /* Course title background */
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .health-social .course-title:hover {
+        background-color: orange; /* Highlight on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .health-social .content {
+        margin: auto;
+        max-width: 1000px;
+        margin: 20px;
+        padding: 2rem;
+        background-color: #fff; /* White background for content box */
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added transition */
+    }
+
+    .health-social .content p {
+        font-size: 1rem;
+        color: #333;
+        line-height: 1.6;
+    }
+
+    .health-social .content:hover {
+        transform: scale(1.03); /* Zoom in effect on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+    }
+
+    .health-social .apply-button {
+        display: block;
+        width: fit-content;
+        margin: 2rem auto;
+        padding: 0.75rem 1.5rem;
+        font-size: 1.25rem;
+        color: #fff;
+        background-color: #08005e;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .health-social .apply-button:hover {
+        background-color: #05003a;
+    }
+
+    .health-social .modules,
+    .health-social .entry-requirements {
+        margin-top: 2rem;
+    }
+
+    .health-social .modules ul,
+    .health-social .entry-requirements ul {
+        list-style-type: disc;
+        margin-left: 2rem;
+    }
+
+    .health-social .modules li,
+    .health-social .entry-requirements li {
+        margin-bottom: 0.5rem;
+    }
+
+    /* Background for top section */
+    .health_social_top {
+        height: 500px;
+        background-image: url("{% static 'images/healtcare.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        text-align: center;
+        padding: 2rem;
+        position: relative; /* Added for overlay positioning */
+    }
+
+    .health_social_top h2 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin: 0;
+        position: relative; /* Added for overlay positioning */
+        z-index: 1; /* Ensure text is above the overlay */
+    }
+
+    .health_social_top h2::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5); /* Dark transparent shade */
+        z-index: -1; /* Place it below the text */
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        .health_social_top h2 {
+            font-size: 2.5rem;
+        }
+
+        .health-social .content {
+            padding: 1rem;
+        }
+    }
+</style>
+
+<!-- Health and Social Care Management Top Section -->
+<section id="health-social" class="health_social_top">
+    <h2>Health and Social Care Management</h2>
+</section>
+
+<!-- Health and Social Care Management Course Section -->
+<section id="course-details" class="health-social section">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+        <h1 class="course-title">Health and Social Care Management</h1>
+        <div class="content">
+            <p>CSEI is an educational centre for learning enthusiasts and an open space for intellectual exploration. After collaborating with several universities and researching the ideal learning environment, CSEI has been established to help students worldwide enhance not only their educational knowledge but also the skills necessary for real-world challenges.</p>
+        </div>
+
+        <div class="content">
+            <h3>Qualification Overview</h3>
+            <p>The Level 4 in Health and Social Care Management qualification aims to equip learners with the essential knowledge, understanding, and skills required for a managerial career in the health and social care sector.</p>
+        </div>
+
+        <div class="content">
+            <h3>Entry Requirements</h3>
+            <ul class="entry-requirements">
+                <li>Relevant NQF/QCF/RQF Level 3 diploma or an equivalent recognized qualification.</li>
+                <li>Learners must be 18 years or older at the beginning of the course.</li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <h3>Qualification Structure</h3>
+            <p>The Level 4 Diploma in Health and Social Care Management comprises 6 mandatory units, totaling 120 credits, with 1200 hours of Total Qualification Time (TQT) and 480 Guided Learning Hours (GLH).</p>
+        </div>
+
+        <div class="content">
+            <h3>Course Modules</h3>
+            <ul class="modules">
+                <li>Equality, Diversity, and Inclusion in Health and Social Care (20 credits)</li>
+                <li>Professional Development in Health and Social Care (20 credits)</li>
+                <li>Effective Communication in Health and Social Care (20 credits)</li>
+                <li>Health and Safety in Health and Social Care (20 credits)</li>
+                <li>Assessment Processes for Effective Health and Social Care Delivery (20 credits)</li>
+                <li>Managing Resources in Health and Social Care (20 credits)</li>
+            </ul>
+        </div>
+
+        <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
+    </div>
+</section>
+
+{% endblock %}

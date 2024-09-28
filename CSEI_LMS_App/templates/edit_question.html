@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Question</title>
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        /* Reset some default browser styles */
+        body, h1, p, form, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* New font family */
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 80px; /* Increased padding for fixed header */
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #08005e;
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+        .navbar-brand:hover, .nav-link:hover {
+            color: #c0c0c0 !important;
+        }
+
+        /* Header styling */
+
+        /* Header styling */
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            height: 60px; /* Header height */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Header heading styling */
+        header h1 {
+            margin: 0;
+            font-size: 1.2em; /* Smaller font size */
+            color: white; /* White color for the header text */
+            text-align: center; /* Center align the header text */
+            flex: 1;
+        }
+
+        .btn-secondary {
+            padding: 10px 20px;
+            color: white;
+            background-color: #6c757d; /* Gray background */
+            border-radius: 4px;
+            text-decoration: none; /* Remove underline */
+            font-weight: 500;
+            border: none; /* Remove border */
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            text-decoration: none; /* Remove underline */
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px; /* Padding inside the container */
+            border-radius: 8px;
+            margin-top: 80px; /* Margin to create space below the header */
+        }
+
+        .container h1 {
+            text-align: center; /* Center align the main heading */
+            font-size: 1.75em; /* Adjust font size */
+            color: #08005e; /* Dark blue color for the heading */
+        }
+
+        form {
+            background: #ffffff; /* White background for the form */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(8, 0, 94, 0.3); /* Blue shadow for the form */
+            transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        form:hover {
+            box-shadow: 0 12px 24px rgba(8, 0, 94, 0.5); /* Darker blue shadow on hover */
+            background-color: #f1f8ff; /* Light blue background on hover */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #08005e; /* Dark blue text color for labels */
+        }
+
+        .form-group input, .form-group select {
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for focus */
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #08005e; /* Dark blue border color on focus */
+            box-shadow: 0 0 8px rgba(8, 0, 94, 0.3); /* Blue shadow on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        .btn-save-question {
+            padding: 10px 20px; /* Increased button padding for better click area */
+            background-color: #08005e; /* Navy blue background color */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 1.1em; /* Slightly larger font size for better readability */
+            transition: background-color 0.3s ease;
+            width: 100%; /* Make the button full width */
+        }
+
+        .btn-save-question:hover {
+            background-color: #05003a; /* Darker navy blue on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+  <header>
+        <h1>Edit Questions</h1>
+         <a class="btn btn-secondary" href="{% url 'view_exams' question.exam.batch.id %}">Back to Exams</a>
+    </header>
+
+    <div class="container mt-4">
+        <h1>Edit Question for Exam "{{ question.exam.name }}"</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+
+            {% for field in form %}
+                <div class="form-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div class="text-danger">{{ field.errors }}</div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn-save-question">Save Changes</button>
+            <a href="{% url 'view_questions' question.exam.id %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

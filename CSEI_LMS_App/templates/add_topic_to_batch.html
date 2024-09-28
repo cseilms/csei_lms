@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+ {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Topic</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+
+     <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{% url 'homepage' %}">Home</a></li>
+                <li><a href="{% url 'batch_list' %}">Batch List</a></li>
+                <!-- Add more navigation links here -->
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="form-container">
+            <h1>Add Topic to Batch: {{ batch.name }}</h1>
+           <form method="post" action="{% url 'add_daily_topic' batch_id=batch.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Add Topic</button>
+</form>
+            {% if form.errors %}
+                <div class="error">
+                    <p>Please correct the errors below:</p>
+                    <ul>
+                        {% for field in form %}
+                            {% for error in field.errors %}
+                                <li>{{ field.label }}: {{ error }}</li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your LMS Name</p>
+    </footer>
+</body>
+</html>

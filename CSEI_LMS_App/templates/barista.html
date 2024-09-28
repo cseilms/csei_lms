@@ -1,0 +1,201 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Barista Training Course{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* General styles */
+.barista-training {
+    padding: 4rem 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #08005e; /* Course title background */
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.course-title:hover {
+    background-color: orange; /* Highlight on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.barista-training .content {
+    margin: auto;
+    max-width: 1000px;
+    margin: 20px;
+    padding: 2rem;
+    background-color: #fff; /* White background for content box */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for zoom effect */
+}
+
+.barista-training .content:hover {
+    transform: scale(1.05); /* Zoom in effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+}
+
+.barista-training h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-top: 1.5rem;
+}
+
+.barista-training ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+/* Background for top section */
+.barista_top {
+    height: 500px;
+    background-image: url("{% static 'images/bar4.jpg' %}"); /* Ensure this path is correct */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+}
+
+.barista_top h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    color: #fff; /* Keep text color white */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .barista_top h2 {
+        font-size: 2.5rem;
+    }
+
+    .barista-training .content {
+        padding: 1rem;
+    }
+}
+</style>
+
+<!-- Barista Top Section -->
+<section id="barista-training" class="barista_top">
+    <h2>Barista Training Course</h2>
+</section>
+
+<!-- Main Content Section -->
+<section id="barista-content" class="barista-training section">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+
+        <!-- Basic Barista Course -->
+        <section id="basic-barista-course">
+            <h1 class="course-title">Basic Barista Course</h1>
+            <div class="content mt-3">
+                <p>The Basic Barista Course is a beginner-level training program designed for individuals who are interested in pursuing a career as a barista or simply want to learn the art of making great coffee.</p>
+                <p><strong>Course Duration:</strong> 20 hours</p>
+            </div>
+            <div class="content">
+                <h3>Learning Objectives</h3>
+                <ul>
+                    <li>You will have a strong foundation in coffee preparation, including the skills and knowledge necessary to make high-quality espresso drinks and provide excellent customer service.</li>
+                    <li>You will gain hands-on experience through both classroom instruction and practical training on espresso machines and milk steaming equipment.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h3>Course Outline</h3>
+                <ul>
+                    <li>Introduction to coffee</li>
+                    <li>Milk Preparation</li>
+                    <li>Espresso preparation</li>
+                    <li>Drink preparation</li>
+                    <li>Customer service</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h3>Course Benefit</h3>
+                <p>This program will award you a Basic Barista Course Completion Certificate from the Institute.</p>
+            </div>
+            <div class="content">
+                <h3>Career Opportunities</h3>
+                <p>The learner might choose career prospects as a professional barista, with opportunities to work in a restaurant, café, coffee shop, or hotel. Many large cities have gourmet coffee carts that require skilled baristas.</p>
+            </div>
+        </section>
+
+        <!-- Advanced Barista Training Course -->
+        <section id="advanced-barista-course">
+            <h1 class="course-title">Advanced Barista Training Course</h1>
+            <div class="content mt-3">
+                <p>The Advanced Barista Course is designed for baristas who have completed a Basic Barista Course and want to advance their skills in coffee preparation and management.</p>
+                <p><strong>Course Duration:</strong> 20 hours</p>
+            </div>
+            <div class="content">
+                <h3>Learning Objectives</h3>
+                <ul>
+                    <li>You will learn advanced skills in coffee preparation and the management and leadership skills necessary to run a successful coffee shop.</li>
+                    <li>You will have hands-on training that includes classroom instruction and practical training on espresso machines, milk steaming equipment, and different coffee brewing methods.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h3>Course Outline</h3>
+                <ul>
+                    <li>Espresso theory and practice</li>
+                    <li>Milk science and latte art</li>
+                    <li>Coffee brewing methods</li>
+                    <li>Menu development and profitability</li>
+                    <li>Management and leadership</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h3>Course Benefit</h3>
+                <p>This program will award you an Advanced Barista Course Completion Certificate from the Academy. Learners will also receive a certification from KHDA upon completion.</p>
+            </div>
+            <div class="content">
+                <h3>Career Opportunities</h3>
+                <p>Completing the Advanced Barista Course can prepare you to operate your café and provide you with the knowledge and experience of a professional barista.</p>
+            </div>
+            <div class="content">
+                <h3>Required Documents</h3>
+                <ul>
+                    <li>Higher Academic Certificates</li>
+                    <li>Passport copy</li>
+                    <li>Photograph</li>
+                    <li>Local identity (Citizenship)</li>
+                    <li>Experience letter (Optional)</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h3>Requirements</h3>
+                <ul>
+                    <li>Students must demonstrate evidence of numeracy and literacy skills through their last studied high school report.</li>
+                    <li>Additional English language proficiency may apply if the medium of teaching is not English.</li>
+                </ul>
+            </div>
+            <div class="content">
+                <h3>Study Mode</h3>
+                <ul>
+                    <li>Full-Time / Part-Time: Weekend based</li>
+                    <li>Location: ON CAMPUS</li>
+                </ul>
+            </div>
+        </section>
+
+    </div>
+</section>
+
+{% endblock %}

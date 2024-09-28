@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ student.name }}'s Assigned Courses</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            padding-top: 80px; /* Space for the fixed header */
+            background-color: #f8f9fa;
+        }
+      header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        .logo-image {
+            margin-right: 10px; /* Space between logo and title */
+            border-radius: 50%; /* Make logo rounded */
+            width: 50px; /* Fixed width */
+            height: 50px; /* Fixed height */
+        }
+        .sitename {
+            font-size: 1.5em; /* Reduced font size */
+            margin: 0; /* Remove default margin */
+            color:white;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text for nav links */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #e3f2fd !important; /* Light blue on hover */
+        }
+        .course-list {
+            margin-top: 20px;
+            padding: 0; /* Remove padding from the ul */
+        }
+        .course-list-item {
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px; /* Space between items */
+            transition: transform 0.2s, box-shadow 0.2s; /* Animation effect */
+        }
+        .course-list-item:hover {
+            transform: scale(1.05); /* Zoom-in effect */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+        }
+        .course-list h3 {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/img.png' %}" alt="CSEI Academy LMS Logo" class="logo-image"/>
+                <h1 class="sitename">CSEI Academy</h1>
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'student_page' student.id %}">{{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <h1>{{ student.name }}'s Assigned Courses</h1>
+        <div class="course-list">
+            {% for assignment in assigned_courses %}
+                <div class="course-list-item">
+                    <h3>{{ assignment.course.name }}</h3>
+                    <p><strong>Course Code:</strong> {{ assignment.course.course_code }}</p>
+                    <p><strong>Description:</strong> {{ assignment.course.description }}</p>
+                    <a href="{% url 'student_course_detail' assignment.course.id %}" class="btn btn-primary btn-sm">View Course Details</a>
+                </div>
+            {% empty %}
+                <div class="course-list-item">
+                    <p>No courses assigned.</p>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

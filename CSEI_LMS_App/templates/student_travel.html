@@ -1,0 +1,333 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Student Travel{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+.travel_top {
+    height: 500px;
+    background-image: url("{% static 'images/car.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.travel_top h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    color: #fff; /* Text color */
+    background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+    padding: 1rem; /* Add some padding for better appearance */
+    border-radius: 8px; /* Rounded corners */
+}
+
+.card_img {
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+    background-color: #f0f0f0;
+    border-color: #ddd;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Existing styles for the .find_us section */
+.find_us {
+    background: linear-gradient(to bottom right, #08005e, white);
+    padding: 2rem;
+}
+
+.find_us_content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.find_us_para {
+    flex: 1;
+    max-width: 50%;
+    padding-right: 1rem;
+}
+
+.find_us_img {
+    flex: 1;
+    max-width: 50%;
+}
+
+.find_us_img img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.find_us h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+    color: white;
+}
+
+.find_us h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-family: "Playfair Display", serif;
+    color: orange;
+}
+
+.find_us p {
+    font-size: 1rem;
+    line-height: 1.6;
+    font-family: "Playfair Display", serif;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .travel_top h2 {
+        font-size: 2.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .find_us_content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .find_us_para, .find_us_img {
+        max-width: 100%;
+        padding-right: 0;
+        padding-bottom: 1rem;
+    }
+
+    .manage_park h3 {
+        font-size: 1.5rem; /* Adjust font size */
+    }
+
+    .manage_park p {
+        font-size: 1rem; /* Adjust font size */
+    }
+
+    .info_section {
+        flex-direction: column;
+    }
+
+    .info_section img,
+    .info_section_text {
+        width: 100%;
+    }
+}
+
+.manage_park {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.manage_park h3 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-bottom: 1rem;
+}
+
+.manage_park p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #333;
+    font-family: "Playfair Display", serif;
+}
+
+.info_section {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.info_section img {
+    width: 40%;
+    border-radius: 5px;
+}
+
+.info_section_text {
+    width: 60%;
+    padding: 1rem;
+}
+
+.info_section:nth-child(even) .info_section_text {
+    order: 1;
+}
+
+.info_section:nth-child(even) img {
+    order: 2;
+}
+
+.info_section h6 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-bottom: 0.5rem;
+}
+
+.info_section p {
+    font-size: 1rem;
+    color: #333;
+}
+
+.info_section_pickup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #f0f8ff;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.info_section_pickup h6 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #004080;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.info_section_pickup p {
+    font-size: 1.125rem;
+    color: #333;
+    text-align: center;
+}
+
+/* Animation for scrolling */
+.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+<div class="travel_top">
+  <h2>Travelling to CSEI Academy</h2>
+</div>
+
+<div class="card_img">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <img src="{% static 'images/logos/img.png' %}" class="card-img-top" alt="Car & Motor Cycle Parking">
+        <div class="card-body">
+          <h5 class="card-title">Car & Motor Cycle Parking</h5>
+          <p class="card-text">The CSEI Academy Dubai campus is located in the Dubai International Academic City (DIAC) zone. Our campus is near to Dubai International Airport and 30 minutes from EXPO City. Every effort has been made to ensure that the information supplied is correct at the time of publication. Students and their parents should check with service providers to ensure that published costs and timetables are current and correct for transportation.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 mb-3">
+      <div class="card">
+        <img src="{% static 'images/logos/img_1.png' %}" class="card-img-top" alt="Walking & Cycling">
+        <div class="card-body">
+          <h5 class="card-title">Walking & Cycling</h5>
+          <p class="card-text">There are pedestrian and bicycle accesses to the institute at Academic City Block 12, Campus 303 as well as our other Admission Centre located at Speedex Centre, near Abu Baker Metro Station, Deira, Dubai. The Academic City is located at Dubai Academic City Zone that has entrances leading to a well-lit pedestrian footpath to the main building and car parking area of Dubai International Academic City. There are bicycle spaces on site close to the main entrance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="find_us">
+  <div class="find_us_content">
+    <div class="find_us_para">
+      <h4>How to find us?</h4>
+      <h1>CSEI Academy Campus is Accessible by Car, Bus, Train or by Foot</h1>
+      <p>The CSEI Academy Dubai campus is located in the Dubai International Academic City (DIAC) zone. Our campus is near Dubai International Airport and 30 minutes from EXPO City. Every effort has been made to ensure that the information supplied is correct at the time of publication. Students and their parents should check with service providers to ensure that published costs and timetables are current and correct.</p>
+    </div>
+    <div class="find_us_img">
+      <img src="{% static 'images/parking.jpg' %}" alt="Parking">
+    </div>
+  </div>
+</div>
+
+<div class="manage_park">
+  <h3>Who Manages the College Car Parks?</h3>
+  <p>Dubai International Academic City is accessible by metro, public bus, taxi, and ride-hailing services. There are various convenient metered parking options in and around Dubai International Academic City.</p>
+</div>
+
+<div class="info_section">
+  <img src="{% static 'images/card/parking3.jpg' %}" alt="Parking" height="200px" width="200px">
+  <div class="info_section_text">
+    <h6>Parking</h6>
+    <p>There are various convenient metered parking options in and around Dubai International Academic City. Car parking services are part of the Campus Services team who are responsible for the management of campus car parking.</p>
+  </div>
+</div>
+
+<div class="info_section">
+  <div class="info_section_text">
+    <h6>Students</h6>
+    <p class="m-2">To park in the Institute’s car park, you must either register in advance for an E-permit & should have a student ID from the college under Dubai Academic City as it is required for free parking in the Academic City Zone.</p>
+  </div>
+  <img src="{% static 'images/card/travel1.jpg' %}" alt="Students" height="200px" width="200px">
+
+  <div class="info_section_text">
+    <h6>Staff</h6>
+    <p class="m-2">To park in the college car park or Academic City parking, staff can either register their vehicle in advance for a free E-Permit, which will then allow them to park in the city parking. The staff should have the required credentials (Staff ID card to access the academy free parking). Without a permit or staff ID card, even if you pay the daily charge, you may still receive a Parking Charge Notice.</p>
+  </div>
+</div>
+
+<div class="info_section_pickup">
+  <h6>Picking up or Dropping off</h6>
+  <p>The picking up or dropping off facility will be provided on request by the Academy driver as and when required. Please mail beforehand to arrange this service.</p>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('.info_section, .info_section_pickup');
+
+    function handleScroll() {
+      const scrollTop = window.pageYOffset;
+      const viewportHeight = window.innerHeight;
+
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top + scrollTop;
+        const sectionHeight = section.offsetHeight;
+
+        if (scrollTop + viewportHeight > sectionTop + sectionHeight * 0.2) {
+          section.classList.add('fade-in');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial check
+  });
+</script>
+
+{% endblock %}

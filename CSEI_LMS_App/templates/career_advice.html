@@ -1,0 +1,245 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Career Advice{% endblock %}
+
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+
+}
+
+a {
+  text-decoration: none;
+  color: #007bff;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Header Section with Background Image */
+.header_section {
+  height: 500px;
+  background-image: url("{% static 'images/wall.jpg' %}");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.header_section h2 {
+  font-size: 3rem; /* Increased font size */
+  margin: 0;
+  color: #fff; /* Text color */
+  background: rgba(0, 0, 0, 0.5); /* Transparent black background */
+  padding: 1rem; /* Add some padding */
+  border-radius: 8px; /* Rounded corners */
+}
+
+.header_section a {
+  color: #fff;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  display: inline-block;
+  padding: 0.5rem 1rem; /* Adjusted padding */
+  border-radius: 5px;
+  background-color: #007bff;
+}
+
+.header_section a:hover {
+  background-color: #0056b3;
+}
+
+/* Card Container */
+.card_career {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2rem auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+/* Card Styles */
+.policy_card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 1rem;
+  padding: 1.5rem;
+  flex: 1;
+  min-width: 280px;
+}
+
+.policy_card .icon {
+  background: #e9ecef;
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.policy_card .icon img {
+  max-width: 100%;
+  height: auto;
+}
+
+.policy_card h4 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #08005e;
+}
+
+.policy_card p {
+  color: #333;
+}
+
+/* Bottom Cards */
+.bottom_card {
+  background: #fff;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 2rem auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.bottom_card .row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem; /* Space between image and text */
+}
+
+.bottom_card .row img {
+  border-radius: 8px;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: cover;
+}
+
+.bottom_card .row .text {
+  flex: 1;
+}
+
+.bottom_card h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #08005e;
+}
+
+.bottom_card p {
+  color: #333;
+}
+
+.bottom_card a {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #08005e;
+  color: #fff;
+  padding: 0.5rem 1rem; /* Increased padding */
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.bottom_card a:hover {
+  background-color: #0a1c6b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card_career {
+    flex-direction: column;
+  }
+
+  .policy_card {
+    margin: 1rem 0;
+  }
+
+  .bottom_card .row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .bottom_card .row img {
+    margin-bottom: 1rem;
+  }
+}
+</style>
+
+
+<header class="header_section">
+  <div>
+    <h2>Career Advice & Guidance</h2>
+
+  </div>
+</header>
+
+<section class="card_career">
+  <div class="policy_card">
+    <div class="icon">
+      <img src="{% static 'images/team1.jpg' %}" alt="Progression Team">
+    </div>
+    <div class="policy_text">
+      <h4>Progression Team</h4>
+      <p>The team can help you to plan and progress onto work-based learning, employment or higher education. The Progression + team of CSEI Academy comprises of members from Placement & Counselling team who will guide learners regarding career opportunities in various sector like homecare, hospitals, hotel industry café & restaurants chains with our industry partners. They are able to assist with visits to local universities and open days and arrange careers related events in conjunction with faculties.</p>
+    </div>
+  </div>
+
+  <div class="policy_card">
+    <div class="icon">
+      <img src="{% static 'images/careejob.png' %}" alt="Careers Strategy">
+    </div>
+    <div class="policy_text">
+      <h4>Careers Strategy</h4>
+      <p>The team can help you to plan and progress onto work-based learning, employment or higher education. The Progression + team of CSEI Academy comprises of members from Placement & Counselling team who will guide learners regarding career opportunities in various sector like homecare, hospitals, hotel industry café & restaurants chains with our industry partners. They are able to assist with visits to local universities and open days and arrange careers related events in conjunction with faculties.</p>
+      <a href="{% static 'documents/CSEI-Academy-Carreer-Strategy.pdf' %}" download="CSEI-Academy-Carreer-Strategy.pdf">Download PDF</a>
+
+    </div>
+  </div>
+</section>
+
+<section class="bottom_card">
+  <div class="row">
+    <div class="text">
+      <h3>Progression</h3>
+
+
+      <p>The Progression+ team of CSEI Academy includes experts in admissions, careers, higher education, work experience and apprenticeships who offer advice and guidance. They can help with all aspects of careers and progression which includes applying for courses, interview preparation classes, resume writing, application forms, job and apprenticeship searches, and gap year opportunities.</p>
+
+
+    </div>
+    <img src="{% static 'images/app3.jpg' %}" alt="Progression Image">
+  </div>
+
+  <div class="row">
+    <img src="{% static 'images/career2.jpg' %}" alt="Career Coaching">
+    <div class="text">
+      <h3>Career Coaching</h3>
+      <p>Don’t know what to do? Our online Career Coach as well as the placement counselling team package is designed to help you map out your education and career options. The placement officer can map out a path through education and training opportunities to help you reach your career goals, whatever they may be. View Career Coach and find out the career options available to you.</p>
+      <a href="{% url 'apply_online' %}">Book an appointment</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

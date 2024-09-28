@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Details</title>
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        .navbar {
+            background-color: #08005e; /* Dark blue background */
+            margin-bottom: 30px; /* Increased margin for better spacing */
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text for nav links */
+            font-weight: bold;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #e3f2fd !important; /* Light blue on hover */
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            color: #ffffff; /* White text */
+        }
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .sitename {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        body {
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: white;
+            padding: 40px; /* Increased padding for more whitespace */
+            border-radius: 12px; /* Rounded corners */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1); /* More prominent shadow */
+            margin-top: 20px; /* Space from navbar */
+        }
+        .card {
+            border: 1px solid #d3d3d3; /* Light grey border */
+            transition: transform 0.2s, box-shadow 0.2s; /* Transition for zoom effect */
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Slight upward movement */
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2); /* Shadow on hover */
+        }
+        .card-header {
+            font-size: 1.5em;
+            color: #ffffff; /* White text for headers */
+            background-color: #08005e; /* Dark blue background for headers */
+            border-bottom: 1px solid #d3d3d3; /* Light border below header */
+        }
+        .btn-custom {
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 1em;
+            transition: transform 0.2s, all 0.3s ease; /* Transition for zoom effect */
+        }
+        .btn-custom:hover {
+            transform: scale(1.05); /* Zoom-in effect */
+            background-color: #06003c; /* Darker blue on hover */
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .btn-primary {
+            background-color: #08005e;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #06003c;
+        }
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        .section-header {
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        .collapse {
+            margin-top: 15px;
+        }
+        .list-group-item.active {
+            background-color: #08005e; /* Dark blue background for active items */
+            color: white; /* White text */
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top mb-5">
+            <a class="navbar-brand" href="{% url 'index' %}">
+                <div class="logo-container d-flex align-items-center">
+                    <img src="{% static 'images/img.png' %}" alt="CSEI Academy LMS Logo" class="logo-image"/>
+                    <h1 class="sitename">CSEI Academy</h1>
+                </div>
+            </a>
+            <ul class="navbar-nav ml-auto">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher_page' %}">{{ user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher_login' %}">Login</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="text-center p-4">Batch Details for {{ batch.name }}</h1>
+
+        <div class="row mb-4">
+            <!-- Assigned Students Section -->
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header section-header">Assigned Students</div>
+                    <div class="card-body text-center">
+                        <a href="{% url 'assign_students_to_batch' batch.id %}" class="btn btn-primary btn-custom">
+                            <i class="fas fa-user-graduate"></i> Show Students
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Files Section -->
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header section-header">Files</div>
+                    <div class="card-body text-center">
+                        <a href="{% url 'teacher_view_files' batch.id %}" class="btn btn-primary btn-custom">
+                            <i class="fas fa-file-alt"></i> View Files
+                        </a>
+                        <a href="{% url 'add_file_to_batch' batch.id %}" class="btn btn-success btn-custom">
+                            <i class="fas fa-upload"></i> Add File
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <!-- Daily Topics Section -->
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header section-header">Daily Topics</div>
+                    <div class="card-body">
+                        <a href="#topicsCollapse" data-toggle="collapse" class="btn btn-primary btn-custom">
+                            <i class="fas fa-book"></i> View Topics
+                        </a>
+                        <a href="{% url 'add_topic' batch.id %}" class="btn btn-success btn-custom">
+                            <i class="fas fa-plus"></i> Add Topic
+                        </a>
+                        <div id="topicsCollapse" class="collapse">
+                            <ul class="list-group mt-2">
+                                {% if topics_by_date %}
+                                    {% for date, topics in topics_by_date.items %}
+                                        <li class="list-group-item active">
+                                            {{ date }}
+                                        </li>
+                                        {% for topic in topics %}
+                                            <li class="list-group-item">
+                                                {{ topic.topics_covered }}
+                                            </li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% else %}
+                                    <li class="list-group-item">No topics available for this batch.</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Daily Assignments Section -->
+            <div class="col-md-6 mb-3">
+                <div class="card">
+                    <div class="card-header section-header">Daily Assignments</div>
+                    <div class="card-body">
+                        <a href="#assignmentsCollapse" data-toggle="collapse" class="btn btn-primary btn-custom">
+                            <i class="fas fa-tasks"></i> View Assignments
+                        </a>
+                        <a href="{% url 'add_assignment' batch.id %}" class="btn btn-success btn-custom">
+                            <i class="fas fa-plus-circle"></i> Add Assignment
+                        </a>
+                        <div id="assignmentsCollapse" class="collapse">
+                            <ul class="list-group mt-2">
+                                {% if assignments_by_date %}
+                                    {% for date, assignments in assignments_by_date.items %}
+                                        <li class="list-group-item list-group-item-action active">
+                                            {{ date }}
+                                        </li>
+                                        {% for assignment in assignments %}
+                                            <li class="list-group-item list-group-item-action">
+                                                {{ assignment.assignments }}
+                                            </li>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% else %}
+                                    <li class="list-group-item">No assignments available for this batch.</li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back to Dashboard -->
+        <div class="col-md-12 text-center">
+            <a href="{% url 'teacher_page' %}" class="btn btn-secondary btn-custom">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

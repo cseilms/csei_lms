@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results - {{ exam.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body, h1, p, table {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 56px; /* Adjust padding for fixed navbar */
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #08005e;
+            height: 56px; /* Ensure the navbar height is consistent */
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Center the content */
+        }
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .navbar-brand:hover {
+            color: #c0c0c0 !important;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 30px; /* Adjust margin to create space below the navbar */
+        }
+
+        .container h1 {
+            text-align: center;
+            font-size: 1.75em;
+            color: #08005e;
+        }
+
+        .table thead th {
+            background-color: #08005e;
+            color: white;
+        }
+
+        .table tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-container .btn {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .btn-dashboard {
+            background-color: #007bff; /* Blue color */
+            color: white;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+            color: white;
+        }
+
+        .btn-exams {
+            background-color: #6c757d; /* Gray color */
+            color: white;
+        }
+
+        .btn-exams:hover {
+            background-color: #5a6268; /* Darker gray on hover */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <a class="navbar-brand" href="#">Exam Results</a>
+    </nav>
+
+    <div class="container mt-4">
+        <h1>Exam Results for {{ exam.name }}</h1>
+        <p><strong>Batch:</strong> {{ batch.name }}</p>
+
+        <h2>Results</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Scored Marks</th>
+                    <th>Total Marks</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for result in results %}
+                    <tr>
+                        <td>{{ result.student.name }}</td>
+                        <td>{{ result.scored_marks }}</td>
+                        <td>{{ exam.max_marks }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="2">No results available for this exam.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <div class="btn-container">
+            <a class="btn btn-dashboard" href="{% url 'teacher_page' %}">Dashboard</a>
+            <a class="btn btn-exams" href="{% url 'view_exams' batch.id %}">Exams</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

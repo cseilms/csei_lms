@@ -1,0 +1,66 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Apply for Accommodation{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .background {
+    background-image: url("{% static 'images/studentbed3.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+    font-family: 'Arial', sans-serif; /* Modern font */
+  }
+
+  h2 {
+    text-align: center;
+    color: #08005e;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+    .thank-you-message {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+  }
+
+
+</style>
+
+<div class="background">
+  <div class="thank-you-message">
+     <h3> Book appointment</h3>
+
+<p>Thanks for booking the appointment. Check your email for the details about your appointment time</p>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'basepage.html' %}
+
+
+{% block title %}Teacher Login{% endblock %}
+
+{% block extra_css %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .form-container {
+            background: #ffffff; /* White background for the form container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(8, 0, 94, 0.3); /* Blue shadow for the form */
+            transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out; /* Smooth transition */
+        }
+
+        .form-container:hover {
+            box-shadow: 0 12px 24px rgba(8, 0, 94, 0.5); /* Darker blue shadow on hover */
+            background-color: #f1f8ff; /* Light blue background on hover */
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #08005e; /* Dark blue text color for the heading */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            margin-bottom: 5px;
+            display: block;
+            color: #08005e; /* Dark blue text color for labels */
+        }
+
+        .form-group input, .form-group select {
+            border-radius: 4px;
+            border: 1px solid #ced4da;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition for focus */
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            border-color: #08005e; /* Dark blue border color on focus */
+            box-shadow: 0 0 8px rgba(8, 0, 94, 0.3); /* Blue shadow on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        .btn-primary {
+            background-color: #08005e; /* Dark blue background */
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+  button {
+            background-color: #08005e; /* Dark blue background */
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        button:hover {
+            background-color: #05004b; /* Slightly darker blue on hover */
+        }
+
+        .btn-primary:hover {
+            background-color: #05004b; /* Slightly darker blue on hover */
+        }
+
+
+
+        /* Styling for the register link */
+        .register-link {
+             display: inline-block;
+            background-color: #08005e; /* Dark blue background */
+            color: #ffffff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+        }
+
+        .register-link:hover {
+                       background-color: #05004b; /* Slightly darker blue on hover */
+
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container m-4">
+        <div class="form-container">
+            <h2>Teacher Login</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="login-button">Login</button>
+            </form>
+            <p class="mt-3">
+                Don't have an account?
+                <a href="{% url 'teacher_register' %}" class="register-link">Register here</a>
+            </p>
+        </div>
+    </div>
+{% endblock %}
+
+{% block extra_js %}
+    <!-- You can add additional JS here if needed -->
+{% endblock %}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ course.course.name }} - Course Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            padding-top: 80px; /* Space for the fixed header */
+            background-color: #f8f9fa;
+            color: black; /* Default text color */
+        }
+        header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 10px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+        }
+        .logo-image {
+            margin-right: 10px; /* Space between logo and title */
+            border-radius: 50%; /* Make logo rounded */
+            width: 50px; /* Fixed width */
+            height: 50px; /* Fixed height */
+        }
+        .sitename {
+            font-size: 1.5em; /* Reduced font size */
+            margin: 0; /* Remove default margin */
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text for nav links */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #e3f2fd !important; /* Light blue on hover */
+        }
+        .course-detail {
+            margin-top: 20px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        .page-header {
+            margin-top: 20px; /* Space above the header */
+            text-align: center; /* Center the header text */
+        }
+        .page-header h2 {
+            color: #08005e; /* Header text color */
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .file-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .file-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        .file-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        .file-list a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'images/img.png' %}" alt="CSEI Academy LMS Logo" class="logo-image"/>
+                <h1 class="sitename">CSEI Academy</h1>
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'student_page' student.id %}">{{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <div class="page-header">
+            <h2>Course Details</h2>
+        </div>
+        <div class="course-detail">
+            <h1>{{ course.course.name }}</h1>
+            <p><strong>Course Code:</strong> {{ course.course_code }}</p>
+            <p><strong>Description:</strong> {{ course.description }}</p>
+            <p><strong>Duration:</strong> {{ course.duration }} weeks</p>
+            <p><strong>Start Date:</strong> {{ course.term_start_date }}</p>
+            <p><strong>End Date:</strong> {{ course.term_end_date }}</p>
+
+            <h3>Uploaded Files</h3>
+            {% if course.upload_files %}
+                <ul class="file-list">
+                    <li>
+                        <a href="{{ course.upload_files.url }}" download>
+                            <i class="fas fa-file-download"></i> {{ course.upload_files.name }}
+                        </a>
+                    </li>
+                </ul>
+            {% else %}
+                <p>No files uploaded for this course.</p>
+            {% endif %}
+
+            <a href="{% url 'student_courses' student.id %}" class="btn btn-secondary">Back to Courses</a>
+        </div>
+    </main>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

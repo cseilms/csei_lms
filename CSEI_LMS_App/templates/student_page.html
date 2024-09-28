@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 60px; /* Adjust for fixed navbar */
+        }
+        header {
+            background-color: #08005e; /* Dark blue background */
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 80px;
+            margin-bottom:20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        .navbar-nav .nav-link {
+            color: #ffffff !important; /* White text for nav links */
+        }
+        .navbar-nav .nav-link:hover {
+            color: #e3f2fd !important; /* Light blue on hover */
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            color: #ffffff; /* White text */
+        }
+        .logo-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+        }
+        .sitename {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .profile-header img {
+            border-radius: 50%;
+            margin-right: 20px;
+            border: 3px solid #007bff;
+        }
+        .profile-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .profile-info p {
+            margin: 5px 0;
+        }
+        .batch-list {
+            margin-top: 20px;
+        }
+        .batch-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .batch-list li {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .batch-list li h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .batch-list li a {
+            margin-top: 10px;
+            display: inline-block;
+            color: #ffffff;
+            background-color: #08005e; /* Custom blue color */
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .batch-list li a:hover {
+            background-color: #06003c; /* Darker blue on hover */
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <a class="navbar-brand" href="#">
+                <div class="logo-container d-flex align-items-center">
+                    <img src="{% static 'images/img.png' %}" alt="CSEI Academy LMS Logo" class="logo-image"/>
+                    <h1 class="sitename">CSEI Academy</h1>
+                </div>
+            </a>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                    <!-- Other navigation items can be added here -->
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'student_page' student.id %}">{{ user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-danger" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <img src="{% if student.image %}{{ student.image.url }}{% else %}https://via.placeholder.com/100{% endif %}" alt="{{ student.name }}" width="100" height="100">
+                <div>
+                    <h1>{{ student.name }}</h1>
+                    <p><strong>Department:</strong> {{ student.department.name }}</p>
+                </div>
+            </div>
+
+            <!-- Personal Information -->
+            <div class="profile-info">
+                <h2>Personal Information</h2>
+                <p><strong>Email:</strong> {{ student.user.email }}</p>
+                <p><strong>Phone:</strong> {{ student.phone }}</p>
+                <p><strong>Nationality:</strong> {{ student.nationality }}</p>
+                <p><strong>Previous Education:</strong> {{ student.previous_education }}</p>
+            </div>
+
+            <!-- Batches List -->
+            <div class="batch-list">
+                <h2>My Batches</h2>
+                <ul>
+                    {% for batch_info in batches %}
+                        <li>
+                            <h3>{{ batch_info.batch.name }}</h3>
+                            <p>Date: {{ batch_info.batch.schedule_date }}</p>
+                            <p>Time: {{ batch_info.batch.schedule_time }}</p>
+                            <a href="{% url 'student_batch_details' batch_info.batch.id %}" class="btn btn-primary btn-sm">View Batch Details</a>
+                            <a href="{% url 'student_view_files' batch_info.batch.id %}" class="btn btn-primary btn-sm">View Files</a>
+    <!-- In the batch-list section -->
+<a href="{% url 'student_view_exams' batch_info.batch.id %}" class="btn btn-primary btn-sm">View MCQ Exams</a>
+
+                            <a href="{% url 'student_essay_exam_list' student.id %}" class="btn btn-primary">View Essay Exams</a>
+
+                            <a href="{% url 'student_courses' student.id %}" class="btn btn-primary btn-sm">View Assigned Courses</a>
+
+                        </li>
+                    {% empty %}
+                        <li>No batches assigned.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

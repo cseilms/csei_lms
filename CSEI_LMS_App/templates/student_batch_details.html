@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Details: {{ batch.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0; /* Remove default margin */
+        }
+        .container {
+            max-width: 90%; /* Use a percentage for responsiveness */
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            background-color: #08005e; /* Custom blue color */
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0; /* Remove default margin for h1 */
+            font-size: 1.5rem; /* Adjust font size for mobile */
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px; /* Add margin for better spacing */
+        }
+        header a:hover {
+            background-color: #0056b3;
+        }
+        .section-title {
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #08005e;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .btn-custom {
+            border-radius: 25px;
+            padding: 10px 20px;
+            margin-top: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            background-color: #08005e; /* Custom blue color */
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #06003c; /* Darker blue on hover */
+        }
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: box-shadow 0.3s ease;
+        }
+        .card:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .card-header {
+            background-color: #08005e; /* Custom blue color */
+            color: white;
+            font-size: 1.2em;
+            border-radius: 8px 8px 0 0;
+        }
+        .list-group-item {
+            transition: background-color 0.3s ease;
+        }
+        .list-group-item:hover {
+            background-color: #e3e3e3;
+        }
+        /* Custom styles for dropdown (collapsed) sections */
+        .collapse.show {
+            border: 1px solid #08005e;
+            border-radius: 4px;
+            background-color: #e3e3e3;
+        }
+        .collapse .list-group-item {
+            border-color: #08005e;
+        }
+        .list-group-item.active {
+            background-color: #08005e; /* Custom blue color */
+            color: white;
+        }
+        @media (max-width: 576px) {
+            header h1 {
+                font-size: 1.2rem; /* Smaller font for mobile */
+            }
+            .btn-custom {
+                width: 100%; /* Full width buttons on small screens */
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header and Navigation Bar -->
+    <header>
+        <h1>Files for Batch: {{ batch.name }}</h1>
+        <a href="{% url 'student_page' student_id %}" class="btn text-light">Back to Dashboard</a>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <p><strong>Date:</strong> {{ batch.schedule_date }}</p>
+        <p><strong>Time:</strong> {{ batch.schedule_time }}</p>
+
+        <!-- Daily Topics Section -->
+        <div class="section">
+            <div class="card">
+                <div class="card-header section-title">Daily Topics</div>
+                <div class="card-body">
+                    <a href="#topicsCollapse" data-toggle="collapse" class="btn btn-custom">View Topics</a>
+                    <div id="topicsCollapse" class="collapse">
+                        <ul class="list-group mt-2">
+                            {% if topics_by_date %}
+                                {% for date, topics in topics_by_date.items %}
+                                    <li class="list-group-item active">{{ date }}</li>
+                                    {% for topic in topics %}
+                                        <li class="list-group-item">{{ topic.topics_covered }}</li>
+                                    {% endfor %}
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item">No topics available for this batch.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Daily Assignments Section -->
+        <div class="section">
+            <div class="card">
+                <div class="card-header section-title">Daily Assignments</div>
+                <div class="card-body">
+                    <a href="#assignmentsCollapse" data-toggle="collapse" class="btn btn-custom">View Assignments</a>
+                    <div id="assignmentsCollapse" class="collapse">
+                        <ul class="list-group mt-2">
+                            {% if assignments_by_date %}
+                                {% for date, assignments in assignments_by_date.items %}
+                                    <li class="list-group-item list-group-item-action active">{{ date }}</li>
+                                    {% for assignment in assignments %}
+                                        <li class="list-group-item list-group-item-action">{{ assignment.assignments }}</li>
+                                    {% endfor %}
+                                    <a href="{% url 'upload_assignment' batch.id %}?date={{ date }}" class="btn btn-custom float-right mt-2">Upload Assignment for {{ date }}</a>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item">No assignments available for this batch.</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JavaScript and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

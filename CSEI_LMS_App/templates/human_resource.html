@@ -1,0 +1,235 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Human Resource Management in Tourism and Hospitality{% endblock %}
+
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+/* General styles */
+.human-resource-management {
+    padding: 4rem 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.human-resource-management h3 {
+    position: relative;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #08005e;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.human-resource-management h3::after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 3px;
+    background-color: orange;
+    transition: width 0.3s ease;
+}
+
+.human-resource-management h3:hover::after {
+    width: 100%;
+}
+
+.course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #fff; /* Changed to white for contrast */
+    color: #08005e; /* Course title background */
+    border-radius: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.course-title:hover {
+    background-color: orange; /* Highlight on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.human-resource-management .content {
+    margin: auto;
+    max-width: 1000px;
+    padding: 2rem;
+    background-color: #fff; /* White background for content box */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for zoom effect */
+}
+
+.human-resource-management .content:hover {
+    transform: scale(1.03); /* Zoom in effect on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced box shadow on hover */
+}
+
+.human-resource-management .apply-button {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto;
+    padding: 0.75rem 1.5rem;
+    font-size: 1.25rem;
+    color: #fff;
+    background-color: #08005e;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.human-resource-management .apply-button:hover {
+    background-color: #05003a;
+}
+
+.human-resource-management .documents,
+.human-resource-management .requirements,
+.human-resource-management .study-mode {
+    margin-top: 2rem;
+}
+
+.human-resource-management .documents ul,
+.human-resource-management .requirements ul,
+.human-resource-management .study-mode ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+}
+
+.human-resource-management .documents li,
+.human-resource-management .requirements li,
+.human-resource-management .study-mode li {
+    margin-bottom: 0.5rem;
+}
+
+/* Background for top section */
+.hr_top {
+    height: 500px;
+    background-image: url("{% static 'images/hri2.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative; /* Added for overlay positioning */
+}
+
+.hr_top h2 {
+    font-size: 4rem;
+    font-weight: bold;
+    margin: 0;
+    position: relative; /* Added for overlay positioning */
+    z-index: 1; /* Ensure the text is above the overlay */
+}
+
+.hr_top h2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Dark transparent shade */
+    border-radius: 15px; /* Match with h2 rounded edges */
+    z-index: -1; /* Place it below the text */
+}
+
+/* Responsive styling */
+@media (max-width: 768px) {
+    .hr_top h2 {
+        font-size: 2.5rem;
+    }
+
+    .human-resource-management .content {
+        padding: 1rem;
+    }
+}
+</style>
+
+<!-- HR Top Section -->
+<section id="human-resource-management" class="hr_top">
+    <h2>Human Resource Management <br> in Tourism and Hospitality</h2>
+</section>
+
+<!-- Main Content Section -->
+<section id="hr-content" class="human-resource-management section">
+    <div class="container content-box" data-aos="fade" data-aos-delay="100">
+        <h1 class="course-title">Human Resource Management in Tourism and Hospitality</h1>
+        <div class="content mt-3">
+            <p>In this course, learners will explore contemporary issues in managing human capital in the hotel and tourism industry, from macro- and micro-perspectives, and learn how to tackle them.</p>
+            <p><strong>Course Duration:</strong> 45 hours</p>
+        </div>
+        <div class="content">
+            <h3>Learning Objectives</h3>
+            <p>At the end of the course, the learner will be able to:</p>
+            <ul>
+                <li>Evaluate and discuss theories of managing human resources in the hotel and tourism industry.</li>
+                <li>Appraise and analyze human resource functions and employee motivation.</li>
+                <li>Evaluate factors affecting organizational culture development.</li>
+                <li>Assess the relationship between the hotel and tourism industry and their society.</li>
+                <li>Analyze HR research journals for applicable methodologies.</li>
+                <li>Identify and solve human resources problems in the hotel and tourism context.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Outline</h3>
+            <ul>
+                <li>Basics & Theories of HRM</li>
+                <li>Human Capital of the Hospitality Industry</li>
+                <li>Basics of Organizational Culture</li>
+                <li>Understanding HR Problems in the Hospitality Industry</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Course Benefit</h3>
+            <p>This program awards a Human Resource Management in Hospitality & Tourism Completion Certificate from the Academy. Successful completion grants certification from KHDA, and students can progress to OTHM courses related to Tourism & Hospitality Management.</p>
+        </div>
+        <div class="content">
+            <h3>Required Documents</h3>
+            <ul class="documents">
+                <li>Higher Academic Certificates</li>
+                <li>Passport copy</li>
+                <li>Photograph</li>
+                <li>Local identity (Citizenship)</li>
+                <li>NOC letter</li>
+                <li>Experience letter (Optional)</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Requirements</h3>
+            <ul class="requirements">
+                <li>Evidence of numeracy and literacy skills through high school report.</li>
+                <li>Updated resume for work experience (for professionals).</li>
+                <li>Additional English proficiency may apply if teaching is not in English.</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Study Mode</h3>
+            <ul class="study-mode">
+                <li>Full-Time / Part-Time: Weekend based</li>
+                <li>Location: ON CAMPUS / ONLINE</li>
+            </ul>
+        </div>
+        <div class="content">
+            <h3>Career Opportunities</h3>
+            <p>The Human Resource Management program focuses on current HR trends and solutions to industry challenges. Post-certification, learners will excel in managing HR issues in the hospitality industry.</p>
+        </div>
+        <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
+    </div>
+</section>
+
+{% endblock %}

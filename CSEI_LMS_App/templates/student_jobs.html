@@ -1,0 +1,477 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Job Support{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Base styles */
+    .job-support {
+        padding: 2rem 1rem;
+        background-color: #f9f9f9;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+
+    .job-support h4 {
+        color: #08005e;
+        font-size: 3rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: 2rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .job-support .top_div {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .job-support .counseling,
+    .job-support .service {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        align-items: center;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+        transform: translateY(-5px);
+        transition: transform 0.3s ease;
+    }
+
+    .job-support .counseling_img,
+    .job-support .service_img {
+        flex: 1;
+        max-width: 100%;
+    }
+
+    .job-support .counseling_para,
+    .job-support .service_para {
+        flex: 2;
+        padding: 1rem;
+    }
+
+    .job-support img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .job-support h3 {
+        color: #08005e;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .job-support p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    /* Hover effect to enhance the design */
+    .job-support .counseling:hover,
+    .job-support .service:hover {
+        transform: translateY(-10px);
+    }
+
+    @media (max-width: 768px) {
+        .job-support .counseling,
+        .job-support .service {
+            flex-direction: column;
+        }
+
+        .job-support .counseling_img,
+        .job-support .service_img {
+            margin-bottom: 1rem;
+        }
+
+        .job-support img {
+            height: 300px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .job-support h4 {
+            font-size: 2rem;
+        }
+
+        .job-support h3 {
+            font-size: 1.5rem;
+        }
+
+        .job-support p {
+            font-size: 1rem;
+        }
+
+        .job-support img {
+            height: 200px;
+        }
+    }
+
+
+    h2 {
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Slider */
+    .slick-slide {
+        margin: 0px 20px;
+    }
+
+    .slick-slide img {
+        width: 100%;
+    }
+
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        user-select: none;
+        touch-action: pan-y;
+    }
+
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+
+    .slick-list:focus {
+        outline: none;
+    }
+
+    .slick-list.dragging {
+        cursor: pointer;
+    }
+
+    .slick-slider .slick-track,
+    .slick-slider .slick-list {
+        transform: translate3d(0, 0, 0);
+    }
+
+    .slick-track {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+    }
+
+    .slick-track:before,
+    .slick-track:after {
+        display: table;
+        content: '';
+    }
+
+    .slick-track:after {
+        clear: both;
+    }
+
+    .slick-loading .slick-track {
+        visibility: hidden;
+    }
+
+    .slick-slide {
+        display: none;
+        float: left;
+        height: 100%;
+        min-height: 1px;
+    }
+
+    [dir='rtl'] .slick-slide {
+        float: right;
+    }
+
+    .slick-slide img {
+        display: block;
+    }
+
+    .slick-slide.slick-loading img {
+        display: none;
+    }
+
+    .slick-slide.dragging img {
+        pointer-events: none;
+    }
+
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+
+    .slick-loading .slick-slide {
+        visibility: hidden;
+    }
+
+    .slick-vertical .slick-slide {
+        display: block;
+        height: auto;
+        border: 1px solid transparent;
+    }
+
+    .slick-arrow.slick-hidden {
+        display: none;
+    }
+
+    /* Additional styles for the customer-logos class */
+    .customer-logos {
+        border: 2px solid #08005e;
+        border-radius: 8px;
+        padding: 1rem;
+        background-color: #fff;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+    }
+
+    .customer-logos .slide {
+        border-radius: 8px;
+        padding: 0.5rem;
+        background-color: #f9f9f9;
+    }
+
+    /* Bottom div styling */
+    .bottom_div {
+        padding: 2rem 1rem;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+        max-width: 1200px;
+        margin: 2rem auto;
+    }
+
+    .bottom_div h3 {
+        color: #08005e;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .bottom_div ol {
+        margin: 0;
+        padding: 0 2rem;
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #333;
+        list-style-position: inside;
+    }
+
+    .bottom_div li {
+        margin-bottom: 0.75rem;
+    }
+
+    .bottom_div .btn-primary {
+        background-color: #08005e;
+        border-color: #08005e;
+        color: #fff;
+        font-size: 1.125rem;
+        padding: 0.75rem 1.5rem;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .bottom_div .btn-primary:hover {
+        background-color: #05004a;
+        border-color: #05004a;
+    }
+</style>
+
+<section id="job-support" class="job-support">
+    <div class="top_div">
+        <h4 style="font-family: fangsong;">Job Support for Our Students</h4>
+
+        <div class="counseling m-4 p-3">
+            <div class="counseling_img">
+                <img src="{% static 'images/placement.jpg' %}" alt="JobSupport">
+            </div>
+            <div class="counseling_para">
+                <h3>Career Counseling</h3>
+                <p>Many students have a clear vision of their future career path, while others are unsure of which direction to take. Our placement team helps students plan for life after the completion of any program by guiding them and helping them uncover other fields of interest in order to find the most suitable and stimulating career path. The team helps students with creating resumes, preparing for interviews, and assists with full-time and part-time internship opportunities to help boost their resumes.</p>
+            </div>
+        </div>
+
+        <div class="service m-4 p-3">
+            <div class="service_para">
+                <h3>Placement Service</h3>
+                <p>CSEI Academy has become the preferred choice for students. Placements at leading companies across various sectors including Healthcare, Hospitals, Insurance, Fashion, Banking, Technology, Real Estate, Hospitality, and more—students are given immense opportunities for employment choices. Our placement team works every day to provide the best industry learning exposure for our students.</p>
+            </div>
+            <div class="service_img">
+                <img src="{% static 'images/counsler1.jpg' %}" alt="Placement Service">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="bottom_div">
+    <h3>What features do we have for student’s job support</h3>
+    <ol>
+        <li>CV Writing classes by H.R Expert.</li>
+        <li>Before the start and at the mid-semester, there are classes about how you can use your knowledge in Dubai for part time/full time industry learning.</li>
+        <li>Interview preparation classes by Placement & Counseling team.</li>
+    </ol>
+
+        <button class="btn btn-primary m-3" type="button">
+            Book an appointment with our Career Consultant
+        </button>
+
+</div>
+
+
+<!--checking-->
+
+
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="lc-block">
+				<div id="carouselLogos" class="carousel slide pt-5 pb-4" data-bs-ride="carousel">
+
+					<div class="carousel-inner px-5">
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="col-6 col-md-2 align-self-center">
+									<img class="d-block w-100 px-3 mb-3" src="{% static 'images/logos/download.png' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Ayadi.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/braai.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/cafe.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/card1.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/club.jpg' %}" alt="">
+								</div>
+
+							</div>
+
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-6 col-md-2 align-self-center">
+									<img class="d-block w-100 px-3 mb-3" src="{% static 'images/logos/gym.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/health.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/health2.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/hot.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Hytech.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/nahda.jpg' %}" alt="">
+								</div>
+							</div>
+
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-6 col-md-2 align-self-center">
+									<img class="d-block w-100 px-3 mb-3" src="{% static 'images/logos/pamb.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/passion.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/sert.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/sng.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Valencia.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Willis.jpg' %}" alt="">
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<!--
+	<ol class="carousel-indicators list-unstyled position-relative mt-3">
+		<li data-bs-target="#carouselLogos" data-bs-slide-to="0" class="active bg-dark carousel-control-prev-icon"></li>
+		<li data-bs-target="#carouselLogos" data-bs-slide-to="1" class="bg-dark"></li>
+	</ol>
+	-->
+
+					<div class="w-100 px-3 text-center mt-4">
+						<a class="carousel-control-prev position-relative d-inline me-4" href="#carouselLogos" data-bs-slide="prev">
+							<svg width="2em" height="2em" viewBox="0 0 16 16" class="text-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+							</svg>
+							<span class="visually-hidden">Previous</span>
+						</a>
+						<a class="carousel-control-next position-relative d-inline" href="#carouselLogos" data-bs-slide="next">
+							<svg width="2em" height="2em" viewBox="0 0 16 16" class="text-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+							</svg>
+							<span class="visually-hidden">Next</span>
+						</a>
+
+
+
+
+
+					</div>
+
+
+				</div>
+			</div><!-- /lc-block -->
+		</div><!-- /col -->
+	</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.customer-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+</script>
+
+{% endblock %}

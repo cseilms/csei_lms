@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding-top: 60px; /* Adjusted for fixed header */
+        }
+        header {
+            background-color: #08005e;
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            height: 60px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px; /* Reduced margin */
+            font-size: 1.1em;
+            padding: 8px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s, transform 0.2s; /* Added transform for hover */
+        }
+        header nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2); /* Light background on hover */
+            transform: scale(1.05); /* Scale effect on hover */
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-top: 20px; /* Added margin to avoid overlap with header */
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #08005e; /* Changed color for better contrast */
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #08005e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.2s; /* Added transitions */
+        }
+        .btn:hover {
+            background-color: #06003c;
+            transform: scale(1.05); /* Slight scale on hover */
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 600px) {
+            header nav a {
+                margin: 5px; /* Adjusted margin for smaller screens */
+                font-size: 1em; /* Smaller font size for mobile */
+                padding: 6px 12px; /* Adjusted padding */
+            }
+            .container {
+                padding: 15px; /* Reduced padding for mobile */
+            }
+            h1 {
+                font-size: 1.3em; /* Smaller heading for mobile */
+            }
+            .btn {
+                padding: 8px 16px; /* Reduced button padding for mobile */
+                font-size: 0.9em; /* Slightly smaller button font */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <a href="{% url 'teacher_page' %}">Dashboard</a>
+        <a href="{% url 'view_essay_exams' batch.id %}" class="btn">Back to Exams</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h1>Exam Details for {{ exam.name }}</h1>
+    <p><strong>Description:</strong> {{ exam.description }}</p>
+    <p><strong>Date:</strong> {{ exam.date }}</p>
+    <p><strong>Duration:</strong> {{ exam.total_duration }}</p>
+    <p><strong>Maximum Marks:</strong> {{ exam.max_marks }}</p>
+    <p><strong>Max Words:</strong> {{ exam.max_words }}</p> <!-- New Field -->
+    <p><strong>Instructions:</strong> {{ exam.instructions }}</p> <!-- New Field -->
+    <a href="{% url 'view_essay_exams' batch.id %}" class="btn">Back to Exams</a>
+</div>
+
+</body>
+</html>

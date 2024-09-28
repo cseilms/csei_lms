@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CSEI Academy LMS</title>
+</head>
+<body>
+    <p>Dear {{ student.name }},</p>
+
+    <p>Thank you for registering with CSEI Academy LMS!</p>
+
+    <p>Your registration is complete, and you can log in using the following credentials:</p>
+
+    <p><strong>Username:</strong> {{ student.name }}</p>
+    <p><strong>Password:</strong> {{ student.generated_password }}</p>
+
+    <p>To log in, use this link:</p>
+    <p><a href="{{ login_link }}">Login to Your Account</a></p>
+
+    <p>For any assistance, please contact us at:</p>
+    <p>Email: support@cseiacademy.com</p>
+    <p>Phone: +123-456-7890</p>
+
+    <p>Best regards,</p>
+    <p>CSEI Academy Team</p>
+</body>
+</html>

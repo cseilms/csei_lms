@@ -1,0 +1,128 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Student Visa{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Page-specific styles */
+    .img_student {
+        height: 400px;
+        background-image: url("{% static 'images/visa1.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed; /* Fixed background */
+        background-repeat: no-repeat; /* Prevent repeating background */
+    }
+
+    .visa_para {
+        text-align: left; /* Align text to the left */
+        padding: 2rem;
+        background-color: #f9f9f9;
+        max-width: 800px;
+        margin: 0 auto; /* Center the paragraph section */
+    }
+
+    .visa_para h3 {
+        color: #08005e;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .visa_para p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .visa_card {
+        padding: 2rem 1rem;
+    }
+
+    .visa_card .card {
+        width: 16rem; /* Smaller width for cards */
+        margin: 0.5rem; /* Smaller margin for cards */
+        border-radius: 8px; /* Rounded corners for cards */
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    .visa_card .card-img-top {
+        height: 80px; /* Smaller height for images */
+        object-fit: contain; /* Ensure images fit within the container */
+    }
+
+    .visa_card .card-body {
+        padding: 1rem; /* Smaller padding inside card body */
+    }
+
+    .visa_card .card-title {
+        font-size: 1.25rem; /* Smaller font size for card titles */
+    }
+
+    .visa_card .card-text {
+        font-size: 1rem; /* Smaller font size for card text */
+    }
+
+    .visa_card .btn-primary {
+        font-size: 0.875rem; /* Smaller font size for button */
+        padding: 0.5rem 1rem; /* Smaller padding for button */
+    }
+    .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+
+    @media (max-width: 768px) {
+        .visa_card .card {
+            width: 100%; /* Full width for cards on small screens */
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="img_student"></div>
+    <div class="visa_para">
+        <h3>Sponsoring and Managing Student Visa</h3>
+        <p>
+            Student visas, as the name implies, are awarded to applicants whose major reason for visiting the nation is to complete their further studies. Needless to mention, although getting into legal documents are important to ensure your admission to the course and permit to enter the country is critical, these legal documents are critical in any manner. Every country has its own set of immigration regulations. These could differ in terms of document requirements, acceptable proof of funds, and what all visas allow you to do aside from studying in the country. To say the least, studying abroad necessitates thorough planning. Students should always organize their admissions/application process backwards, keeping in mind institution deadlines. As per the regulations, students must take English eligibility tests and have all essential documentation on hand in order for their application to be processed smoothly.
+        </p>
+    </div>
+    <div class="visa_card">
+        <div class="row">
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="{% static 'images/logos/notes1.png' %}" class="card-img-top p-3" alt="Notes">
+                    <div class="card-body">
+                        <h5 class="card-title">Fill In The Required Form</h5>
+                        <p class="card-text">You must need to fill the required form to apply for foreign visa and to get that desired visa</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="{% static 'images/logos/documents.png' %}" class="card-img-top p-3" alt="Documents">
+                    <div class="card-body">
+                        <h5 class="card-title">Submit Your Original Documents</h5>
+                        <p class="card-text">You have to submit the original document and other information due to get the visa in time.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="card">
+                    <img src="{% static 'images/logos/flight.png' %}" class="card-img-top p-3" alt="Flight">
+                    <div class="card-body">
+                        <h5 class="card-title">Get The Visa Resource Material</h5>
+                        <p class="card-text">After completing all the tasks you will get your resource material for a visa in some days.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

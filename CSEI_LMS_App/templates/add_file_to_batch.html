@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add File to Batch</title>
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css">
+    <style>
+        /* Reset some default browser styles */
+        body, h1, form, label, a {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Basic styling for body */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-top: 60px; /* Adjust padding to avoid overlap with fixed header */
+        }
+
+        /* Navbar styling */
+        .navbar {
+            background-color: #08005e;
+        }
+        .navbar-nav .nav-link {
+            color: white !important; /* Set navbar text to white */
+            margin-right: 15px;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #e3f2fd !important; /* Light blue on hover */
+        }
+
+        /* Main container styling */
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px; /* Add space between nav and form */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"] {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .btn-submit {
+            padding: 10px 15px;
+            background-color: #08005e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+
+        .btn-submit:hover {
+            background-color: #06003c;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top mb-5">
+                <a class="navbar-brand" href="{% url 'index' %}">
+                    <div class="logo-container d-flex align-items-center">
+                        <img src="{% static 'images/img.png' %}" alt="CSEI Academy LMS Logo" class="logo-image" style="width: 50px; height: 50px; border-radius: 50%;"/>
+                        <h1 class="sitename m-2" style="color: white;">CSEI Academy</h1>
+                    </div>
+                </a>
+                <ul class="navbar-nav ml-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'teacher_page' %}">{{ user.username }}</a>
+                        </li>
+
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'teacher_login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'teacher_page' %}">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'batch_details' batch.id %}">Batch Details</a>
+                    </li>
+                    <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                </ul>
+            </nav>
+        </header>
+
+    <main>
+        <div class="form-container">
+            <h1>Add File to Batch: {{ batch.name }}</h1>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label for="id_title">Title</label>
+                {{ form.title }}  <!-- Explicitly render the title field -->
+
+                <label for="id_file">File</label>
+                {{ form.file }}  <!-- Explicitly render the file field -->
+
+                <button type="submit" class="btn-submit">Add File</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

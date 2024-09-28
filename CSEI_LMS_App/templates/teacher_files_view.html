@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>teacher  Files</title>
+        {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .file-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .file-item img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+        .file-item audio, .file-item video {
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Student Uploaded Files</h1>
+            <div class="mb-3">
+                <a href="{% url 'teacher_page' %}" class="btn btn-secondary">Back to Dashboard</a>
+            </div>
+        </header>
+
+        <!-- Filter Section -->
+        <div class="mb-4">
+            <form method="get" action="{% url 'teacher_files_view' %}">
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="department">Department</label>
+                        <select id="department" name="department" class="form-control">
+                            <option value="">Select Department</option>
+                            {% for department in departments %}
+                                <option value="{{ department.id }}" {% if department.id == selected_department %}selected{% endif %}>{{ department.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="batch">Batch</label>
+                        <select id="batch" name="batch" class="form-control">
+                            <option value="">Select Batch</option>
+                            {% for batch in batches %}
+                                <option value="{{ batch.id }}" {% if batch.id == selected_batch %}selected{% endif %}>{{ batch.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="assignment">Daily Assignment</label>
+                        <select id="assignment" name="assignment" class="form-control">
+                            <option value="">Select Assignment</option>
+                            {% for assignment in assignments %}
+                                <option value="{{ assignment.id }}" {% if assignment.id == selected_assignment %}selected{% endif %}>{{ assignment.title }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        <!-- File List Section -->
+        <div>
+            {% if files %}
+                <h2>Files</h2>
+                <ul class="list-unstyled">
+                    {% for file in files %}
+                        <li class="file-item">
+                            <strong>{{ file.title }}</strong><br>
+                            <a href="{{ file.file.url }}" download>Download</a>
+                            {% with file.file.url|slice:"-4:" as file_extension %}
+                                {% if file_extension == ".pdf" %}
+                                    <a href="{{ file.file.url }}" target="_blank">View PDF</a>
+                                {% elif file_extension in ".jpg .jpeg .png" %}
+                                    <img src="{{ file.file.url }}" alt="{{ file.title }}">
+                                {% elif file_extension == ".mp3" %}
+                                    <audio controls>
+                                        <source src="{{ file.file.url }}" type="audio/mpeg">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                {% elif file_extension == ".mp4" %}
+                                    <video controls>
+                                        <source src="{{ file.file.url }}" type="video/mp4">
+                                        Your browser does not support the video element.
+                                    </video>
+                                {% else %}
+                                    <a href="{{ file.file.url }}" target="_blank">View File</a>
+                                {% endif %}
+                            {% endwith %}
+                        </li>
+                    {% empty %}
+                        <li>No files available for the selected criteria.</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No files found.</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

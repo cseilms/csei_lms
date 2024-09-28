@@ -1,0 +1,521 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Accreditation{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    /* Base styles for accreditation page */
+    .accreditation {
+    padding: 0; /* Remove padding */
+    margin: 0;  /* Remove margin */
+}
+
+    .accreditation .header {
+        text-align: center;
+
+    }
+
+    .accreditation .header h1 {
+        color: #08005e;
+        font-size: 3rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        word-spacing: 1px;
+        letter-spacing: 2px;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .header p {
+        line-height: 1.5em;
+        padding-bottom: 1rem;
+        font-size: 1.875rem;
+        font-weight: normal;
+        font-style: italic;
+        font-family: "Playfair Display", "Bookman", serif;
+        color: #999;
+        letter-spacing: -0.005em;
+        word-spacing: 1px;
+    }
+
+    .accreditation .accreditation_info {
+        background-image: url("{% static 'images/card/accreditation.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin-top: 0;
+    }
+
+    .accreditation .info_content {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 1.875rem;
+        border-radius: 12px;
+        max-width: 90%;
+        width: 100%;
+        margin: 0 auto;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        position: relative;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation blockquote {
+        margin: 0;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        color: #333;
+        border-left: 4px solid #08005e;
+        padding-left: 1.25rem;
+        quotes: "“" "”" "‘" "’";
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation blockquote:before {
+        content: open-quote;
+        font-size: 2rem;
+        color: #08005e;
+        vertical-align: middle;
+        margin-right: 0.625rem;
+    }
+
+    .accreditation blockquote:after {
+        content: close-quote;
+        font-size: 2rem;
+        color: #08005e;
+        vertical-align: middle;
+        margin-left: 0.625rem;
+    }
+
+    .accreditation .benefits {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+        background: linear-gradient(180deg, gray, white);
+        padding: 2rem 1rem;
+        margin-top: 1rem;
+    }
+
+    .accreditation .benefits .img_div {
+        flex: 1;
+        padding: 0;
+        margin-right: 1rem;
+        max-width: 100%;
+    }
+
+    .accreditation .benefits .para_div {
+        flex: 1;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .accreditation .benefits .img_div img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+    }
+
+    .accreditation .benefits h3 {
+        color: #08005e;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .benefits p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .benefits li {
+        font-size: 1.125rem;
+        color: #333;
+        list-style-type: disc;
+        margin-bottom: 0.5rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .standards {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: flex-start;
+        background-color: #f4f4f4;
+        padding: 2rem 1rem;
+        margin-top: 1rem;
+    }
+
+    .accreditation .standards .standards_content,
+    .accreditation .standards .mission {
+        flex: 1;
+        padding: 1rem;
+        max-width: 100%;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .standards .standards_content {
+        margin-right: 1rem;
+    }
+
+    .accreditation .standards .mission {
+        margin-left: 1rem;
+    }
+
+    .accreditation .standards h3 {
+        color: #08005e;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .standards p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .standards li {
+        font-size: 15px;
+        color: #333;
+        list-style-type: disc;
+        margin-bottom: 0.5rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .certification_center {
+        display: flex;
+        flex-wrap: wrap;
+        box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+        margin: 30px;
+        border-radius: 20px;
+        padding: 20px;
+        height: auto;
+    }
+
+    .accreditation .certification_center > div {
+        flex: 1;
+        box-sizing: border-box;
+    }
+
+    .accreditation .certification_center .certificationdiv {
+        margin-right: 1rem;
+    }
+
+    .accreditation .certification_center .centerdiv {
+        margin-left: 1rem;
+    }
+
+    .accreditation .certification_center:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+    }
+
+    .accreditation .certification_center h3 {
+        color: #08005e;
+        font-size: 2rem;
+        margin-bottom: 1rem;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+
+    .accreditation .certification_center p {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: #333;
+        font-family: "Playfair Display", "Bookman", serif;
+    }
+	.accreditations_logos{
+	color:#08005e;
+	font-size:20px;
+	text-align:center;
+	text-transform:uppercase;
+
+	}
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .accreditation .header h1 {
+            font-size: 3rem;
+        }
+
+        .accreditation .header p {
+            font-size: 1.5rem;
+            margin-bottom:5px;
+        }
+
+        .accreditation .info_content {
+            padding: 1.25rem;
+        }
+
+        blockquote {
+            font-size: 1rem;
+        }
+
+        blockquote:before,
+        blockquote:after {
+            font-size: 1.5rem;
+        }
+
+        .accreditation .benefits {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .accreditation .benefits .img_div {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+
+        .accreditation .benefits .img_div img {
+            height: 200px;
+            width: 200px;
+        }
+
+        .accreditation .standards {
+            flex-direction: column;
+        }
+
+        .accreditation .standards .standards_content ul {
+            padding-left: 1.5rem;
+        }
+
+        .accreditation .standards .standards_content li {
+            font-weight: bold;
+            line-height: 1.5;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .accreditation .standards .standards_content,
+        .accreditation .standards .mission {
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .accreditation .header h1 {
+            font-size: 2rem;
+        }
+
+        .accreditation .header p {
+            font-size: 1.25rem;
+        }
+
+        .accreditation .benefits .img_div img,
+        .accreditation .standards .standards_content img {
+            height: 150px;
+            width: 150px;
+        }
+
+        .accreditation .certification_center {
+            flex-direction: column;
+        }
+
+        .accreditation .certification_center .certificationdiv,
+        .accreditation .certification_center .centerdiv {
+            margin-right: 0;
+            margin-bottom: 1rem;
+        }
+    }
+
+</style>
+
+<section id="accreditation" class="accreditation">
+    <div class="header">
+        <h1>Accreditation</h1>
+        <p>Discover our standards and achievements</p>
+    </div>
+
+
+    <div class="benefits m-4" style="border-radius:10px">
+        <div class="img_div">
+            <img src="{% static 'images/od1.jpg' %}" alt="Accreditation Benefits">
+        </div>
+        <div class="para_div">
+            <h3>Why Accreditation Matters?</h3>
+            <p>Here’s why accreditation is important for you:</p>
+            <ul>
+                <li>Ensures quality and consistency</li>
+                <li>Provides credibility and recognition</li>
+                <li>Access to additional resources</li>
+                <li>Enhances career prospects</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="standards m-4" style="border-radius:10px">
+        <div class="standards_content">
+            <h3>Our Standards</h3>
+            <p>We adhere to the following standards to ensure the quality of our education:</p>
+            <ul>
+                <li>Rigorous curriculum development</li>
+                <li>Qualified and experienced educators</li>
+                <li>Regular assessments and evaluations</li>
+                <li>Student support services</li>
+            </ul>
+        </div>
+        <div class="mission">
+            <h3>Accreditation Bodies</h3>
+            <p>Our institution is accredited by the following organizations:</p>
+            <ul>
+                <li>National Accreditation Board</li>
+                <li>International Education Quality Association</li>
+                <li>Regional Accrediting Council</li>
+            </ul>
+        </div>
+    </div>
+
+
+</section>
+
+<div class="container">
+	<div class="row">
+
+        <h2 class="accreditations_logos">Our ACCREDITATIONS and partners</h2>
+
+		<div class="col-md-12">
+			<div class="lc-block">
+				<div id="carouselLogos" class="carousel slide pt-5 pb-4" data-bs-ride="carousel">
+
+					<div class="carousel-inner px-5">
+						<div class="carousel-item active">
+							<div class="row">
+								<div class="col-6 col-md-2 align-self-center">
+									<img class="d-block w-100 px-3 mb-3" src="{% static 'images/logos/download.png' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Ayadi.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/braai.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/cafe.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/card1.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/club.jpg' %}" alt="">
+								</div>
+
+							</div>
+
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-6 col-md-2 align-self-center">
+									<img class="d-block w-100 px-3 mb-3" src="{% static 'images/logos/gym.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/health.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/health2.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/hot.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Hytech.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/nahda.jpg' %}" alt="">
+								</div>
+							</div>
+
+						</div>
+						<div class="carousel-item">
+							<div class="row">
+								<div class="col-6 col-md-2 align-self-center">
+									<img class="d-block w-100 px-3 mb-3" src="{% static 'images/logos/pamb.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/passion.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/sert.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/sng.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Valencia.jpg' %}" alt="">
+								</div>
+								<div class="col-6 col-md-2  align-self-center">
+									<img class="d-block w-100 px-3  mb-3" src="{% static 'images/logos/Willis.jpg' %}" alt="">
+								</div>
+							</div>
+
+						</div>
+
+					</div>
+
+					<!--
+	<ol class="carousel-indicators list-unstyled position-relative mt-3">
+		<li data-bs-target="#carouselLogos" data-bs-slide-to="0" class="active bg-dark carousel-control-prev-icon"></li>
+		<li data-bs-target="#carouselLogos" data-bs-slide-to="1" class="bg-dark"></li>
+	</ol>
+	-->
+
+					<div class="w-100 px-3 text-center mt-4">
+						<a class="carousel-control-prev position-relative d-inline me-4" href="#carouselLogos" data-bs-slide="prev">
+							<svg width="2em" height="2em" viewBox="0 0 16 16" class="text-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"></path>
+							</svg>
+							<span class="visually-hidden">Previous</span>
+						</a>
+						<a class="carousel-control-next position-relative d-inline" href="#carouselLogos" data-bs-slide="next">
+							<svg width="2em" height="2em" viewBox="0 0 16 16" class="text-dark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+								<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"></path>
+							</svg>
+							<span class="visually-hidden">Next</span>
+						</a>
+
+
+
+
+
+					</div>
+
+
+				</div>
+			</div><!-- /lc-block -->
+		</div><!-- /col -->
+	</div>
+</div>
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.customer-logos').slick({
+            slidesToShow: 6,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 1500,
+            arrows: false,
+            dots: false,
+            pauseOnHover: false,
+            responsive: [{
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 520,
+                settings: {
+                    slidesToShow: 3
+                }
+            }]
+        });
+    });
+</script>
+
+
+{% endblock %}

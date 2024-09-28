@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+  <html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="Creative Star Education Institutes offers a range of courses in Tourism, Hospitality, and more, designed to empower your learning journey and shape your future.">
+    <meta name="keywords" content="Education, Courses, Tourism, Hospitality, Learning, Creative Star Institutes">
+    <title>{% block title %}{% endblock %}</title>
+    {% block extra_css %}{% endblock %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- Bootstrap 5.3.3 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+ <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>
+    <style>
+   body {
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-color: white;
+        }
+.navbar {
+    background-color: #08005e;
+    text-transform: uppercase;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+    color: white;
+}
+
+.navbar .nav-link:hover {
+    background-color: orange;
+    border-radius: 4px;
+}
+
+.dropdown-menu {
+    background-color: #08005e;
+    color: white;
+}
+
+.dropdown-item:hover {
+    background-color: orange;
+}
+
+@media (max-width: 768px) {
+    .navbar-collapse {
+        text-align: center; /* Center-align nav items on smaller screens */
+    }
+}
+
+.dropdown-menu {
+    max-width: 300px;
+}
+
+.dropdown-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.dropdown-menu .dropdown-item img {
+    max-width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.dropdown-menu .dropdown-item span {
+    font-weight: bold;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -6px;
+    border-radius: 0.25rem;
+    display: none;
+}
+
+.dropdown-submenu:hover .dropdown-menu {
+    display: block;
+}
+
+.student-services-dropdown {
+    position: absolute;
+    left: 0;
+    max-width: 500px;
+    border: 2px solid #08005e;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.student-services-dropdown .dropdown-item {
+    color: #08005e;
+    padding: 10px;
+}
+
+.student-services-dropdown .dropdown-item:hover {
+    background-color: #f0f0f0;
+}
+
+.student-services-dropdown .dropdown-item img {
+    max-width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+
+.carouseldiv {
+  height: 400px;
+  width: 100%;
+}
+
+.about_div {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: #f8f9fa;
+  margin-top: 100px;
+}
+
+.about_div .row {
+  margin: 0 auto;
+}
+
+.about-text {
+  padding: 20px;
+  color: #333;
+}
+
+.about-text h2 {
+  margin-bottom: 15px;
+  font-size: 2rem;
+}
+
+.about-text p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.about-text .read-more {
+  color: orange;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.about-text .read-more:hover {
+  text-decoration: underline;
+}
+
+.about-image img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+.about-dropdown {
+  background-color: #08005e;
+  color: white;
+  border: none;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.about-dropdown .dropdown-item {
+  color: white;
+  padding: 10px;
+}
+
+.about-dropdown .dropdown-item:hover {
+  background-color: orange;
+}
+
+.about-dropdown .dropdown-item img {
+  max-width: 50px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.about-dropdown .dropdown-item span {
+  font-weight: bold;
+}
+
+.read-more {
+  background-color: #08005e;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.read-more:hover {
+  background-color: darkblue;
+  color: #f0f0f0;
+}
+.course_card {
+  margin-bottom: 50px; /* Add some margin to separate it from other sections */
+}
+
+.card {
+  position: relative;
+  width: 100%; /* Make sure cards are responsive */
+}
+
+.card-logo {
+  position: absolute;
+  top: -20px;
+  right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.card-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-img-top {
+  width: 100%; /* Ensure images fill the card width */
+  height: 200px; /* Fixed height for card images */
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1.25rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background-color: #007bff; /* Adjust as needed */
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3; /* Adjust as needed */
+}
+
+@media (max-width: 768px) {
+/* Custom styles for responsiveness */
+@media (max-width: 768px) {
+
+
+    .footer-section {
+        margin-bottom: 20px; /* Space between footer sections */
+    }
+
+    .contact-icon-container a {
+        margin: 0 10px; /* Spacing between icons */
+    }
+
+    .brochure {
+        text-align: center; /* Center-align brochure section */
+
+    }
+    .brochure h4 {
+        text-align: center; /* Center-align brochure section */
+        text-size;20px;
+    }
+}
+
+.brochure h4 {
+    font-size: 1.5rem; /* Adjust font size for better readability */
+}
+
+.modal-content {
+    padding: 20px; /* Add padding for better spacing inside modal */
+}
+
+  .card-img-top {
+    height: 150px; /* Adjust image height on smaller screens */
+  }}
+.footer {
+  background-color: #08005e;
+  color: #ffffff;
+  padding: 30px 20px;
+  font-weight: bold;
+  min-height: 300px;
+  position: relative;
+  font-size: 12px; /* Adjusted for better readability */
+}
+
+.footer-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 10px;
+  padding: 10px; /* Add padding for better spacing */
+}
+
+.footer-section h3 {
+  margin-bottom: 15px;
+  font-size: 1.2em; /* Slightly larger size */
+}
+
+.footer-section p,
+.footer-section ul {
+  font-size: 0.9em; /* Adjusted size for better readability */
+  line-height: 1.5; /* Increased line-height for clarity */
+}
+
+.footer-section a {
+  color: #ffffff;
+  text-decoration: none;
+}
+.nav-item{
+padding-left:10px;
+}
+.footer-section a:hover {
+  text-decoration: underline;
+}
+
+.footer-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px; /* Increased spacing for clarity */
+}
+
+.footer-section .m-2 {
+  margin: 0 5px;
+}
+
+.footer-section img {
+  max-height: 70px;
+  max-width: 70px;
+  margin-bottom: 15px; /* Added margin for spacing */
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column; /* Stack sections vertically on smaller screens */
+  }
+
+  .footer-section {
+    margin: 10px 0; /* Vertical margin for stacked sections */
+  }
+}
+
+.six h1 {
+  text-align: center;
+  color:#08005e; font-size:50px; font-weight:400;
+  text-transform: uppercase;
+  word-spacing: 1px; letter-spacing:2px; color:#08005e;
+}
+.six  p {
+  line-height:2em; padding-bottom:15px;
+  text-transform: none;
+  font-size:30px;
+  font-weight: normal;
+  font-style: italic; font-family: "Playfair Display","Bookman",serif;
+  color:#999; letter-spacing:-0.005em; word-spacing:1px;
+  letter-spacing:none;
+  text-align: center;
+  font-size:30px;
+}
+ .contact-icon-container {
+  position: fixed; /* Fixed position to keep it in the same spot on scroll */
+  top: 20px; /* Adjust as needed for vertical position */
+  right: 20px; /* Adjust as needed for horizontal position */
+  width: 60px; /* Slightly wider for better spacing */
+  border-radius: 10px; /* Rounded corners */
+  display: flex;
+  flex-direction: column; /* Stack icons vertically */
+  justify-content: center; /* Center icons vertically */
+  align-items: center; /* Center icons horizontally */
+  padding: 10px; /* Padding inside the container */
+  z-index: 1000; /* Ensure it stays above other content */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+}
+
+.contact-icon-container a {
+    margin: 5px; /* Adjust as needed */
+    font-size: 28px; /* Adjust icon size if necessary */
+    transition: transform 0.3s;
+}
+
+.contact-icon-container a:hover {
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+.brochure {
+        text-align: center; /* Center-align brochure section */
+        padding: 1rem; /* Add padding */
+    }
+
+    .brochure h4 {
+        font-size: 1.5rem; /* Adjust font size for better readability */
+        margin-bottom: 0.5rem; /* Spacing below the heading */
+        color: #08005e
+    }
+
+    .download-btn {
+        padding: 0.5rem 1rem; /* Adjust button padding */
+        font-size: 1rem; /* Button font size */
+        cursor: pointer; /* Pointer cursor on hover */
+    }
+.close-btn {
+    color: #000; /* Close button color */
+    font-size: 24px; /* Font size for close button */
+    position: absolute; /* Positioning close button */
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.enquiry-form {
+    background: linear-gradient(to bottom, #0056b3, #001f4d); /* Gradient background */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+    font-size: 14px; /* Font size for the form */
+    margin: 20px auto; /* Center the form */
+    color: #ffffff; /* Text color */
+}
+
+.enquiry-form:hover {
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.enquiry-form h2 {
+    margin-bottom: 20px;
+    font-size: 24px; /* Increased font size for the heading */
+    text-align: center; /* Center align heading */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Space between form elements */
+}
+
+.form-control {
+    padding: 10px;
+    border-radius: 5px;
+    border: none; /* Remove border */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for inputs */
+}
+
+.form-control:focus {
+    outline: none; /* Remove outline */
+    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5); /* Blue shadow on focus */
+}
+
+.btn-submit {
+    background-color: #007bff; /* Bootstrap primary button color */
+    color: white; /* Text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%; /* Full width button */
+}
+
+.btn-submit:hover {
+    background-color: #0056b3; /* Darken button on hover */
+}
+
+@keyframes marquee {
+    0% { transform: translate(100%, 0); }
+    100% { transform: translate(-100%, 0); }
+}
+
+.download-btn {
+    display: inline-block;
+    background-color: orange; /* Button color */
+    color: white; /* Text color */
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make text bold */
+    transition: background-color 0.3s ease;
+    margin-top: 10px; /* Space between text and button */
+}
+
+.download-btn:hover {
+    background-color: darkorange; /* Change color on hover */
+}
+
+
+.contact-icon-container a:hover {
+
+  transform: scale(1.1); /* Slight zoom effect */
+
+}
+.topdiv {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    padding: 15px; /* Reduced padding for better mobile fit */
+
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow if necessary */
+}
+.academy-heading {
+    font-size: 23px; /* Heading size */
+    font-weight: bold;
+    color: #08005e; /* Darker color for better visibility */
+    margin-left:80px; /* Remove side margins */
+    text-align: center; /* Center align the heading */
+    white-space: nowrap; /* Prevent line break */
+}
+.topdiv img {
+    max-height: 50px;
+    margin-left: 20px; /* Space to the right of the logo */
+}
+
+
+
+.portal-container {
+    display: flex;
+    margin-left: auto; /* Push portal buttons to the right */
+}
+.payment-acceptance {
+
+  padding: 10px;
+  text-align: right; /* Align text to the right */
+}
+
+.payment-content {
+  display: inline-flex; /* Align items in a line */
+  align-items: center; /* Center items vertically */
+}
+
+.payment-acceptance p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: bold;
+  margin-right: 10px; /* Space between text and logos */
+}
+
+.payment-logo {
+  max-height: 30px; /* Adjust size */
+  margin-left: 5px; /* Space between logos */
+}
+
+
+.topdiv .portal {
+    background-color: #cf5320;
+    color: white;
+    padding: 10px 15px; /* Adjust padding for better fit */
+    border-radius: 50px;
+    margin: 5px; /* Space around buttons */
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s; /* Add transform transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Button shadow */
+}
+
+.topdiv .portal:hover {
+    background-color: darkorange;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+@media (max-width: 768px) {
+    .topdiv {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: center; /* Center items */
+        padding: 15px; /* Adjust padding on mobile */
+    }
+
+    .academy-heading {
+        font-size: 12px; /* Reduce heading size for mobile */
+        margin: 10px 0; /* Margin adjustments */
+        text-align: center; /* Center align heading on mobile */
+    }
+
+    .portal-container {
+        display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow buttons to wrap onto a new line */
+    justify-content: center; /* Center buttons on mobile */
+    width: 100%; /* Full width for button container */
+    }
+
+    .topdiv .portal {
+        width: 80%; /* Allow buttons to size properly */
+        text-align:center;
+        margin: 5px; /* Space around buttons */
+    }
+     .brochure h4 {
+            font-size: 1.25rem; /* Smaller font size on smaller screens */
+        }
+
+        .download-btn {
+            width: 100%; /* Full width button on smaller screens */
+            font-size: 1.1rem; /* Slightly larger font size */
+        }
+
+        .modal-content {
+            padding: 15px; /* Reduced padding for smaller screens */
+        }
+
+}
+
+      </style>
+  </head>
+  <body>
+
+
+<div class="topdiv">
+    <a href="{% url 'index' %}">
+        <img src="{% static 'images/logos/logocsei.jpg' %}"  alt="CSEI">
+    </a>
+
+    <h2 class="academy-heading" style="text-align:center;color: #08005e">CREATIVE STAR EDUCATION INSTITUTES ACADEMY FZ-LLC</h2>
+    <div class="portal-container">
+        <a class="portal" href="{% url 'student_login' %}">Student Portal</a>
+        <a class="portal" href="{% url 'teacher_login' %}">Staff Portal</a>
+    </div>
+</div>
+
+ <nav class="navbar navbar-expand-lg navbar-light p-2">
+    <div class="container-fluid justify-content-center">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto"> <!-- Use mx-auto for centering -->
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="{% url 'index' %}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownAbout" role="button" data-bs-toggle="dropdown" aria-expanded="false">About</a>
+                    <ul class="dropdown-menu about-dropdown" aria-labelledby="navbarDropdownAbout">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'aboutus' %}"><img src="{% static 'images/educar1.jpg' %}" alt="About Us"><span>About Us</span></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'teampage' %}"><img src="{% static 'images/educar1.jpg' %}" alt="Team"><span>Our Team</span></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'policies' %}"><img src="{% static 'images/pol.jpg' %}" alt="Policies"><span>Policies</span></a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'accreditation' %}"><img src="{% static 'images/od1.jpg' %}" alt="Accreditation"><span>Accreditation</span></a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our Programs</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li class="dropdown-submenu">
+                            <a class="dropdown-item dropdown-toggle text-white" href="#">Hospitality and Tourism</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item text-white" href="{% url 'tourism_hospitality' %}">Tourism & Hospitality Management</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'barista_training' %}">Barista Training Course</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'housekeeping' %}">Training Diploma in Housekeeping</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'food_sanitation' %}">Food Safety and Sanitation</a></li>
+                                <li><a class="dropdown-item text-white" href="{% url 'food_beverage' %}">Food & Beverage Service Training</a></li>
+                            </ul>
+                        </li>
+                        <li><a class="dropdown-item text-white" href="{% url 'culinary_arts' %}">Culinary Arts</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url 'human_resource' %}">Human Resource Management</a></li>
+                        <li><a class="dropdown-item text-white" href="{% url 'health_social' %}">Health and Social Care Management</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Business Management</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="{% url 'careerpage' %}">CAREERS</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink2" role="button" data-bs-toggle="dropdown" aria-expanded="false">Student Services</a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                        <li><a class="dropdown-item" href="{% url 'apply_online' %}"><img src="{% static 'images/appl1.jpg' %}" alt="Apply Online"><span>Apply Online</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'student_jobs' %}"><img src="{% static 'images/logos/studentjob1.jpg' %}" alt="Student Job Placement"><span>Student Job Placement</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'student_visa' %}"><img src="{% static 'images/visa1.jpg' %}" alt="Student Visa"><span>Student Visa</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'student_fee' %}"><img src="{% static 'images/fee.jpg' %}" alt="Fee Structure"><span>Fee Structure</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'student_travel' %}"><img src="{% static 'images/car.jpg' %}" alt="Travelling To CSEI Academy"><span>Travelling To CSEI Academy</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'student_accommodation' %}"><img src="{% static 'images/studnetacco.jpg' %}" alt="Accommodation Policy"><span>Accommodation Policy</span></a></li>
+                        <li><a class="dropdown-item" href="{% url 'career_advice' %}"><img src="{% static 'images/career.jpg' %}" alt="Career Advice Guidance"><span>Career Advice Guidance</span></a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="{% url 'contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+  <!-- Contact Icons -->
+<div class="contact-icon-container">
+    <a href="{% url 'enquiry_view' %}" title="Enquiry">
+        <i class="fa-regular fa-comment" style="color: #6a90d2;"></i>
+    </a>
+    <a href="https://wa.me/971543185454" target="_blank" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp" style="color: #2ebd92;"></i>
+    </a>
+</div>
+
+ <main role="main" >
+        {% block content %}{% endblock %}
+    </main>
+<!-- Brochure Section -->
+<div class="brochure">
+    <h4 class="marquee">For more details, download our brochure!</h4>
+    <button class="download-btn" id="openModal">Download Brochure</button>
+</div>
+
+<!-- Modal for Enquiry Form -->
+<div class="modal" id="enquiryModal" style="display:none;">
+    <div class="modal-content">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <div class="col-md-6 enquiry-form">
+            <h2>Share your details and we’ll get back to you</h2>
+            <form method="POST" action="{% url 'download_brochure' %}" id="enquiryForm">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Enter your name*</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your email*</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">Enter mobile number*</label>
+                    <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="+971" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Select course applying for*</label>
+                    <select class="form-control" id="course" name="course" required>
+                        <option value="">Select a course</option>
+                        <option value="hospitality">Hospitality and Tourism</option>
+                        <option value="hr">Human Resource Management</option>
+                        <option value="culinary">Culinary Arts</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent" class="consent-label">
+                        I authorize to contact me with updates & notifications via email, SMS, WhatsApp, and voice call.
+                    </label>
+                </div>
+                <button type="submit" class="btn-submit">Submit Enquiry</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer and scripts omitted for brevity -->
+<div class="payment-acceptance">
+  <div class="payment-content">
+<h2 style="font-size: 20px; color: #08005e; font-family: 'Georgia', serif; font-style: italic;">We Accept</h2>
+
+
+    <img src="{% static 'images/logos/visacard.jpg' %}" alt="Visa" class="payment-logo">
+    <img src="{% static 'images/logos/paymentlogo.png' %}" alt="MasterCard" class="payment-logo">
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <a href="{% url 'index' %}"><img src="{% static 'images/download1.jpg' %}" alt="Logo"></a>
+      <h3 class="mt-3">Our Vision</h3>
+      <p>Our vision is to guide and support students to grow confident in the career path they choose with the education they get from <small><b>CREATIVE STAR EDUCATION INSTITUTES ACADEMY FZ-LLC</b></small></p>
+      <a href="https://www.facebook.com/studyindubaidegree" class="m-2"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.instagram.com/cseiacademy/" class="m-2"><i class="fa-brands fa-instagram"></i></a>
+    </div>
+    <div class="footer-section">
+      <h3>USEFUL LINKS</h3>
+      <ul>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'aboutus' %}">About Us</a></li>
+        <li><a href="#programs">Our Programs</a></li>
+        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+        <li><a href="#">Blog/News</a></li>
+        <li><a href="{% url 'careerpage' %}">Careers</a></li>
+        <li><a href="{% url 'policies' %}">Privacy Policy</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>COURSES WE OFFER</h3>
+      <ul>
+       <a href="{% url 'tourism_hospitality' %}"> <li>Tourism & Hospitality Management</li></a>
+        <a href="{% url 'barista_training' %}"><li>Front Desk Operations</li></a>
+        <a href="{% url 'barista_training' %}"><li>Barista Training Course</li></a>
+        <a href="{% url 'human_resource' %}"><li>Human Resource Management in Hospitality and Tourism</li></a>
+        <a href="{% url 'housekeeping' %}"><li>Training Diploma in House Keeping</li></a>
+        <li>Food Safety & Sanitation</li>
+        <li>Food and Beverage Service Training</li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>GET IN TOUCH</h3>
+      <p>CSEI Academy (Creative Star Education Institutes Academy FZ-LLC)</p>
+      <p>Dubai International Academic City Building 12 Campus No: 303, Dubai, U.A.E</p>
+      <p><i class="fa-solid fa-phone m-1"></i>: 04-4331277, +971543185454, +971 52 217 5877</p>
+      <p><i class="fa-solid fa-envelope m-1"></i>: <a href="mailto:admission@cseiacademy.ae">admission@cseiacademy.ae</a></p>
+    </div>
+  </div>
+</footer>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Open modal
+    $('#openModal').click(function() {
+        $('#enquiryModal').show(); // Show modal without dark background
+    });
+
+    // Close modal
+    $('#closeModal').click(function() {
+        $('#enquiryModal').hide();
+    });
+
+    // Close modal when clicking outside of it
+    $(window).click(function(event) {
+        if ($(event.target).is('#enquiryModal')) {
+            $('#enquiryModal').hide();
+        }
+    });
+});
+
+// Form submission
+$('#enquiryForm').submit(function(event) {
+    // No need to prevent the default form submission
+    // The form will submit normally, allowing Django to handle it
+
+    // Show a thank you alert
+    alert("Thank you for your enquiry! Your brochure will start downloading.");
+
+    // The form will submit and the server will handle the download
+});
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  </body>
+  </html>
+

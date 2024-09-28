@@ -1,0 +1,142 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Apply for Accommodation{% endblock %}
+
+{% block content %}
+ <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  .background {
+    background-image: url("{% static 'images/studentbed3.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-container {
+    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
+    font-family: 'Arial', sans-serif; /* Modern font */
+  }
+
+  h2 {
+    text-align: center;
+    color: #08005e;
+    margin-bottom: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  .form-group {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #08005e;
+    font-weight: 600;
+  }
+
+  .form-group .input-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 1rem;
+    box-sizing: border-box;
+    background: transparent; /* Transparent background */
+  }
+
+  .form-group input::placeholder {
+    color: #888; /* Placeholder color */
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    border-color: #08005e;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Focus effect */
+  }
+
+  .form-group button {
+    background-color: #08005e;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .form-group button:hover {
+    background-color: #0a1c6b;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+
+  .form-group button:focus {
+    outline: 2px solid #fff;
+    outline-offset: 4px;
+  }
+
+  .success-message {
+    color: #28a745;
+    font-size: 1.25rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    border-radius: 8px;
+    background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+    border: 1px solid #28a745;
+  }
+
+  .form-container input[type="date"]::-webkit-calendar-picker-indicator {
+  }
+</style>
+
+<div class="background">
+  <div class="form-container">
+    <h2>Accommodation Application Form</h2>
+
+
+
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          <div class="input-wrapper">
+            {{ field }}
+          </div>
+        </div>
+      {% endfor %}
+      <div class="form-group">
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}
