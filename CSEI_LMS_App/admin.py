@@ -103,8 +103,7 @@ class ResultAdmin(admin.ModelAdmin):
     list_display = ('student', 'exam', 'marks', 'date')
 
 class AccommodationApplicationAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'course_enrolled', 'uae_entry_date', 'start_date_of_accommodation', 'bed_space_option')
-    search_fields = ('first_name', 'course_enrolled')
+    list_display = ('first_name', 'uae_entry_date', 'start_date_of_accommodation', 'bed_space_option')
     list_filter = ('bed_space_option', 'uae_entry_date')
 @admin.register(Enquiry)
 class EnquiryAdmin(admin.ModelAdmin):

@@ -34,10 +34,16 @@
             overflow-x: hidden; /* Prevent horizontal scroll */
             background-color: white;
         }
+
 .navbar {
+    background-color: #08005e;
+
+}
+.nav-link {
     background-color: #08005e;
     text-transform: uppercase;
 }
+
 
 .navbar .nav-link,
 .navbar .navbar-brand {
@@ -82,7 +88,7 @@
 }
 
 .dropdown-menu .dropdown-item span {
-    font-weight: bold;
+
 }
 
 .dropdown-submenu {
@@ -194,7 +200,7 @@
 }
 
 .about-dropdown .dropdown-item span {
-  font-weight: bold;
+
 }
 
 .read-more {
@@ -361,6 +367,39 @@ padding-left:10px;
   max-width: 70px;
   margin-bottom: 15px; /* Added margin for spacing */
 }
+.footer-section {
+    padding: 20px; /* Add padding */
+}
+
+.footer-section h3 {
+    color: #ffffff; /* Ensure headings are visible */
+    margin-bottom: 10px; /* Adjust spacing */
+}
+
+
+.footer-section p,
+.footer-section ul {
+    color: #f0fbfc; /* Contrast text color for readability */
+}
+/* Base styles for links */
+.footer-section a {
+    color: #ffffff; /* Base link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s, background-color 0.3s; /* Smooth transition for color changes */
+}
+
+/* Hover effect */
+.footer-section a:hover {
+    color: #06BBCC; /* Change color on hover */
+    background-color: rgba(255, 255, 255, 0.2); /* Optional: Add a subtle background */
+    text-decoration: underline; /* Optional: Add underline on hover */
+}
+
+/* Optional: Active state for better UX */
+.footer-section a:active {
+    color: #04A3A8; /* Darker color for active link */
+}
+
 
 @media (max-width: 768px) {
   .footer-content {
@@ -520,25 +559,59 @@ padding-left:10px;
 .topdiv {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    padding: 15px; /* Reduced padding for better mobile fit */
-
+    justify-content: space-between; /* Space out items */
+    padding: 15px; /* Add padding for mobile */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    flex-wrap: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflow if necessary */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
 }
-.academy-heading {
-    font-size: 23px; /* Heading size */
+
+.topdiv .cseilogo {
+    height: 80px; /* Adjust logo height for mobile */
+    width: auto; /* Maintain aspect ratio */
+}
+
+.portal-container {
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center buttons on mobile */
+    margin-top: 10px; /* Space above buttons */
+}
+
+.topdiv .portal {
+    background-color: #cf5320;
+    color: white;
+    padding: 10px 15px; /* Adjust padding for better fit */
+    border-radius: 50px;
+    margin: 5px; /* Space around buttons */
+    text-decoration: none;
     font-weight: bold;
-    color: #08005e; /* Darker color for better visibility */
-    margin-left:80px; /* Remove side margins */
-    text-align: center; /* Center align the heading */
-    white-space: nowrap; /* Prevent line break */
+    transition: background-color 0.3s, transform 0.3s; /* Add transform transition */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Button shadow */
 }
-.topdiv img {
-    max-height: 50px;
-    margin-left: 20px; /* Space to the right of the logo */
+
+.topdiv .portal:hover {
+    background-color: darkorange;
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+@media (max-width: 768px) {
+    .topdiv {
+        flex-direction: column; /* Stack elements vertically on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .topdiv .cseilogo {
+        margin-bottom: 10px; /* Space below logo */
+    }
+
+    .portal-container {
+        justify-content: center; /* Center buttons */
+        width: 100%; /* Full width for button container */
+    }
+
+    .topdiv .portal {
+        width: 80%; /* Allow buttons to size properly */
+        text-align: center; /* Center text in buttons */
+    }
 }
 
 
@@ -571,48 +644,7 @@ padding-left:10px;
 }
 
 
-.topdiv .portal {
-    background-color: #cf5320;
-    color: white;
-    padding: 10px 15px; /* Adjust padding for better fit */
-    border-radius: 50px;
-    margin: 5px; /* Space around buttons */
-    text-decoration: none;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.3s; /* Add transform transition */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Button shadow */
-}
-
-.topdiv .portal:hover {
-    background-color: darkorange;
-    transform: scale(1.05); /* Slightly enlarge on hover */
-}
-
 @media (max-width: 768px) {
-    .topdiv {
-        flex-direction: column; /* Stack elements vertically on small screens */
-        align-items: center; /* Center items */
-        padding: 15px; /* Adjust padding on mobile */
-    }
-
-    .academy-heading {
-        font-size: 12px; /* Reduce heading size for mobile */
-        margin: 10px 0; /* Margin adjustments */
-        text-align: center; /* Center align heading on mobile */
-    }
-
-    .portal-container {
-        display: flex; /* Use flexbox for layout */
-    flex-wrap: wrap; /* Allow buttons to wrap onto a new line */
-    justify-content: center; /* Center buttons on mobile */
-    width: 100%; /* Full width for button container */
-    }
-
-    .topdiv .portal {
-        width: 80%; /* Allow buttons to size properly */
-        text-align:center;
-        margin: 5px; /* Space around buttons */
-    }
      .brochure h4 {
             font-size: 1.25rem; /* Smaller font size on smaller screens */
         }
@@ -635,10 +667,10 @@ padding-left:10px;
 
 <div class="topdiv">
     <a href="{% url 'index' %}">
-        <img src="{% static 'images/logos/logocsei.jpg' %}"  alt="CSEI">
+        <img src="{% static 'images/csei.jpg' %}" class="cseilogo" alt="CSEI">
     </a>
 
-    <h2 class="academy-heading" style="text-align:center;color: #08005e">CREATIVE STAR EDUCATION INSTITUTES ACADEMY FZ-LLC</h2>
+    <!--<h2 class="academy-heading" style="text-align:center;color: #08005e">CREATIVE STAR EDUCATION INSTITUTES ACADEMY FZ-LLC</h2>-->
     <div class="portal-container">
         <a class="portal" href="{% url 'student_login' %}">Student Portal</a>
         <a class="portal" href="{% url 'teacher_login' %}">Staff Portal</a>
@@ -676,9 +708,9 @@ padding-left:10px;
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">Our Programs</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <li class="dropdown-submenu">
-                            <a class="dropdown-item dropdown-toggle text-white" href="#">Hospitality and Tourism</a>
+                            <a class="dropdown-item dropdown-toggle text-white" href="{% url 'Tourism_Hospitality' %}">Tourism and Hospitality</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item text-white" href="{% url 'tourism_hospitality' %}">Tourism & Hospitality Management</a></li>
+                                <li><a class="dropdown-item text-white" style="font-size:14px" href="{% url 'tourism_hospitality' %}">Tourism & Hospitality Management</a></li>
                                 <li><a class="dropdown-item text-white" href="{% url 'barista_training' %}">Barista Training Course</a></li>
                                 <li><a class="dropdown-item text-white" href="{% url 'housekeeping' %}">Training Diploma in Housekeeping</a></li>
                                 <li><a class="dropdown-item text-white" href="{% url 'food_sanitation' %}">Food Safety and Sanitation</a></li>
@@ -687,7 +719,7 @@ padding-left:10px;
                         </li>
                         <li><a class="dropdown-item text-white" href="{% url 'culinary_arts' %}">Culinary Arts</a></li>
                         <li><a class="dropdown-item text-white" href="{% url 'human_resource' %}">Human Resource Management</a></li>
-                        <li><a class="dropdown-item text-white" href="{% url 'health_social' %}">Health and Social Care Management</a></li>
+                        <li><a class="dropdown-item text-white"style="font-size:14px" href="{% url 'health_social' %}">Health and Social Care Management</a></li>
                         <li><a class="dropdown-item text-white" href="#">Business Management</a></li>
                     </ul>
                 </li>
@@ -728,52 +760,7 @@ padding-left:10px;
  <main role="main" >
         {% block content %}{% endblock %}
     </main>
-<!-- Brochure Section -->
-<div class="brochure">
-    <h4 class="marquee">For more details, download our brochure!</h4>
-    <button class="download-btn" id="openModal">Download Brochure</button>
-</div>
 
-<!-- Modal for Enquiry Form -->
-<div class="modal" id="enquiryModal" style="display:none;">
-    <div class="modal-content">
-        <span class="close-btn" id="closeModal">&times;</span>
-        <div class="col-md-6 enquiry-form">
-            <h2>Share your details and we’ll get back to you</h2>
-            <form method="POST" action="{% url 'download_brochure' %}" id="enquiryForm">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="name">Enter your name*</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Your email*</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="mobile">Enter mobile number*</label>
-                    <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="+971" required>
-                </div>
-                <div class="form-group">
-                    <label for="course">Select course applying for*</label>
-                    <select class="form-control" id="course" name="course" required>
-                        <option value="">Select a course</option>
-                        <option value="hospitality">Hospitality and Tourism</option>
-                        <option value="hr">Human Resource Management</option>
-                        <option value="culinary">Culinary Arts</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" id="consent" name="consent" required>
-                    <label for="consent" class="consent-label">
-                        I authorize to contact me with updates & notifications via email, SMS, WhatsApp, and voice call.
-                    </label>
-                </div>
-                <button type="submit" class="btn-submit">Submit Enquiry</button>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- Footer and scripts omitted for brevity -->
 <div class="payment-acceptance">
@@ -830,37 +817,7 @@ padding-left:10px;
   </div>
 </footer>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function() {
-    // Open modal
-    $('#openModal').click(function() {
-        $('#enquiryModal').show(); // Show modal without dark background
-    });
 
-    // Close modal
-    $('#closeModal').click(function() {
-        $('#enquiryModal').hide();
-    });
-
-    // Close modal when clicking outside of it
-    $(window).click(function(event) {
-        if ($(event.target).is('#enquiryModal')) {
-            $('#enquiryModal').hide();
-        }
-    });
-});
-
-// Form submission
-$('#enquiryForm').submit(function(event) {
-    // No need to prevent the default form submission
-    // The form will submit normally, allowing Django to handle it
-
-    // Show a thank you alert
-    alert("Thank you for your enquiry! Your brochure will start downloading.");
-
-    // The form will submit and the server will handle the download
-});
-</script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>

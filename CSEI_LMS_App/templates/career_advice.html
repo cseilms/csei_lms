@@ -7,6 +7,9 @@
 
     <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore career advice, guidance, and resources at CSEI Academy to help you plan your future.">
+
+
 <style>
 /* General Styles */
 body {
@@ -149,7 +152,7 @@ a:hover {
 }
 
 .bottom_card p {
-  color: #333;
+  color: grey;
 }
 
 .bottom_card a {
@@ -185,6 +188,124 @@ a:hover {
     margin-bottom: 1rem;
   }
 }
+
+
+
+.header_section {
+  position: relative;
+  overflow: hidden; /* Ensure no overflow */
+  transition: background-size 0.5s ease-in-out; /* Smooth scaling of the background */
+}
+
+.header_section h2 {
+  transform: translateY(-100px); /* Start the heading off-screen */
+  transition: transform 0.5s ease; /* Smooth transition for the heading */
+}
+
+.header_section.scrolled h2 {
+  transform: translateY(0); /* Move the heading into place */
+}
+
+.header_section.scrolled {
+  background-size: cover; /* Make sure the background is always covering */
+}
+
+  .header_section {
+    position: relative;
+    overflow: hidden;
+    transition: background-size 0.5s ease-in-out;
+  }
+
+  .header_section h2 {
+    transform: translateY(-100px);
+    transition: transform 0.5s ease;
+  }
+
+  .header_section.scrolled h2 {
+    transform: translateY(0);
+  }
+
+  .header_section.scrolled {
+    background-size: cover;
+  }
+
+  .policy_card .icon img {
+  width: 80%; /* Start with a smaller width */
+  opacity: 0.5; /* Start with lower opacity */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition for both transform and opacity */
+}
+
+.policy_card.scrolled .icon img {
+  transform: scale(1.2); /* Scale to normal size */
+  opacity: 1; /* Full opacity */
+}
+
+  .policy_text h4 {
+  transform: translateX(100%); /* Start off-screen to the right */
+  opacity: 0; /* Start transparent */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition for both transform and opacity */
+}
+
+.policy_card.scrolled .policy_text h4 {
+  transform: translateX(0); /* Move to original position */
+  opacity: 1; /* Full opacity */
+}
+.policy_text p {
+  transform: translateY(20px); /* Start 20px below */
+  opacity: 0; /* Start transparent */
+  color: gray; /* Start with gray color */
+  transition: transform 0.5s ease, opacity 0.5s ease, color 0.5s ease; /* Smooth transitions */
+}
+
+.policy_card.scrolled .policy_text p {
+  transform: translateY(0); /* Move to original position */
+  opacity: 1; /* Full opacity */
+  color: black; /* Change to black */
+}
+.row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.row .text {
+  flex: 1;
+}
+
+.row h3 {
+  transform: translateX(-100%); /* Start off-screen to the left */
+  opacity: 0; /* Start transparent */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+.row img {
+  width: 80%; /* Start smaller */
+  opacity: 0; /* Start transparent */
+  transform: scale(0.8); /* Start slightly smaller */
+  transition: transform 0.8s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+.row.scrolled h3 {
+  transform: translateX(0); /* Move to original position */
+  opacity: 1; /* Full opacity */
+}
+
+.row.scrolled img {
+  opacity: 1; /* Full opacity */
+  transform: scale(1); /* Scale to normal size */
+}
+
+.row p {
+  transform: translateY(20px); /* Start 20px below */
+  opacity: 0; /* Start transparent */
+  transition: transform 0.8s ease, opacity 0.5s ease; /* Smooth transition */
+}
+
+.row.scrolled p {
+  transform: translateY(0); /* Move to original position */
+  opacity: 1; /* Full opacity */
+}
+
 </style>
 
 
@@ -201,8 +322,8 @@ a:hover {
       <img src="{% static 'images/team1.jpg' %}" alt="Progression Team">
     </div>
     <div class="policy_text">
-      <h4>Progression Team</h4>
-      <p>The team can help you to plan and progress onto work-based learning, employment or higher education. The Progression + team of CSEI Academy comprises of members from Placement & Counselling team who will guide learners regarding career opportunities in various sector like homecare, hospitals, hotel industry café & restaurants chains with our industry partners. They are able to assist with visits to local universities and open days and arrange careers related events in conjunction with faculties.</p>
+      <h4 style="font-size:40px">Progression Team</h4>
+      <p style="font-size:15px">The team can help you to plan and progress onto work-based learning, employment or higher education. The Progression + team of CSEI Academy comprises of members from Placement & Counselling team who will guide learners regarding career opportunities in various sector like homecare, hospitals, hotel industry café & restaurants chains with our industry partners. They are able to assist with visits to local universities and open days and arrange careers related events in conjunction with faculties.</p>
     </div>
   </div>
 
@@ -211,8 +332,8 @@ a:hover {
       <img src="{% static 'images/careejob.png' %}" alt="Careers Strategy">
     </div>
     <div class="policy_text">
-      <h4>Careers Strategy</h4>
-      <p>The team can help you to plan and progress onto work-based learning, employment or higher education. The Progression + team of CSEI Academy comprises of members from Placement & Counselling team who will guide learners regarding career opportunities in various sector like homecare, hospitals, hotel industry café & restaurants chains with our industry partners. They are able to assist with visits to local universities and open days and arrange careers related events in conjunction with faculties.</p>
+      <h4 style="font-size:40px">Careers Strategy</h4>
+      <p style="font-size:20px">The team can help you to plan and progress onto work-based learning, employment or higher education. The Progression + team of CSEI Academy comprises of members from Placement & Counselling team who will guide learners regarding career opportunities in various sector like homecare, hospitals, hotel industry café & restaurants chains with our industry partners. They are able to assist with visits to local universities and open days and arrange careers related events in conjunction with faculties.</p>
       <a href="{% static 'documents/CSEI-Academy-Carreer-Strategy.pdf' %}" download="CSEI-Academy-Carreer-Strategy.pdf">Download PDF</a>
 
     </div>
@@ -222,10 +343,10 @@ a:hover {
 <section class="bottom_card">
   <div class="row">
     <div class="text">
-      <h3>Progression</h3>
+      <h3 style="font-size:40px">Progression</h3>
 
 
-      <p>The Progression+ team of CSEI Academy includes experts in admissions, careers, higher education, work experience and apprenticeships who offer advice and guidance. They can help with all aspects of careers and progression which includes applying for courses, interview preparation classes, resume writing, application forms, job and apprenticeship searches, and gap year opportunities.</p>
+      <p style="font-size:20px">The Progression+ team of CSEI Academy includes experts in admissions, careers, higher education, work experience and apprenticeships who offer advice and guidance. They can help with all aspects of careers and progression which includes applying for courses, interview preparation classes, resume writing, application forms, job and apprenticeship searches, and gap year opportunities.</p>
 
 
     </div>
@@ -235,11 +356,71 @@ a:hover {
   <div class="row">
     <img src="{% static 'images/career2.jpg' %}" alt="Career Coaching">
     <div class="text">
-      <h3>Career Coaching</h3>
-      <p>Don’t know what to do? Our online Career Coach as well as the placement counselling team package is designed to help you map out your education and career options. The placement officer can map out a path through education and training opportunities to help you reach your career goals, whatever they may be. View Career Coach and find out the career options available to you.</p>
+      <h3 style="font-size:40px">Career Coaching</h3>
+      <p style="font-size:20px">Don’t know what to do? Our online Career Coach as well as the placement counselling team package is designed to help you map out your education and career options. The placement officer can map out a path through education and training opportunities to help you reach your career goals, whatever they may be. View Career Coach and find out the career options available to you.</p>
       <a href="{% url 'apply_online' %}">Book an appointment</a>
     </div>
   </div>
 </section>
+
+<script>
+  window.addEventListener('scroll', function() {
+    const headerSection = document.querySelector('.header_section');
+    const scrollPosition = window.scrollY;
+
+    // Check the scroll position
+    if (scrollPosition > 50) { // You can adjust this value
+      headerSection.classList.add('scrolled');
+      headerSection.style.backgroundSize = '110%'; // Increase background size
+    } else {
+      headerSection.classList.remove('scrolled');
+      headerSection.style.backgroundSize = '100%'; // Reset background size
+    }
+  });
+   window.addEventListener('scroll', function() {
+    const cards = document.querySelectorAll('.policy_card');
+    const scrollPosition = window.scrollY;
+
+    cards.forEach(card => {
+      const cardPosition = card.getBoundingClientRect().top;
+
+      // Adjust threshold based on your design
+      if (cardPosition < window.innerHeight && cardPosition > 0) {
+        card.classList.add('scrolled');
+      } else {
+        card.classList.remove('scrolled');
+      }
+    });
+  });
+
+   window.addEventListener('scroll', function() {
+    const cards = document.querySelectorAll('.policy_card');
+
+    cards.forEach(card => {
+      const cardPosition = card.getBoundingClientRect().top;
+
+      if (cardPosition < window.innerHeight && cardPosition > 0) {
+        card.classList.add('scrolled');
+      } else {
+        card.classList.remove('scrolled');
+      }
+    });
+  });
+  window.addEventListener('scroll', function() {
+    const rows = document.querySelectorAll('.row');
+
+    rows.forEach(row => {
+      const rowPosition = row.getBoundingClientRect().top;
+
+      // Check if the row is in the viewport
+      if (rowPosition < window.innerHeight && rowPosition > 0) {
+        row.classList.add('scrolled');
+      } else {
+        row.classList.remove('scrolled');
+      }
+    });
+  });
+</script>
+
 
 {% endblock %}

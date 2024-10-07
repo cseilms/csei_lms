@@ -1,21 +1,609 @@
-{% extends 'base.html' %}
+{% extends 'basepage.html' %}
+{% load static %}
 
-{% block title %}Home - CSEI Academy LMS{% endblock %}
-
+{% block title %}Creative Star Education Institutes{% endblock %}
 {% block content %}
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <div class="jumbotron">
-        <h1 class="display-4">Welcome to CSEI Academy LMS</h1>
-        <p class="lead">Creative Star Education Institutes (CSEI) is dedicated to fostering intellectual discovery and providing top-notch education.</p>
-        <hr class="my-4">
-        <p>
-            At CSEI, we believe in more than just traditional education. Our LMS offers an open space for learning enthusiasts from around the world to enhance their knowledge and skills.
-            Based in Dubai, UAE, a global hub for business and tourism, we aim to provide students with not only academic excellence but also practical skills needed for the real world.
-        </p>
-        <p>
-            We focus on engaging students through quality education without the pressure, ensuring they are well-prepared to utilize their learning in practical scenarios.
-            With CSEI Academy LMS, students have access to a wide range of resources designed to help them explore, learn, and grow.
-        </p>
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn More About Us</a>
+<style>
+    .carousel-item img {
+        object-fit: cover; /* Ensure images cover the container */
+        height: 400px; /* Set height for images */
+    }
+/* General color variables */
+/* General color variables */
+:root {
+    --main-color: #08005e; /* Main color */
+    --light-blue: #0a0c7a; /* Lighter shade for hover effects */
+    --card-heading-color: #08005e; /* Main color for card headings */
+    --about-heading-color: #08005e; /* Main color for About section heading */
+}
+.about_div h2 {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typewriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .about_div h2 {
+        animation:
+            typing 5s steps(30, end), /* Longer duration for mobile */
+            blink-caret .75s step-end infinite;
+        letter-spacing: .03em; /* Slightly reduce letter spacing for smaller screens */
+        font-size: 1.5rem; /* Adjust font size for better visibility */
+    }
+}
+
+
+/* Card heading styles */
+.card-title {
+    color: var(--card-heading-color); /* Use the defined color for card headings */
+}
+
+/* Other styles remain unchanged */
+
+
+/* Custom button styles */
+.btn-custom {
+    background-color: var(--main-color); /* New background color */
+    color: #fff; /* White text color */
+}
+
+
+.course_card{
+    margin-top:100px;
+    margin-bottom:100px;
+}
+.btn-custom:hover {
+    background-color: var(--light-blue); /* Slightly lighter color on hover */
+}
+.calc_content {
+    max-width: 1200px; /* Set a max width to match other sections */
+    margin: 0 auto; /* Center the content */
+    border-radius: 20px;
+    background: linear-gradient(135deg, #08005e, #4A90E2); /* Blue gradient background */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: space-around; /* Distribute items evenly */
+    padding: 40px; /* Add some padding */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    opacity: 0; /* Start as invisible */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.calc_content.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+
+.calc-item {
+    text-align: center; /* Center the text */
+    color: white; /* Text color */
+    transition: transform 0.3s ease; /* Smooth transition */
+    margin: 10px; /* Adjust margin for spacing */
+    flex: 1 1 200px; /* Allow items to grow equally and set a minimum width */
+}
+.calc-title {
+    color: #08005e; /* Set the title color */
+    text-align: center; /* Center the title */
+    font-size: 2.5rem; /* Font size for the title */
+    margin-bottom: 20px; /* Space below the title */
+    margin-top:100px;
+}
+
+
+.calc-heading {
+    color: orange; /* Orange color for headings */
+    margin: 0; /* Remove default margin */
+    font-size: 2rem; /* Adjust font size */
+    transition: transform 0.3s ease; /* Smooth transition for zoom effect */
+}
+
+.calc-item:hover .calc-heading {
+    transform: scale(1.1); /* Zoom in effect on hover */
+}
+
+.calc-item p {
+    margin: 10px 0 0; /* Adjust margin for paragraph */
+    line-height: 1.5; /* Improve line height for readability */
+}
+
+.cookie-consent {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1000;
+    display: none; /* Initially hidden */
+}
+
+.cookie-consent p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cookie-consent button {
+    padding: 10px 20px; /* Adjust button size */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .calc_content {
+        padding: 20px; /* Reduce padding on smaller screens */
+    }
+
+    .calc-heading {
+        font-size: 1.5rem; /* Smaller heading size for mobile */
+    }
+
+    .calc-item p {
+        font-size: 0.9rem; /* Smaller paragraph text for mobile */
+    }
+}
+
+
+
+
+
+
+    .carousel-caption {
+        background: rgba(0, 0, 0, 0.5); /* Dark transparent background */
+        padding: 20px;
+        border-radius: 8px;
+        left: 0;
+        right: 0;
+        margin-top: 400px; /* Adjust this value to your preference */
+        margin-bottom: 0; /* Optional: set bottom margin to 0 if needed */
+    }
+    .carousel-caption h3 {
+        font-size: 2.5rem; /* Increase heading size */
+        text-align: center; /* Center the heading */
+        margin-bottom: 15px;
+        color: #fff; /* White text color */
+    }
+    .carousel-caption p {
+        text-align: center; /* Center the paragraph text */
+        font-size: 1.2rem;
+        color: #fff; /* White text color */
+    }
+    .student-services {
+        width: 100%;
+        height: auto; /* Adjust height automatically */
+        background: url("{% static 'images/career2.jpg' %}") no-repeat center center;
+        background-size: cover;
+        position: relative;
+        color: #fff;
+        padding: 50px 0;
+        margin-bottom: 50px; /* Ensure spacing between student-services and footer */
+    }
+    .student-services::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Dark shade */
+    }
+    .student-services .container {
+        position: relative;
+        z-index: 1;
+    }
+    .service-item {
+        text-align: center;
+        margin-bottom: 20px;
+        position: relative;
+        background: rgba(255, 165, 0, 0.3); /* Semi-transparent background color */
+        border-radius: 20px; /* Rounded corners */
+        padding: 20px; /* Padding inside the box */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Box shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        max-width: 100%; /* Full width for responsiveness */
+        margin: 0 auto; /* Center the items */
+        border: 2px solid #fff; /* Thinner white border */
+        position: relative; /* Relative position for pseudo-element */
+        overflow: hidden; /* Ensure that pseudo-elements do not overflow */
+    }
+    .btn-custom {
+    background-color: #08005e; /* New background color */
+    color: #fff; /* White text color */
+    border: none; /* Remove border */
+}
+
+.btn-custom:hover {
+    background-color: #0a0c7a; /* Slightly lighter color on hover */
+}
+    .service-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 128, 0.3); /* Semi-transparent background color */
+        clip-path: polygon(0 0, 100% 0, 0 100%); /* Diagonal rectangle */
+        border-radius: 20px; /* Rounded corners */
+        z-index: -1; /* Behind the content */
+    }
+    .service-item:hover {
+        transform: scale(1.05); /* Zoom in effect */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced box shadow on hover */
+    }
+    .service-icon {
+        width: 80px; /* Size for better visibility */
+        height: 80px; /* Size for better visibility */
+        background-color: orange;
+        border-radius: 50%; /* Circular shape */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px;
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+    }
+    .service-icon img {
+        width: 40px; /* Size to fit within the circle */
+        height: 40px; /* Size to fit within the circle */
+        opacity: 0.8;
+    }
+
+    .about_div{
+        border-radius:10px;
+        margin-top:100px;
+        margin-bottom:100px;
+    }
+    h3 {
+        font-size: 1.2rem; /* Font size adjustment */
+        margin-bottom: 10px;
+    }
+    a {
+        color: #fff; /* White text color */
+        text-decoration: none; /* Remove underline */
+    }
+    a:hover {
+        text-decoration: none; /* Underline on hover */
+    }
+
+    .section {
+        margin-bottom: 50px; /* Space between sections */
+        transition: margin-bottom 0.3s ease; /* Smooth transition for margin */
+    }
+
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out, margin 0.3s ease; /* Adding margin transition */
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+        margin-bottom: 20px; /* Optional: Add some bottom margin when visible */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 767px) {
+        .service-item {
+            max-width: 100%; /* Full width on smaller screens */
+        }
+        .about_div{
+        border-radius:10px;
+        margin-top:30px;
+        margin-bottom:50px;
+    }
+    }
+</style>
+
+<!-- Carousel -->
+<div class="carouseldiv">
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators/dots -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#demo" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+
+        <!-- The slideshow/carousel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'images/OIG3.jpg' %}" alt="Education" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Discover Your Potential</h3>
+                    <p>Unlock your intellectual curiosity and embrace a journey of discovery at CSEI</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/social4.jpg' %}" alt="Learning" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Transform Learning into Action</h3>
+                    <p>Beyond the classroom: Apply knowledge to real-world challenges and make an impact</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'images/foodb4.jpg' %}" alt="Future" class="d-block w-100">
+                <div class="carousel-caption d-none d-md-block">
+                    <h3>Global Education, Local Impact</h3>
+                    <p>Gain world-class skills and insights, and shape your future in the heart of Dubai</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls/icons -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
+</div>
+
+<div class="container">
+    <div class="course_card section fade-in">
+        <div class="row mt-3">
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-logo">
+                        <img src="{% static 'images/card/img_1.png' %}" alt="Logo" />
+                    </div>
+                    <img src="{% static 'images/card/hotelcard13.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Tourism and Hospitality Management </h5>
+                        <p class="card-text">Tourism and Hospitality Management prepares learners to become effective managers by blending theoretical knowledge with practical skills across key industry topics</p>
+                        <a href="{% url 'tourism_hospitality' %}" class="btn btn-custom">More Details</a>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-logo">
+                        <img src="{% static 'images/card/ho.png' %}" alt="Logo" />
+                    </div>
+                    <img src="{% static 'images/card/hrcard1.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Health and Social Care Management</h5>
+                        <p class="card-text">Health and Social Care Management prepares learners for managerial roles by equipping them with essential knowledge and skills for effective leadership in the health and social care sector</p>
+                     <a href="{% url 'health_social_OTH' %}" class="btn btn-custom">More Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-logo">
+                        <img src="{% static 'images/card/cu.png' %}" alt="Logo" />
+                    </div>
+                    <img src="{% static 'images/card/culcard2.jpg' %}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                            <h5 class="card-title">Business Management</h5>
+                        <p class="card-text">Business Management equips learners with essential skills and knowledge for a successful career in diverse organizations, fostering confident, independent thinkers ready to adapt to change.</p>
+                          <a href="{% url 'business_management_OTH' %}" class="btn btn-custom">More Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="about_div section fade-in" style="margin-top:30px">
+        <div class="row align-items-center">
+            <!-- About Text -->
+            <div class="col-md-6 about-text">
+                <h2 class="typewriter">Welcome to CSEI Academy</h2>
+                <p>Creative Star Education Institutes (CSEI) is an educational center for the learning enthusiast which is an open space for intellectual discovery. We, at CSEI, are committed to providing innovative methods of learning and evaluation to the students, making them qualified professionals. CSEI has been established for students from all over the world to enhance and improve—not just educational knowledge but also the skills required to deal with the outside world.</p>
+
+               <a href="{% url 'aboutus' %}" class="read-more text-light">Read More</a>
+            </div>
+            <!-- About Image -->
+            <div class="col-md-6 about-image">
+                <img src="{% static 'images/stdnets.jpg' %}" alt="CSEI Academy Campus">
+            </div>
+        </div>
+    </div>
+
+    <div class="student-services section fade-in">
+        <div class="container">
+            <!-- First Row -->
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <img src="{% static 'icons/student_visa.jpg' %}" style="border-radius:10px" alt="Student Visa">
+                        </div>
+                        <h3><a href="{% url 'student_visa' %}" class="text-white">Student Visa</a></h3>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <img src="{% static 'icons/applyonline.jpg' %}" style="border-radius:10px" alt="Apply Online">
+                        </div>
+                        <h3><a href="{% url 'apply_online' %}" class="text-white">Apply Online</a></h3>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <img src="{% static 'icons/studnetportal.jpg' %}" style="border-radius:10px" alt="Student Placement">
+                        </div>
+                        <h3><a href="{% url 'student_jobs' %}" class="text-white">Student Placement</a></h3>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <img src="{% static 'icons/feestructure.jpg' %}" style="border-radius:10px" alt="Fee Structure">
+                        </div>
+                        <h3><a href="{% url 'student_fee' %}" class="text-white">Fee Structure</a></h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second Row -->
+            <div class="row">
+                <div class="col-md-6 mb-4 service-item-large">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <img src="{% static 'icons/studentportalicon.jpg' %}" style="border-radius:10px" alt="Student Portal">
+                        </div>
+                        <h3><a href="{% url 'student_login' %}" class="text-white">Student Portal</a></h3>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4 service-item-large">
+                    <div class="service-item">
+                        <div class="service-icon">
+                            <img src="{% static 'icons/scholership.png' %}" style="border-radius:10px" alt="Scholarships">
+                        </div>
+                        <h3><a href="/scholarships" class="text-white">Scholarships</a></h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h2 class="calc-title">Educational Excellence</h2> <!-- Centered Heading -->
+<div class="calc_content">
+
+    <div class="calc-item">
+        <h3 class="calc-heading">3+ years</h3>
+        <p>Educational excellence</p>
+    </div>
+    <div class="calc-item">
+        <h3 class="calc-heading">50+</h3>
+        <p>Expert faculty</p>
+    </div>
+    <div class="calc-item">
+        <h3 class="calc-heading">20+</h3>
+        <p>Student nationalities</p>
+    </div>
+    <div class="calc-item">
+        <h3 class="calc-heading">20+</h3>
+        <p>Recruiters from 100 companies</p>
+    </div>
+</div>
+<!--carol-->
+
+
+<div id="cookie-consent" class="cookie-consent">
+    <p>This website uses cookies to ensure you get the best experience. By accepting, you consent to our cookie policy.</p>
+    <button id="accept-cookies" class="btn btn-custom">Accept</button>
+</div>
+
+
+
+
+<!--end carol-->
+<script>
+    // JavaScript to handle scroll effects
+    document.addEventListener("DOMContentLoaded", function() {
+        const sections = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    });
+    // JavaScript to handle scroll effects
+document.addEventListener("DOMContentLoaded", function() {
+    const sections = document.querySelectorAll('.fade-in, .calc_content');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); // Stop observing after adding class
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+});
+//cookies session
+
+    document.addEventListener("DOMContentLoaded", function() {
+    // Check if the user has already accepted cookies
+    if (!getCookie("cookiesAccepted")) {
+        document.getElementById("cookie-consent").style.display = "flex";
+    }
+
+    document.getElementById("accept-cookies").addEventListener("click", function() {
+        setCookie("cookiesAccepted", "true", 30); // Accept for 30 days
+        document.getElementById("cookie-consent").style.display = "none";
+        // Optional: You could also trigger an event to log consent
+    });
+
+    function setCookie(name, value, days) {
+        let expires = "";
+        if (days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+        const nameEQ = name + "=";
+        const ca = document.cookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+});
+</script>
 {% endblock %}

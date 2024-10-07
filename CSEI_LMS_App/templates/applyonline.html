@@ -4,7 +4,7 @@
 {% block title %}Apply Online{% endblock %}
 
 {% block content %}
-    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
@@ -13,47 +13,43 @@
     background-image: url("{% static 'images/app2.jpg' %}");
     background-size: cover;
     background-position: center;
-    height: 1500px; /* Height for the applynow section */
+    height: auto; /* Allow height to adjust automatically */
     display: flex;
-    flex-direction: column; /* Stack top-left and top-right */
-    align-items: center; /* Center content */
+    flex-direction: column;
+    align-items: center;
     color: #08005e;
-    position: relative;
-    padding: 0 20px; /* Add padding to the left and right */
-    box-sizing: border-box; /* Include padding in the width calculation */
+    padding: 20px; /* Padding around the content */
 }
 
 .top-left {
-    margin-bottom: 20px; /* Space between top-left and top-right */
+    margin-bottom: 20px;
 }
 
 .top-left h4 {
-    color: #000; /* Black text color for contrast */
-    padding: 10px 20px; /* Add padding around the text */
-    border-radius: 10px; /* Rounded corners */
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 10px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .top-left h4:hover {
-    transform: translateY(-5px); /* Move the heading up on hover */
-    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25); /* Add shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
 }
 
-/* Form Container */
 .top-right {
-    max-width: 800px; /* Limit the width */
-    width: 100%; /* Full width of its parent */
-    text-align: center; /* Center form on larger screens */
-
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
 }
 
 .form-container {
-    background: rgba(0, 0, 0, 0.6); /* Transparent black background */
-    color: #fff; /* White text color for readability */
-    border-radius: 15px; /* Rounded corners */
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 15px;
     padding: 30px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Optional shadow for depth */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
 }
 
@@ -67,41 +63,29 @@
     margin: 10px 0 5px;
 }
 
-.form-container input[type="text"],
-.form-container input[type="tel"],
-.form-container input[type="email"],
-.form-container input[type="date"],
-.form-container input[type="file"],
-.form-container textarea {
-    width: calc(100% - 22px); /* Adjust width for padding */
+.form-container input, .form-container select, .form-container textarea {
+    width: calc(100% - 22px);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Light border with transparency */
-    background-color: rgba(255, 255, 255, 0.3); /* Lightly transparent background */
-    color: #fff; /* White text color for contrast */
-    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for changes */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.form-container input[type="text"]:focus,
-.form-container input[type="tel"]:focus,
-.form-container input[type="email"]:focus,
-.form-container input[type="date"]:focus,
-.form-container textarea:focus {
-    background-color: rgba(255, 255, 255, 0.5); /* Slightly less transparent on focus */
-    border-color: #007bff; /* Change border color on focus */
-    outline: none; /* Remove default outline */
+.form-container input:focus, .form-container select:focus, .form-container textarea:focus {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-color: #007bff;
+    outline: none;
 }
 
 .form-container button {
-    background-color: #007bff; /* Bootstrap primary color */
+    background-color: #007bff;
     border: none;
     color: white;
     padding: 10px 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 10px 0;
     cursor: pointer;
@@ -109,7 +93,7 @@
 }
 
 .form-container button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 .required:after {
@@ -117,7 +101,6 @@
     color: red;
 }
 
-/* Flexbox layout for form fields */
 .form-row {
     display: flex;
     flex-wrap: wrap;
@@ -137,133 +120,60 @@
     flex-direction: column;
 }
 
-.form-row.full-width > div {
-    margin-right: 0;
-}
-
-.form-info {
-    font-size: 0.9em;
-    color: #ddd;
-    margin-top: -10px;
-    margin-bottom: 15px;
-}
-
-.date-address {
-    display: flex;
-    justify-content: space-between;
-}
-
-.mother-father {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Process Div Styles */
 .process-div {
     display: flex;
-    justify-content: space-between; /* Space out the child divs */
+    justify-content: space-between;
     padding: 20px;
-    border-radius: 10px; /* Rounded corners */
+    border-radius: 10px;
     color: #08005e;
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
-    background-color: #f9f9f9; /* Light background to differentiate from other sections */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap;
 }
 
 .process-left, .process-right {
     flex: 1;
-    margin: 10px; /* Space between the two sections */
-    padding: 20px; /* Add padding inside the sections */
-    background-color: #fff; /* White background for the content */
-    border-radius: 8px; /* Rounded corners for the sections */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for effects */
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .process-left:hover, .process-right:hover {
-    transform: translateY(-5px); /* Lift the section on hover */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Darker shadow on hover */
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.process-left img {
-    display: block;
-    margin: 0 auto 20px; /* Center the image and add space below */
-    border-radius: 50%; /* Circular image */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for the image */
-}
-
-.process-left h2, .process-right h2 {
-    font-size: 26px; /* Larger heading font size */
-    margin-bottom: 15px; /* Space below the headings */
-    color: #08005e; /* Heading color */
-    font-weight: bold; /* Bold text */
-}
-
-.process-left p, .process-right p {
-    font-size: 18px; /* Larger paragraph font size */
-    line-height: 1.6; /* Improve readability */
-    color: #333; /* Dark text color for contrast */
-}
-
-.process-right i {
-    font-size: 120px; /* Larger icon size for emphasis */
-    display: block;
-    margin: 0 auto 20px; /* Center the icon and add space below */
-    color: #007bff; /* Matching color for consistency */
-}
-
-/* Curriculum Div */
 .curriculum-div {
-    background-color: #f8f9fa; /* Light background for the curriculum section */
+    background-color: #f8f9fa;
     padding: 20px;
 }
 
 .curriculum-content {
-    max-width: 900px; /* Max width for better readability */
-    margin: 0 auto; /* Center the content */
-    background: #fff; /* White background for the content */
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fff;
     padding: 30px;
-    border-radius: 8px; /* Rounded corners */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    color:#08005e;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+button {
+    background-color: #08005e; /* General button background */
+    transition: background-color 0.3s ease;
 }
 
-.curriculum-content h2 {
-    font-size: 28px; /* Larger font size for headings */
-    margin-bottom: 15px; /* Space below the heading */
-    color: #08005e; /* Heading color */
-    font-weight: bold; /* Bold text */
-}
-/* Interested Program Dropdown */
-.form-container select {
-    width: calc(100% - 22px); /* Adjust width for padding */
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.5); /* Light border with transparency */
-    background-color: rgba(255, 255, 255, 0.3); /* Lightly transparent background */
-    color: #fff; /* White text color for contrast */
-    box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3); /* Subtle inner shadow */
-    transition: background-color 0.3s ease, border-color 0.3s ease; /* Smooth transition for changes */
-}
-
-/* Focus styles for select */
-.form-container select:focus {
-    background-color: rgba(255, 255, 255, 0.5); /* Slightly less transparent on focus */
-    border-color: #007bff; /* Change border color on focus */
-    outline: none; /* Remove default outline */
-}
-
-.curriculum-content p {
-    font-size: 18px; /* Larger font size for paragraphs */
-    line-height: 1.6; /* Improve readability */
-    color: #333; /* Dark text color for contrast */
+button:hover {
+    background-color: #0056b3; /* Hover state */
 }
 
 .back-to-top-button {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #08005e; /* Bootstrap primary color */
+    background-color: #08005e;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -271,66 +181,341 @@
 }
 
 .back-to-top-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
     .form-row {
-        flex-direction: column; /* Stack inputs vertically */
-        align-items: flex-start; /* Align items to the left */
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .form-row > div {
-        width: 100%; /* Full width for form fields */
-        margin-right: 0; /* No right margin */
-        margin-bottom: 10px; /* Space between stacked fields */
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
     }
 
     .top-right {
-        width: 95%; /* Slightly reduce form width on mobile */
+        width: 95%;
     }
 
     .form-container {
-        padding: 20px; /* Reduce padding for smaller screens */
-    }
-
-    .process-div {
-        flex-direction: column; /* Stack process items vertically */
-        align-items: center; /* Center items */
-    }
-
-    .process-left, .process-right {
-        width: 90%; /* Set a max width for process sections */
-        margin: 10px 0; /* Space between sections */
-    }
-
-    .curriculum-content {
-        padding: 20px; /* Reduce padding for curriculum section */
-    }
-
-    /* Ensure buttons and links are full width */
-    .form-container button,
-    .back-to-top-button {
-        width: 100%; /* Full width for buttons */
-        padding: 15px; /* Increase padding for better touch targets */
+        padding: 20px;
+        margin-bottom: 30px; /* Add margin to prevent overlap */
     }
 
     .process-div {
         flex-direction: column;
-        align-items: center; /* Center items in column layout */
+        align-items: center;
     }
 
     .process-left, .process-right {
-        width: 100%; /* Full width on small screens */
-        margin: 10px 0; /* Space between sections */
+        width: 90%;
+        margin: 10px 0;
     }
 
-    .top-right {
-        width: 90%; /* Make form width responsive */
+    .curriculum-content {
+        padding: 20px;
+    }
 
+    .form-container button,
+    .back-to-top-button {
+        width: 100%;
+        padding: 15px;
     }
 }
+
+
+
+    @keyframes flyIn {
+    from {
+        transform: translateX(-100%); /* Start from the left */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* End at the original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.top-left {
+    animation: flyIn 0.8s ease forwards; /* Add the animation */
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%); /* Start below the viewport */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateY(0); /* End at original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.form-container {
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.5s ease; /* Smooth transition for opacity */
+}
+.visible {
+    animation: slideUp 0.8s ease forwards; /* Trigger slide up animation */
+    opacity: 1; /* Ensure the element is visible */
+}
+/* Animation for image and icon to grow */
+@keyframes grow {
+    from {
+        transform: scale(0.5); /* Start small */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: scale(1); /* End at original size */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Animation for headings to fly from left to right */
+@keyframes flyIn {
+    from {
+        transform: translateX(-100%); /* Start off the screen */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* End at original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Animation for paragraphs to fade in */
+@keyframes fadeIn {
+    from {
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        opacity: 1; /* Fully visible */
+    }
+}
+
+/* Apply animations */
+.logo, .icon {
+    animation: grow 0.8s ease forwards; /* Image and icon grow effect */
+}
+
+h2 {
+    animation: flyIn 1s ease forwards; /* Headings fly effect */
+    opacity: 0; /* Initially hidden */
+    animation-delay: 0.5s; /* Delay for effect */
+}
+
+p {
+    animation: fadeIn 1s ease forwards; /* Fade in effect */
+    opacity: 0; /* Initially hidden */
+    animation-delay: 1s; /* Delay for effect */
+}
+/* General styles for form inputs and buttons */
+.form-container input,
+.form-container select,
+.form-container textarea {
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease; /* Add transition for transform */
+}
+
+.form-container button {
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for transform */
+}
+
+/* Media Query for Mobile Views */
+@media (max-width: 768px) {
+    /* Add mobile-specific transitions */
+    .form-container input,
+    .form-container select,
+    .form-container textarea {
+        transition: background-color 0.4s ease, border-color 0.4s ease, transform 0.4s ease; /* Slightly longer for mobile */
+    }
+
+    .form-container button {
+        transition: background-color 0.4s ease, transform 0.4s ease; /* Slightly longer for mobile */
+    }
+
+    .form-row {
+        transition: transform 0.3s ease; /* Add a transition for row elements */
+    }
+
+    .form-row:hover {
+        transform: translateY(-2px); /* Slight lift effect on hover */
+    }
+}
+/* Base styles for all div elements */
+div {
+    transition: all 0.3s ease; /* General transition for all divs */
+}
+
+/* Media Query for Mobile Views */
+@media (max-width: 768px) {
+    div {
+        transition: all 0.4s ease; /* Slightly longer transition for mobile */
+    }
+
+    /* Add specific hover effects for divs if desired */
+    .process-left:hover,
+    .process-right:hover,
+    .form-container:hover {
+        transform: scale(1.02); /* Slight scaling effect on hover */
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+    }
+}
+.form-container {
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
+}
+
+.form-container.visible {
+    opacity: 1; /* Ensure the element is visible */
+}
+
+.form-container.fade-in {
+    transform: translateY(20px); /* Start slightly lower */
+    opacity: 0; /* Start invisible */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition for opacity and transform */
+}
+
+.form-container.fade-in.visible {
+    transform: translateY(0); /* End at original position */
+    opacity: 1; /* Fully visible */
+}
+    .back-to-top-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #08005e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition */
+}
+
+.back-to-top-button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+    transform: translateY(-2px); /* Slightly lift the button on hover */
+}
+
+.applynow {
+    background-image: url("{% static 'images/app2.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #08005e;
+    padding: 20px;
+}
+
+.top-left h4 {
+    color: #000;
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-left h4:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+.form-container {
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.form-container.visible {
+    opacity: 1;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.form-row > div {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.form-row > div:last-child {
+    margin-right: 0;
+}
+
+button, .back-to-top-button {
+    background-color: #08005e;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover, .back-to-top-button:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-row > div {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+
+    button, .back-to-top-button {
+        width: 100%;
+        padding: 15px;
+    }
+}
+
+/* Animations */
+@keyframes slideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.pulse {
+    animation: slideUp 0.8s ease forwards;
+}
+    /* Add this to your CSS file */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-appear {
+    opacity: 0; /* Start hidden */
+    animation: fadeInUp 0.8s forwards; /* Animation effect */
+}
+
+
 </style>
 
 <div id="applynow" class="applynow">
@@ -338,41 +523,40 @@
         <h4>A Simple Way to Apply Online</h4>
     </div>
 
-      <div class="top-right">
-<div class="form-container">
+    <div class="top-right">
+
+
+        <div class="form-container">
     <form action="{% url 'apply_online' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
 
         <div class="form-row">
             <div>
                 <label for="first_name" class="required">First Name</label>
                 <input type="text" id="first_name" name="first_name" required>
+                {{ form.first_name.errors }}
             </div>
             <div>
                 <label for="last_name" class="required">Last Name</label>
                 <input type="text" id="last_name" name="last_name" required>
+                {{ form.last_name.errors }}
             </div>
         </div>
 
         <div class="form-row">
-            <div>
-                <label for="passport_name" class="required">Passport Name</label>
-                <input type="text" id="passport_name" name="passport_name" required>
-            </div>
             <div>
                 <label for="phone" class="required">Phone</label>
                 <input type="tel" id="phone" name="phone" required>
+                {{ form.phone.errors }}
             </div>
-        </div>
-
-        <div class="form-row">
             <div>
                 <label for="email" class="required">Email</label>
                 <input type="email" id="email" name="email" required>
-            </div>
-            <div>
-                <label for="course" class="required">Course</label>
-                <input type="text" id="course" name="course" required>
+                {{ form.email.errors }}
             </div>
         </div>
 
@@ -380,10 +564,12 @@
             <div>
                 <label for="passport_number" class="required">Passport Number</label>
                 <input type="text" id="passport_number" name="passport_number" required>
+                {{ form.passport_number.errors }}
             </div>
             <div>
                 <label for="passport_expiry" class="required">Passport Expiry Date</label>
                 <input type="date" id="passport_expiry" name="passport_expiry" required>
+                {{ form.passport_expiry.errors }}
             </div>
         </div>
 
@@ -391,10 +577,25 @@
             <div>
                 <label for="nationality" class="required">Nationality</label>
                 <input type="text" id="nationality" name="nationality" required>
+                {{ form.nationality.errors }}
             </div>
             <div>
-                <label for="date_of_birth" class="required">Date of Birth</label>
-                <input type="date" id="date_of_birth" name="birth_date" required>
+                <label for="birth_date" class="required">Date of Birth</label>
+                <input type="date" id="birth_date" name="birth_date" required>
+                {{ form.birth_date.errors }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="gender" class="required">Gender</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                {{ form.gender.errors }}
             </div>
         </div>
 
@@ -403,10 +604,15 @@
                 <label for="interested_program" class="required">Interested Program</label>
                 <select id="interested_program" name="interested_program" required>
                     <option value="">Select a program</option>
-                    <option value="program1">Program 1</option>
-                    <option value="program2">Program 2</option>
-                    <option value="program3">Program 3</option>
+                    <option value="tourism_hospitality">Tourism & Hospitality Management</option>
+                    <option value="front_desk">Front Desk Operations</option>
+                    <option value="barista_training">Barista Training Course</option>
+                    <option value="human_resource_management">Human Resource Management in Hospitality and Tourism</option>
+                    <option value="training_diploma_housekeeping">Training Diploma in Housekeeping</option>
+                    <option value="food_safety">Food Safety Sanitation</option>
+                    <option value="food_beverage_service">Food and Beverage Service Training</option>
                 </select>
+                {{ form.interested_program.errors }}
             </div>
         </div>
 
@@ -414,6 +620,7 @@
             <div>
                 <label for="address" class="required">Address</label>
                 <textarea id="address" name="address" rows="4" required></textarea>
+                {{ form.address.errors }}
             </div>
         </div>
 
@@ -421,31 +628,94 @@
             <div>
                 <label for="mother_name" class="required">Mother's Name</label>
                 <input type="text" id="mother_name" name="mother_name" required>
+                {{ form.mother_name.errors }}
             </div>
             <div>
                 <label for="father_name" class="required">Father's Name</label>
                 <input type="text" id="father_name" name="father_name" required>
+                {{ form.father_name.errors }}
             </div>
         </div>
 
-        <div class="form-row full-width">
+        <div class="form-row">
             <div>
-                <label for="upload" class="required">Upload Document</label>
-                <input type="file" id="upload" name="file" required title="Upload all educational documents scanned">
+                <label for="highest_qualification" class="required">Highest Qualification</label>
+                <input type="text" id="highest_qualification" name="highest_qualification" required>
+                {{ form.highest_qualification.errors }}
+            </div>
+            <div>
+                <label for="total_work_experience" class="required">Total Work Experience</label>
+                <input type="text" id="total_work_experience" name="total_work_experience" required>
+                {{ form.total_work_experience.errors }}
             </div>
         </div>
 
-        <button type="submit">Submit</button>
+        <div class="form-row">
+            <div>
+                 <label for="interested_to_work">Interested to Work</label>
+        <input type="checkbox" id="interested_to_work" name="interested_to_work" value="Yes" {% if form.interested_to_work.value %}checked{% endif %}>
+        <label for="interested_to_work">Yes</label>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="contact_number_mother" class="required">Mother's Contact Number</label>
+                <input type="tel" id="contact_number_mother" name="contact_number_mother">
+                {{ form.contact_number_mother.errors }}
+            </div>
+            <div>
+                <label for="contact_number_father" class="required">Father's Contact Number</label>
+                <input type="tel" id="contact_number_father" name="contact_number_father">
+                {{ form.contact_number_father.errors }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="guardian_name">Guardian's Name</label>
+                <input type="text" id="guardian_name" name="guardian_name">
+                {{ form.guardian_name.errors }}
+            </div>
+            <div>
+                <label for="guardian_phone">Guardian's Phone Number</label>
+                <input type="tel" id="guardian_phone" name="guardian_phone">
+                {{ form.guardian_phone.errors }}
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div>
+                <label for="guardian_address_dubai">Guardian's Address (Dubai)</label>
+                <textarea id="guardian_address_dubai" name="guardian_address_dubai" rows="4"></textarea>
+                {{ form.guardian_address_dubai.errors }}
+            </div>
+        </div>
+
+        <div class="form-row">
+    <div>
+        <label for="file">Upload Supporting Document</label>
+        <input type="file" id="file" name="file" accept=".pdf, .doc, .docx">
+        {{ form.file.errors }}
+        <p class="instructions" style="font-size: 0.9em; color: #666;">Please attach your education certificates, passport, and ID proof in a single PDF file before uploading.</p>
+    </div>
+</div>
+        <div class="form-row">
+    <div>
+        <label for="signed_rules_pdf">Upload Signed Rules & Regulations PDF</label>
+        <input type="file" id="signed_rules_pdf" name="signed_rules_pdf" accept=".pdf">
+        {{ form.signed_rules_pdf.errors }}
+        <p class="instructions" style="font-size: 0.9em; color: #666;">Download the rules and regulations <a href="{% static 'path_to_rules_pdf/rules.pdf' %}" target="_blank" style="color:#08005e">here</a>. Please read, sign, and upload the signed PDF.</p>
+    </div>
+</div>
+
+
+        <button type="submit" style="background-color:#08005e">Submit Application</button>
     </form>
 </div>
 
-
-
-
     </div>
 </div>
-</div>
-
 
 <!-- Application Process Div -->
 <div class="process-div">
@@ -468,8 +738,66 @@
     <div class="curriculum-content">
         <h2>Our Curriculum</h2>
         <p>Through real-world business scenarios, simulations, theories, and the right industry partners, what you learn will be put into practice. As you prepare to become a successful global professional, you will work in diverse teams, take risks in a safe and supportive environment, and solve challenges businesses are facing right now. With the help of the latest knowledge and technologies, we have identified the professional and technical skills global employers seek when hiring and have incorporated them directly into our programs. In order to graduate with the skillset and knowledge you need for the role you desire, we’ll work together, continuously, to build an essential knowledge base, mindsets, and skills.</p>
-        <a href="#applynow" class="back-to-top-button">Apply Now</a>
+        <a href="{% url 'apply_online' %}" class="back-to-top-button" style="background-color:#08005e">Apply Now</a>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const formContainer = document.querySelector('.form-container');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                formContainer.classList.add('visible');
+                observer.disconnect(); // Stop observing after adding the class
+            }
+        });
+    });
+
+    observer.observe(formContainer); // Start observing the form container
+});
+   document.addEventListener("DOMContentLoaded", function() {
+        const formContainer = document.querySelector('.form-container');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    formContainer.classList.add('visible');
+                    observer.disconnect(); // Stop observing after adding the class
+                }
+            });
+        });
+
+        observer.observe(formContainer); // Start observing the form container
+
+        // Add a transition for the form container when it becomes visible
+        const handleScroll = () => {
+            if (formContainer.getBoundingClientRect().top < window.innerHeight) {
+                formContainer.classList.add('fade-in');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const processDivs = document.querySelectorAll('.process-div, .curriculum-div');
+
+        function checkScroll() {
+            const triggerPoint = window.innerHeight * 0.75; // Adjust as needed
+            processDivs.forEach(div => {
+                const divTop = div.getBoundingClientRect().top;
+
+                if (divTop < triggerPoint) {
+                    div.classList.add('scroll-appear');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        checkScroll(); // Initial check in case elements are already in view
+    });
+
+</script>
 
 {% endblock %}

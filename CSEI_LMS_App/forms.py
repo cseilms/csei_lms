@@ -221,39 +221,67 @@ class EssayExamForm(forms.ModelForm):
             'instructions': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Enter basic instructions...'}),
         }
 
-
-
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application
         fields = [
-            'first_name', 'last_name', 'passport_name', 'phone', 'email',
-            'course', 'passport_number', 'passport_expiry', 'nationality',
-            'interested_program', 'birth_date', 'address', 'mother_name',
-            'father_name', 'file'
+            'first_name', 'last_name', 'phone', 'email', 'passport_number',
+            'passport_expiry', 'nationality', 'birth_date', 'address',
+            'mother_name', 'father_name', 'file', 'highest_qualification',
+            'total_work_experience', 'interested_to_work',
+            'contact_number_mother', 'contact_number_father',
+            'guardian_name', 'guardian_phone', 'guardian_address_dubai',
+            'gender', 'interested_program'
         ]
         widgets = {
             'birth_date': forms.DateInput(attrs={'type': 'date'}),
             'passport_expiry': forms.DateInput(attrs={'type': 'date'}),
             'address': forms.Textarea(attrs={'rows': 4}),
-            'interested_program': forms.Select(choices=[
-                ('', 'Select a program'),
-                ('program1', 'Program 1'),
-                ('program2', 'Program 2'),
-                ('program3', 'Program 3'),
-            ]),
+            'interested_to_work': forms.Textarea(attrs={'rows': 4}),
+            'guardian_address_dubai': forms.Textarea(attrs={'rows': 4}),
+            'interested_to_work': forms.CheckboxInput()
         }
+
 class AccommodationApplicationForm(forms.ModelForm):
     class Meta:
         model = AccommodationApplication
-        fields = ['first_name', 'course_enrolled', 'uae_entry_date', 'start_date_of_accommodation', 'bed_space_option']
+        fields = [
+            'first_name',
+            'gender',
+            'email',
+            'phone_number',
+            'parent_contact_number',
+            'uae_entry_date',
+            'start_date_of_accommodation',
+            'bed_space_option',
+            'interested_program',
+            'agree_terms'
+        ]
         widgets = {
             'first_name': forms.TextInput(attrs={'placeholder': 'Enter your full name'}),
+            'gender': forms.Select(),
+            'email': forms.EmailInput(attrs={'placeholder': 'Enter your email address'}),
+            'phone_number': forms.TextInput(attrs={'placeholder': 'Enter your phone number'}),
+            'parent_contact_number': forms.TextInput(attrs={'placeholder': 'Enter parent contact number'}),
             'course_enrolled': forms.TextInput(attrs={'placeholder': 'Enter the course you are enrolled in'}),
             'uae_entry_date': forms.DateInput(attrs={'placeholder': 'MM/DD/YYYY', 'type': 'date'}),
             'start_date_of_accommodation': forms.DateInput(attrs={'placeholder': 'MM/DD/YYYY', 'type': 'date'}),
             'bed_space_option': forms.Select(choices=AccommodationApplication.BED_SPACE_OPTIONS),
+            'interested_program': forms.Select(choices=[
+                ('', 'Select a program'),
+                ('tourism_hospitality', 'Tourism & Hospitality Management'),
+                ('front_desk', 'Front Desk Operations'),
+                ('barista_training', 'Barista Training Course'),
+                ('human_resource_management', 'Human Resource Management in Hospitality and Tourism'),
+                ('training_diploma_housekeeping', 'Training Diploma in Housekeeping'),
+                ('food_safety', 'Food Safety Sanitation'),
+                ('food_beverage_service', 'Food and Beverage Service Training'),
+            ]),
+            'agree_terms': forms.CheckboxInput(),
         }
+
+
+
 
 
 class EnquiryForm(forms.ModelForm):

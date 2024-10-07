@@ -1,4 +1,4 @@
-import pandas as pd
+# import pandas as pd
 import os
 from django.contrib.auth.forms import AuthenticationForm
 
@@ -78,7 +78,7 @@ def send_welcome_email(student):
     email_subject = 'Welcome to CSEI Academy LMS'
 
     # Generate login link
-    login_link = 'http://127.0.0.1:8000/student_login/'
+    login_link = 'cseiacademyuae.pythonanywhere.com/student_login/'
 
     # Generate HTML message
     html_message = render_to_string('welcome_email.html', {
@@ -665,7 +665,7 @@ def export_attendance_to_excel(request, batch_id):
     }
 
     # Create a DataFrame from the data
-    df = pd.DataFrame(data)
+    # df = pd.DataFrame(data)
 
     # Create an HTTP response with the Excel file
     response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
@@ -1445,16 +1445,12 @@ def accreditation(request):
     return render(request,'accreditation.html')
 
 
-
 def apply_online(request):
     if request.method == 'POST':
         form = ApplicationForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Your application has been submitted successfully.")
-            return redirect('apply_online')
-        else:
-            messages.error(request, "Please correct the errors below.")
+            return redirect('apply_online')  # Redirect back to the apply_online view
     else:
         form = ApplicationForm()
 
@@ -1475,8 +1471,13 @@ def student_travel(request):
     return render(request,'student_travel.html')
 def student_accommodation(request):
     return render(request,'accommodation.html')
+def Tourism_Hospitality(request):
+    return render(request,'Tourism_Hospitality.html')
+def Level4DiplomaTHM(request):
+    return render(request,'Level4DiplomaTHM.html')
 
-
+def Level5DiplomaTHM(request):
+    return render(request,'Level5DiplomaTHM.html')
 def apply_accommodation(request):
     if request.method == 'POST':
         form = AccommodationApplicationForm(request.POST)
@@ -1529,7 +1530,8 @@ def food_sanitation(request):
     return render(request,'food_sanitation.html')
 def food_beverage(request):
     return render(request,'food_beverage.html')
-
+def scholarship(request):
+    return render(request,'scholarship.html')
 
 def blog_news(request):
     return render(request,'blog_news.html')
@@ -1703,3 +1705,23 @@ def student_course_detail(request, course_id):
         'course': course,
         'student': student
     })
+
+def indexpage(request):
+    return render(request,'indexpage.html')
+
+def health_social_OTH(request):
+    return render(request,'health_social_OTH.html')
+def Level4DiplomaHSM(request):
+    return render(request,'Level4DiplomaHSM.html')
+
+def Level5DiplomaHSM(request):
+    return render(request,'Level5DiplomaHSM.html')
+def Level5DiplomaHSM(request):
+    return render(request,'Level5DiplomaHSM.html')
+
+def Level4DiplomaBM(request):
+    return render(request,'Level4DiplomaBM.html')
+def Level5DiplomaBM(request):
+    return render(request,'Level5DiplomaBM.html')
+def business_management_OTH(request):
+    return render(request,'business_management_OTH.html')

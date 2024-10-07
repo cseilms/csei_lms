@@ -113,8 +113,7 @@
     }
 
     .accreditation .benefits .img_div img {
-        max-width: 100%;
-        height: auto;
+        height:300px;
         border-radius: 8px;
         display: block;
     }
@@ -232,7 +231,7 @@
     }
 	.accreditations_logos{
 	color:#08005e;
-	font-size:20px;
+	font-size:px;
 	text-align:center;
 	text-transform:uppercase;
 
@@ -323,6 +322,119 @@
         }
     }
 
+
+
+
+
+	@keyframes flyIn {
+    0% {
+        transform: translateX(-100%) scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.header {
+    animation: flyIn 1s ease forwards;
+}
+
+    @keyframes imgGrow {
+        0% {
+            transform: scale(0.5);
+            opacity: 0;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes shuffleFly {
+        0% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
+
+    .img_div img {
+        animation: imgGrow 1s ease forwards;
+    }
+
+    .para_div {
+        animation: slideIn 1s ease forwards;
+        animation-delay: 0.5s; /* Delay for a staggered effect */
+    }
+
+    .benefits h3 {
+        animation: shuffleFly 0.5s ease forwards;
+        animation-delay: 0.3s; /* Delay for a staggered effect */
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateX(-100%); /* Start from the left */
+            opacity: 0; /* Start transparent */
+        }
+        100% {
+            transform: translateX(0); /* End at normal position */
+            opacity: 1; /* End fully visible */
+        }
+    }
+
+    @keyframes flyUp {
+        0% {
+            transform: translateY(20px); /* Start 20px below */
+            opacity: 0; /* Start transparent */
+        }
+        100% {
+            transform: translateY(0); /* End at normal position */
+            opacity: 1; /* End fully visible */
+        }
+    }
+
+    .standards {
+        animation: slideIn 1s ease forwards; /* Apply slide in animation */
+    }
+
+    .standards_content h3,
+    .mission h3 {
+        animation: flyUp 1s ease forwards; /* Apply fly up animation */
+        opacity: 0; /* Initially hidden */
+    }
+
+    .standards_content p,
+    .mission p {
+        animation: flyUp 1s ease forwards; /* Apply fly up animation */
+        animation-delay: 0.2s; /* Slight delay for text */
+        opacity: 0; /* Initially hidden */
+    }
+
+    .standards_content ul,
+    .mission ul {
+        animation: flyUp 1s ease forwards; /* Apply fly up animation */
+        animation-delay: 0.4s; /* Slight delay for list */
+        opacity: 0; /* Initially hidden */
+    }
+
 </style>
 
 <section id="accreditation" class="accreditation">
@@ -332,25 +444,26 @@
     </div>
 
 
-    <div class="benefits m-4" style="border-radius:10px">
-        <div class="img_div">
-            <img src="{% static 'images/od1.jpg' %}" alt="Accreditation Benefits">
-        </div>
-        <div class="para_div">
-            <h3>Why Accreditation Matters?</h3>
-            <p>Here’s why accreditation is important for you:</p>
-            <ul>
-                <li>Ensures quality and consistency</li>
-                <li>Provides credibility and recognition</li>
-                <li>Access to additional resources</li>
-                <li>Enhances career prospects</li>
-            </ul>
-        </div>
+
+<div class="benefits m-4" style="border-radius:10px">
+    <div class="img_div">
+        <img src="{% static 'images/od1.jpg' %}" alt="Accreditation Benefits">
     </div>
+    <div class="para_div">
+        <h3 style="font-size:50px">Why Accreditation Matters?</h3>
+        <p>Here’s why accreditation is important for you:</p>
+        <ul>
+            <li>Ensures quality and consistency</li>
+            <li>Provides credibility and recognition</li>
+            <li>Access to additional resources</li>
+            <li>Enhances career prospects</li>
+        </ul>
+    </div>
+</div>
 
     <div class="standards m-4" style="border-radius:10px">
         <div class="standards_content">
-            <h3>Our Standards</h3>
+            <h3 style="font-size:40px">Our Standards</h3>
             <p>We adhere to the following standards to ensure the quality of our education:</p>
             <ul>
                 <li>Rigorous curriculum development</li>
@@ -360,7 +473,7 @@
             </ul>
         </div>
         <div class="mission">
-            <h3>Accreditation Bodies</h3>
+            <h3 style="font-size:40px">Accreditation Bodies</h3>
             <p>Our institution is accredited by the following organizations:</p>
             <ul>
                 <li>National Accreditation Board</li>
@@ -376,7 +489,7 @@
 <div class="container">
 	<div class="row">
 
-        <h2 class="accreditations_logos">Our ACCREDITATIONS and partners</h2>
+        <h2 class="accreditations_logos">Our industrial partners</h2>
 
 		<div class="col-md-12">
 			<div class="lc-block">

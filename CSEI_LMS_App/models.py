@@ -298,50 +298,86 @@ class Essay_StudentAnswer(models.Model):
 
     def __str__(self):
         return f"Student: {self.student}, Exam: {self.exam.name}, Answer: {self.essay_answer[:30]}..."  # Display first 30 chars
-
-
 class Application(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    passport_name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=15)
-    email = models.EmailField()
-    course = models.CharField(max_length=255, null=True)
+    # Existing fields...
+    GENDER_CHOICES = [
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other'),
+    ]
+
+    first_name = models.CharField(max_length=100, null=True)
+    last_name = models.CharField(max_length=100, null=True)
+    phone = models.CharField(max_length=15, null=True)
+    email = models.EmailField(null=True)
     passport_number = models.CharField(max_length=50, null=True)
     passport_expiry = models.DateField(null=True)
     nationality = models.CharField(max_length=100, null=True)
-    interested_program = models.TextField(blank=True)  # Change this to CharField if you want dropdown
-    birth_date = models.DateField()
-    address = models.TextField()
-    mother_name = models.CharField(max_length=255)
-    father_name = models.CharField(max_length=255)
+    birth_date = models.DateField(null=True)
+    address = models.TextField(null=True)
+    mother_name = models.CharField(max_length=255, null=True)
+    father_name = models.CharField(max_length=255, null=True)
     file = models.FileField(upload_to='applications/', blank=True, null=True)
 
+    # New fields
+    highest_qualification = models.CharField(max_length=255, null=True)
+    total_work_experience = models.CharField(max_length=100, null=True)  # e.g., '2 years', '6 months'
+    interested_to_work = models.BooleanField(default=False)
+    contact_number_mother = models.CharField(max_length=15, null=True)
+    contact_number_father = models.CharField(max_length=15, null=True)
+    guardian_name = models.CharField(max_length=255, blank=True, null=True)
+    guardian_phone = models.CharField(max_length=20, blank=True, null=True)
+    guardian_address_dubai = models.TextField(blank=True, null=True)
+
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True)
+
+    INTERESTED_PROGRAMS = [
+        ('tourism_hospitality', 'Tourism & Hospitality Management'),
+        ('front_desk', 'Front Desk Operations'),
+        ('barista_training', 'Barista Training Course'),
+        ('human_resource_management', 'Human Resource Management in Hospitality and Tourism'),
+        ('training_diploma_housekeeping', 'Training Diploma in Housekeeping'),
+        ('food_safety', 'Food Safety Sanitation'),
+        ('food_beverage_service', 'Food and Beverage Service Training'),
+    ]
+
+    interested_program = models.CharField(max_length=50, choices=INTERESTED_PROGRAMS, null=True)
+    signed_rules_pdf = models.FileField(upload_to='applications/rules/', blank=True, null=True)
     def __str__(self):
-        return f"{self.first_name} {self.last_name} - {self.course}"
+        return f"{self.first_name} {self.last_name} - {self.nationality}"
+
 
 class AccommodationApplication(models.Model):
     BED_SPACE_OPTIONS = [
-        ('3_person', '3 Person sharing room bed space: 900AED / month rent'),
-        ('4_person', '4 Person sharing room bed space: 750AED / month rent'),
+        ('3_person', '3 Person sharing room bed space and food: 1600AED / month rent'),
+        ('4_person', '4 Person sharing room bed space and food: 1400AED / month rent'),
+        ('5_person', '5 Person sharing room bed space and food: 1500AED / month rent'),
         # Add more options if necessary
     ]
 
-    first_name = models.CharField(max_length=100, verbose_name="First Name")
-    course_enrolled = models.CharField(max_length=255, verbose_name="Course Enrolled")
-    uae_entry_date = models.DateField(verbose_name="UAE Entry Date")
-    start_date_of_accommodation = models.DateField(verbose_name="Start Date of Accommodation")
+    GENDER_OPTIONS = [
+        ('male', 'Male'),
+        ('female', 'Female'),
+        ('other', 'Other'),
+    ]
+
+    first_name = models.CharField(max_length=100, verbose_name="First Name",null=True)
+    gender = models.CharField(max_length=10, choices=GENDER_OPTIONS, verbose_name="Gender",null=True)
+    email = models.EmailField(max_length=255, verbose_name="Email Address",null=True)
+    phone_number = models.CharField(max_length=15, verbose_name="Phone Number",null=True)
+    parent_contact_number = models.CharField(max_length=15, verbose_name="Parent Contact Number",null=True)
+    uae_entry_date = models.DateField(verbose_name="UAE Entry Date",null=True)
+    start_date_of_accommodation = models.DateField(verbose_name="Start Date of Accommodation",null=True)
     bed_space_option = models.CharField(
         max_length=20,
         choices=BED_SPACE_OPTIONS,
         verbose_name="Select Bed Space Option"
     )
+    interested_program = models.CharField(max_length=100, verbose_name="Interested Program",null=True)
+    agree_terms = models.BooleanField(default=False, verbose_name="Agree to Terms",null=True)
 
     def __str__(self):
-        return f"{self.first_name} - {self.course_enrolled}"
-
-
-
+        return f"{self.first_name}"
 class Enquiry(models.Model):
     name = models.CharField(max_length=255)
     email = models.EmailField()

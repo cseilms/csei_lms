@@ -1,0 +1,530 @@
+:root {
+    --primary: #06BBCC;
+    --light: #F0FBFC;
+    --dark: #181d38;
+}
+/* Initial hidden state */
+.animate {
+    opacity: 0;
+    transform: translateX(-100px); /* Start from the left */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+/* Visible state */
+.animate.visible {
+    opacity: 1;
+    transform: translateX(0); /* End at the original position */
+}
+
+.fw-medium {
+    font-weight: 600 !important;
+}
+
+.fw-semi-bold {
+    font-weight: 700 !important;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 45px;
+    bottom: 45px;
+    z-index: 99;
+}
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+/*** Button ***/
+.btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 600;
+    transition: .5s;
+}
+
+.btn.btn-primary,
+.btn.btn-secondary {
+    color: #FFFFFF;
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    border-radius: 0px;
+}
+
+/*** Header carousel ***/
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 500px;
+    }
+    
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+}
+.owl-carousel-item {
+    height: 400px; /* Set your desired height */
+}
+
+.owl-carousel-item img {
+    height: 100%; /* Ensure the image takes full height */
+    object-fit: cover; /* Keep aspect ratio and cover the area */
+}
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    margin: 7px 0;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    background: transparent;
+    border: 1px solid #FFFFFF;
+    font-size: 22px;
+    transition: .5s;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.page-header {
+    background: linear-gradient(rgba(24, 29, 56, .7), rgba(24, 29, 56, .7)), url(../img/carousel-1.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.page-header-inner {
+    background: rgba(15, 23, 43, .7);
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--light);
+}
+
+/*** Section Title ***/
+.section-title {
+    position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+}
+
+.section-title::before {
+    position: absolute;
+    content: "";
+    width: calc(100% + 80px);
+    height: 2px;
+    top: 4px;
+    left: -40px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title::after {
+    position: absolute;
+    content: "";
+    width: calc(100% + 120px);
+    height: 2px;
+    bottom: 5px;
+    left: -60px;
+    background: var(--primary);
+    z-index: -1;
+}
+
+.section-title.text-start::before {
+    width: calc(100% + 40px);
+    left: 0;
+}
+
+.section-title.text-start::after {
+    width: calc(100% + 60px);
+    left: 0;
+}
+
+/*** Categories & Courses ***/
+.category img,
+.course-item img {
+    transition: .5s;
+}
+
+.category a:hover img,
+.course-item:hover img {
+    transform: scale(1.1);
+}
+
+/*** Team ***/
+.team-item img {
+    transition: .5s;
+}
+
+.team-item:hover img {
+    transform: scale(1.1);
+}
+/*** Testimonial ***/
+.testimonial-carousel::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+.testimonial-carousel::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(to left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+@media (min-width: 768px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 200px;
+    }
+}
+
+@media (min-width: 992px) {
+    .testimonial-carousel::before,
+    .testimonial-carousel::after {
+        width: 300px;
+    }
+}
+
+.testimonial-carousel .owl-item .testimonial-text,
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text {
+    background: #fff; /* Changed to white or any neutral color */
+}
+
+.testimonial-carousel .owl-item.center .testimonial-text * {
+    color: #000 !important; /* Changed to black or any neutral color */
+}
+
+.testimonial-carousel .owl-dots {
+    margin-top: 24px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-dot {
+    position: relative;
+    display: inline-block;
+    margin: 0 5px;
+    width: 15px;
+    height: 15px;
+    border: 1px solid #CCCCCC;
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-dot.active {
+    background: #ccc; /* Neutral color for active dot */
+    border-color: #ccc; /* Neutral color for border */
+}
+
+.typewriter {
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: 0.1em; /* Adjust for better spacing */
+    animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+    font-size: 1.5em; /* Adjust font size as needed */
+    width: 100%; /* Ensures full width of parent container */
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: orange; }
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .typewriter {
+        font-size: 1.2em; /* Smaller font size for mobile */
+        letter-spacing: 0.05em; /* Adjust for mobile */
+    }
+}
+li:hover{
+color:white;
+background-color:#08005e;
+}
+:root {
+    --primary: #06BBCC;
+    --light: #F0FBFC;
+    --dark: #181d38;
+}
+
+    .student-services {
+        width: 100%;
+        height: auto; /* Adjust height automatically */
+        background: url("{% static 'assets1/img/career2.jpg' %}") no-repeat center center;
+        background-size: cover;
+        position: relative;
+        color: #fff;
+        padding: 50px 0;
+        margin-bottom: 50px; /* Spacing between sections */
+        z-index: 1; /* Ensure visibility over other content */
+    }
+
+    .student-services::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+        z-index: 0; /* Positioned behind the content */
+    }
+
+    .service-items {
+        background-color: #F4DFBF; /* Light beige/orange for initial background */
+        border-radius: 8px; /* Add border radius for rounded corners */
+        transition: background-color 0.3s ease; /* Smooth transition */
+        padding: 20px; /* Consistent padding */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+        margin-bottom:50px;
+        margin-top:50px;
+    }
+
+    .service-items:hover {
+        background-color: #FFA500; /* Darker orange on hover */
+    }
+
+    /* Consistent text color and alignment */
+    .service-items h5,
+    .service-items p {
+        color: #08005e; /* Consistent text color */
+        text-align: center; /* Center-align text */
+    }
+
+    /* Ensure consistent spacing for paragraphs */
+    .service-items p {
+        margin: 10px 0; /* Consistent margin for paragraphs */
+    }
+
+
+    .service-items:hover {
+        background-color: #FFA500; /* Darker orange on hover */
+    }
+
+    /* Optionally, change text color on hover */
+    .service-items:hover h5,
+    .service-items:hover p {
+        color: #fff; /* Change text color to white on hover for better contrast */
+    }
+
+    .student-services .container {
+        position: relative;
+        z-index: 1; /* Bring container content above overlay */
+    }
+
+    .service-item {
+        text-align: center;
+        margin-bottom: 20px;
+        position: relative;
+        background: rgba(255, 165, 0, 0.3); /* Semi-transparent background */
+        border-radius: 20px; /* Rounded corners */
+        padding: 20px; /* Inner padding */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+        max-width: 100%; /* Full width for responsiveness */
+        margin: 0 auto; /* Center the items */
+        border: 2px solid #fff; /* Thinner white border */
+    }
+
+    .service-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 128, 0.3); /* Diagonal overlay color */
+        clip-path: polygon(0 0, 100% 0, 0 100%); /* Diagonal shape */
+        border-radius: 20px; /* Rounded corners */
+        z-index: -1; /* Behind the content */
+    }
+
+    .service-item:hover {
+        transform: scale(1.05); /* Zoom effect on hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+    }
+
+    .service-icon {
+        width: 80px; /* Icon size */
+        height: 80px; /* Icon size */
+        background-color: orange; /* Background color for icon */
+        border-radius: 50%; /* Circular shape */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 10px; /* Centering with bottom margin */
+        box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5); /* White shadow */
+    }
+
+    .service-icon img {
+        width: 40px; /* Size for inner image */
+        height: 40px; /* Size for inner image */
+        opacity: 0.8; /* Slight transparency */
+    }
+
+.btn-custom {
+    background-color: #08005e; /* Button background */
+    color: #fff; /* Button text color */
+    border: none; /* No border */
+}
+
+.btn-custom:hover {
+    background-color: #0a0c7a; /* Darker shade on hover */
+}
+
+.statistic-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(240, 240, 240, 0.9));
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin: 20px; /* Uniform margin */
+}
+
+.statistic-item:hover {
+    transform: translateY(-5px); /* Subtle lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.count {
+    font-size: 2rem; /* Larger font size for counts */
+    font-weight: bold;
+    color: #cf5320; /* Custom color */
+}
+
+.statistic-item p {
+    font-size: 14px; /* Consistent font size for descriptions */
+    color: #333; /* Neutral text color */
+    margin-top: 5px; /* Space between count and description */
+}
+
+
+/* Adding a decorative effect */
+.statistic-item::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 100%;
+    height: 5px;
+    background: #cf5320; /* Decorative line color */
+    transform: translateX(-50%);
+    transition: width 0.3s ease; /* Smooth width transition */
+}
+
+.statistic-item:hover::after {
+    width: 70%; /* Expand line on hover */
+}
+@keyframes flyIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.fly-in {
+    animation: flyIn 1s ease forwards; /* Adjust duration and easing as needed */
+}
+#cookieConsent {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Dark transparent background */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    z-index: 1000; /* Ensure it appears above other content */
+}
+
+#cookieConsent div {
+    background-color: #fff; /* White background for the popup */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Inner padding */
+    text-align: center; /* Centered text */
+    max-width: 400px; /* Maximum width */
+    width: 100%; /* Full width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Shadow effect */
+}

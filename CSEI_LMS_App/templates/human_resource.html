@@ -44,7 +44,7 @@
 .course-title {
     display: inline-block;
     padding: 1rem 2rem;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-weight: bold;
     margin: 30px;
     color: #fff; /* Changed to white for contrast */
@@ -129,7 +129,7 @@
 }
 
 .hr_top h2 {
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: bold;
     margin: 0;
     position: relative; /* Added for overlay positioning */
@@ -151,13 +151,54 @@
 /* Responsive styling */
 @media (max-width: 768px) {
     .hr_top h2 {
-        font-size: 2.5rem;
+        font-size: 2rem;
     }
 
     .human-resource-management .content {
         padding: 1rem;
     }
 }
+
+    /* new */
+    /* Add this to your existing styles */
+.hr_top {
+    opacity: 0; /* Start hidden */
+    transform: translateY(50px); /* Start slightly below */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition effects */
+}
+
+.hr_top.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+.hr_top h2 {
+    transition: transform 0.5s ease; /* Transition for h2 movement */
+}
+/* Add this to your existing styles */
+.course-title {
+    opacity: 0; /* Start hidden */
+    transform: translateY(50px); /* Start slightly below */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition effects */
+}
+
+.course-title.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+
+    /* Add this to your existing styles */
+.content h3 {
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start small */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition effects */
+}
+
+.content h3.visible {
+    opacity: 1; /* Fade in */
+    transform: scale(1); /* Scale to original size */
+}
+
 </style>
 
 <!-- HR Top Section -->
@@ -173,7 +214,7 @@
             <p>In this course, learners will explore contemporary issues in managing human capital in the hotel and tourism industry, from macro- and micro-perspectives, and learn how to tackle them.</p>
             <p><strong>Course Duration:</strong> 45 hours</p>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Learning Objectives</h3>
             <p>At the end of the course, the learner will be able to:</p>
             <ul>
@@ -185,7 +226,7 @@
                 <li>Identify and solve human resources problems in the hotel and tourism context.</li>
             </ul>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Course Outline</h3>
             <ul>
                 <li>Basics & Theories of HRM</li>
@@ -194,11 +235,11 @@
                 <li>Understanding HR Problems in the Hospitality Industry</li>
             </ul>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Course Benefit</h3>
             <p>This program awards a Human Resource Management in Hospitality & Tourism Completion Certificate from the Academy. Successful completion grants certification from KHDA, and students can progress to OTHM courses related to Tourism & Hospitality Management.</p>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Required Documents</h3>
             <ul class="documents">
                 <li>Higher Academic Certificates</li>
@@ -209,7 +250,7 @@
                 <li>Experience letter (Optional)</li>
             </ul>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Requirements</h3>
             <ul class="requirements">
                 <li>Evidence of numeracy and literacy skills through high school report.</li>
@@ -217,19 +258,80 @@
                 <li>Additional English proficiency may apply if teaching is not in English.</li>
             </ul>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Study Mode</h3>
             <ul class="study-mode">
                 <li>Full-Time / Part-Time: Weekend based</li>
                 <li>Location: ON CAMPUS / ONLINE</li>
             </ul>
         </div>
-        <div class="content">
+        <div class="content m-3">
             <h3>Career Opportunities</h3>
             <p>The Human Resource Management program focuses on current HR trends and solutions to industry challenges. Post-certification, learners will excel in managing HR issues in the hospitality industry.</p>
         </div>
         <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const hrTopSection = document.getElementById('human-resource-management');
+    const hrHeading = hrTopSection.querySelector('h2');
+
+    function handleScroll() {
+        const sectionPosition = hrTopSection.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        // Check if the section is in the viewport
+        if (sectionPosition < windowHeight * 0.8) {
+            hrTopSection.classList.add('visible');
+        }
+
+        // Fly effect for the heading
+        const scrollY = window.scrollY;
+        hrHeading.style.transform = `translateX(${scrollY / 20}px)`; // Adjust the divisor for speed
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const courseTitle = document.querySelector('.course-title');
+
+    function handleScroll() {
+        const titlePosition = courseTitle.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        // Check if the title is in the viewport
+        if (titlePosition < windowHeight * 0.8) {
+            courseTitle.classList.add('visible');
+        } else {
+            courseTitle.classList.remove('visible'); // Optional: hide when scrolling up
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const headings = document.querySelectorAll('.content h3');
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight;
+
+        headings.forEach(heading => {
+            const headingPosition = heading.getBoundingClientRect().top;
+
+            // Check if the heading is in the viewport
+            if (headingPosition < windowHeight * 0.8) {
+                heading.classList.add('visible');
+            } else {
+                heading.classList.remove('visible'); // Optional: hide when scrolling up
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+</script>
 
 {% endblock %}

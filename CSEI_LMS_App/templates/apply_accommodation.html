@@ -4,7 +4,7 @@
 {% block title %}Apply for Accommodation{% endblock %}
 
 {% block content %}
- <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   .background {
@@ -21,32 +21,31 @@
   }
 
   .form-container {
-    background: rgba(255, 255, 255, 0.9); /* Slightly more opaque background */
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 12px;
     padding: 2.5rem;
     max-width: 700px;
     width: 100%;
     margin: 0 auto;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow effect */
-    font-family: 'Arial', sans-serif; /* Modern font */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
   }
 
   h2 {
     text-align: center;
     color: #08005e;
     margin-bottom: 1.5rem;
-    font-size: 2.5rem;
+    font-size: 2rem; /* Adjusted font size */
     font-weight: 700;
   }
 
   .form-group {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem; /* Adjusted margin */
     display: flex;
     flex-direction: column;
   }
 
   .form-group label {
-    display: block;
     margin-bottom: 0.5rem;
     color: #08005e;
     font-weight: 600;
@@ -60,32 +59,32 @@
   .form-group input,
   .form-group select {
     width: 100%;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem;
     border-radius: 8px;
     border: 1px solid #ddd;
     font-size: 1rem;
     box-sizing: border-box;
-    background: transparent; /* Transparent background */
+    background: transparent;
   }
 
   .form-group input::placeholder {
-    color: #888; /* Placeholder color */
+    color: #888;
   }
 
   .form-group input:focus,
   .form-group select:focus {
     border-color: #08005e;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Focus effect */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   }
 
   .form-group button {
     background-color: #08005e;
     color: #fff;
     border: none;
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem;
     border-radius: 8px;
-    font-size: 1.125rem;
+    font-size: 1rem; /* Adjusted font size */
     font-weight: 600;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -93,7 +92,7 @@
 
   .form-group button:hover {
     background-color: #0a1c6b;
-    transform: scale(1.05); /* Slightly enlarge on hover */
+    transform: scale(1.05);
   }
 
   .form-group button:focus {
@@ -103,24 +102,72 @@
 
   .success-message {
     color: #28a745;
-    font-size: 1.25rem;
+    font-size: 1rem; /* Adjusted font size */
     text-align: center;
     margin-bottom: 1.5rem;
     padding: 1rem;
     border-radius: 8px;
-    background-color: rgba(40, 167, 69, 0.1); /* Light green background */
+    background-color: rgba(40, 167, 69, 0.1);
     border: 1px solid #28a745;
   }
 
-  .form-container input[type="date"]::-webkit-calendar-picker-indicator {
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem; /* Smaller font size for mobile */
+    }
+
+    .form-container {
+      padding: 1.5rem; /* Less padding for mobile */
+    }
+
+    .form-group {
+      margin-bottom: 1rem; /* Less margin for mobile */
+    }
+
+    .form-group button {
+      padding: 0.5rem; /* Less padding for mobile */
+      font-size: 0.9rem; /* Smaller font size for mobile */
+    }
   }
+
+  .form-container {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 2.5rem;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition effect */
+}
+
+.form-container.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+@keyframes fly-in {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+h2 {
+    animation: fly-in 0.5s ease forwards; /* Apply the animation */
+}
+
 </style>
 
 <div class="background">
   <div class="form-container">
     <h2>Accommodation Application Form</h2>
-
-
 
     <form method="post">
       {% csrf_token %}
@@ -129,14 +176,31 @@
           <label for="{{ field.id_for_label }}">{{ field.label }}</label>
           <div class="input-wrapper">
             {{ field }}
+
           </div>
         </div>
       {% endfor %}
+
+      <div class="form-group">
+        <p style="margin: 0; color: #08005e;">
+          Before joining, you must prepare to stay for up to 3 months and make payment for 3 months before shifting.
+        </p>
+
+      </div>
+
       <div class="form-group">
         <button type="submit">Submit</button>
       </div>
     </form>
+
+
   </div>
 </div>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const formContainer = document.querySelector('.form-container');
+        formContainer.classList.add('visible'); // Add the class to trigger the transition
+    });
+</script>
 
 {% endblock %}

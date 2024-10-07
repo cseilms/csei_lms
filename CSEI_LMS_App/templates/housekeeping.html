@@ -159,6 +159,71 @@
         padding: 1rem;
     }
 }
+
+    /* new */
+
+    /* General styles */
+.housekeeping_top {
+    height: 500px;
+    background-image: url("{% static 'images/housekeep1.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    opacity: 0; /* Start hidden */
+    transition: opacity 0.5s ease; /* Smooth transition for fade-in */
+}
+
+.housekeeping_top.visible {
+    opacity: 1; /* Fade in */
+}
+
+.housekeeping_top h2 {
+    opacity: 0; /* Start hidden */
+    transform: translateY(50px); /* Start below the viewport */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+}
+
+.housekeeping_top h2.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move to original position */
+}
+.course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #08005e; /* Course title background */
+    border-radius: 15px;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+    opacity: 0; /* Start hidden */
+    transform: translateX(-100px); /* Start off-screen to the left */
+}
+
+.course-title.visible {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Move to original position */
+}
+        /* Add this to your existing styles */
+.content h3 {
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start small */
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Transition effects */
+}
+
+.content h3.visible {
+    opacity: 1; /* Fade in */
+    transform: scale(1); /* Scale to original size */
+}
+
+
 </style>
 
 <!-- Housekeeping Top Section -->
@@ -228,5 +293,70 @@
         <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const housekeepingTop = document.querySelector('.housekeeping_top');
+    const heading = housekeepingTop.querySelector('h2');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                housekeepingTop.classList.add('visible'); // Add visible class to the section when in view
+                heading.classList.add('visible'); // Add visible class to h2 when in view
+            } else {
+                housekeepingTop.classList.remove('visible'); // Remove class when out of view
+                heading.classList.remove('visible'); // Remove class when out of view
+            }
+        });
+    });
+
+    observer.observe(housekeepingTop); // Observe the housekeeping_top section
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const housekeepingTop = document.querySelector('.housekeeping_top');
+    const heading = housekeepingTop.querySelector('h2');
+    const courseTitle = document.querySelector('.course-title');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                housekeepingTop.classList.add('visible'); // Add visible class to the section when in view
+                heading.classList.add('visible'); // Add visible class to h2 when in view
+                courseTitle.classList.add('visible'); // Add visible class to h1 when in view
+            } else {
+                housekeepingTop.classList.remove('visible'); // Remove class when out of view
+                heading.classList.remove('visible'); // Remove class when out of view
+                courseTitle.classList.remove('visible'); // Remove class when out of view
+            }
+        });
+    });
+
+    observer.observe(housekeepingTop); // Observe the housekeeping_top section
+    observer.observe(courseTitle); // Observe the course-title section
+});
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const headings = document.querySelectorAll('.content h3');
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight;
+
+        headings.forEach(heading => {
+            const headingPosition = heading.getBoundingClientRect().top;
+
+            // Check if the heading is in the viewport
+            if (headingPosition < windowHeight * 0.8) {
+                heading.classList.add('visible');
+            } else {
+                heading.classList.remove('visible'); // Optional: hide when scrolling up
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+});
+</script>
 
 {% endblock %}

@@ -1,0 +1,234 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Hospitality and Tourism Management Courses{% endblock %}
+
+{% block content %}
+
+<link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* General styles */
+    body {
+        background-color: #f9f9f9;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .hospitality-management {
+        padding: 2rem 1rem;
+        text-align: center;
+        margin: 20px auto;
+        max-width: 1200px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Updated box shadow */
+        transition: transform 0.3s ease; /* Added transition */
+    }
+
+    .hospitality-management:hover {
+        transform: scale(1.02); /* Slight zoom on hover */
+    }
+
+    /* Left-to-right animation */
+    @keyframes moveInRight {
+        0% {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .move-in {
+        animation: moveInRight 0.5s ease forwards;
+    }
+
+    .hospitality-management h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #08005e;
+        margin-bottom: 1.5rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 3px solid #cf5320;
+        display: inline-block;
+    }
+
+    .short-term-heading {
+        font-size: 1.8rem; /* Increased size for better distinction */
+        font-weight: bold; /* Make it bold */
+        color: #333;
+        margin: 2rem 0 1rem;
+    }
+
+    .course-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 -10px;
+    }
+
+    .level-course-card, .course-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 320px;
+        height: 180px;
+        padding: 1rem;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px;
+        color: #fff;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .level-course-card {
+        background-color: #08005e;
+    }
+
+    .course-card {
+        background-color: #cf5320;
+    }
+
+    .short-term-heading {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #08005e;
+        margin-bottom: 1.5rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 3px solid #cf5320;
+        display: inline-block;
+    }
+
+    .level-course-card:hover, .course-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Updated hover shadow */
+    }
+
+    .course-card h3, .level-course-card h3 {
+        margin: 0;
+        line-height: 1.2;
+        color: #fff;
+        text-align: center;
+        transition: opacity 0.5s ease;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: inherit;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: grey;
+    }
+
+    @media (max-width: 768px) {
+        .level-course-card, .course-card {
+            font-size: 0.9rem;
+            width: 90%;
+            height: auto;
+        }
+
+        .hospitality-management h2 {
+            font-size: 2rem;
+        }
+
+        .short-term-heading {
+            font-size: 1.5rem; /* Adjusted for smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hospitality-management h2 {
+            font-size: 1.5rem;
+            padding: 0.3rem;
+        }
+
+        .level-course-card, .course-card {
+            font-size: 0.8rem;
+        }
+
+        .short-term-heading {
+            font-size: 1.3rem; /* Adjusted for even smaller screens */
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .level-course-card.visible, .course-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeInUp 0.5s forwards;
+    }
+</style>
+
+<!-- Top Section -->
+<section class="hospitality-management">
+    <h2 class="move-in">UK Qualification Diploma Programs</h2>
+
+    <div class="course-container">
+        <div class="level-course-card">
+            <h3><a class="text-white" href="{% url 'Level4DiplomaTHM' %}">Level 4: Tourism & Hospitality Management</a></h3>
+        </div>
+        <div class="level-course-card">
+            <h3><a class="text-white" href="{% url 'Level5DiplomaTHM' %}">Level 5: Tourism and Management</a></h3>
+        </div>
+    </div>
+
+    <h3 class="short-term-heading move-in">Short Term Programs</h3>
+    <div class="course-container">
+        <div class="course-card">
+            <h3><a class="text-white" href="{% url 'tourism_hospitality' %}">Tourism & Hospitality Management</a></h3>
+        </div>
+        <div class="course-card">
+            <h3><a class="text-white" href="{% url 'barista_training' %}">Barista Training Course</a></h3>
+        </div>
+        <div class="course-card">
+            <h3><a class="text-white" href="{% url 'housekeeping' %}">Training Diploma in Housekeeping</a></h3>
+        </div>
+        <div class="course-card">
+            <h3><a class="text-white" href="{% url 'food_sanitation' %}">Food Safety and Sanitation</a></h3>
+        </div>
+        <div class="course-card">
+            <h3><a class="text-white" href="{% url 'food_beverage' %}">Food & Beverage Service Training</a></h3>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Fade-in effect on load for cards
+    const cards = document.querySelectorAll('.level-course-card, .course-card');
+    window.addEventListener('load', () => {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+                const text = card.querySelector('h3');
+                text.style.opacity = 0; // Start text as invisible
+                setTimeout(() => {
+                    text.style.opacity = 1; // Fade in text
+                }, 100); // Delay slightly for text transition
+            }, index * 100); // Staggered effect
+        });
+    });
+</script>
+
+{% endblock %}

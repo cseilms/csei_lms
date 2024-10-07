@@ -1,0 +1,400 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Who We Are{% endblock %}
+{% block content %}
+
+    <link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+    /* Base styles */
+.six {
+    text-align: center;
+    padding: 2rem 1rem; /* Padding for spacing */
+    margin-bottom: 1rem; /* Margin below this section */
+}
+
+.six h1 {
+    color: #08005e;
+    font-size: 4rem; /* Responsive size */
+    font-weight: 400;
+    text-transform: uppercase;
+    word-spacing: 1px;
+    letter-spacing: 2px;
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.six p {
+    line-height: 1.5em; /* Adjusted for readability */
+    padding-bottom: 1rem;
+    font-size: 1.875rem; /* Responsive size */
+    font-weight: normal;
+    font-style: italic;
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+    color: #999;
+    letter-spacing: -0.005em;
+    word-spacing: 1px;
+}
+
+.about_div {
+    background-image: url("{% static 'images/card/studnets.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 0;
+}
+
+.about_content {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.875rem; /* Responsive padding */
+    border-radius: 12px;
+    max-width: 90%; /* Responsive width */
+    width: 100%;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+blockquote {
+    margin: 0;
+    font-size: 1.125rem; /* Responsive size */
+    line-height: 1.8;
+    color: #333;
+    border-left: 4px solid #08005e;
+    padding-left: 1.25rem;
+    quotes: "“" "”" "‘" "’";
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+blockquote:before {
+    content: open-quote;
+    font-size: 2rem; /* Responsive size */
+    color: #08005e;
+    vertical-align: middle;
+    margin-right: 0.625rem;
+}
+
+blockquote:after {
+    content: close-quote;
+    font-size: 2rem; /* Responsive size */
+    color: #08005e;
+    vertical-align: middle;
+    margin-left: 0.625rem;
+}
+
+/* Styles for why_csei */
+.why_csei {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 1rem; /* Space between items */
+    align-items: center; /* Center items vertically */
+    background: linear-gradient(180deg, gray, white);
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+}
+
+.why_csei .img_div {
+    flex: 1;
+    padding: 0;
+    margin-right: 1rem; /* Space between image and text */
+    max-width: 100%;
+}
+
+.why_csei .para_div {
+    flex: 1;
+    padding: 0;
+    max-width: 100%;
+}
+
+.why_csei .img_div img {
+    max-width: 100%; /* Responsive image size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    display: block; /* Ensure no extra space below image */
+}
+
+.why_csei h3 {
+    color: #08005e; /* Heading color */
+    font-size: 2rem; /* Responsive size */
+    margin-bottom: 1rem; /* Space below heading */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.why_csei p {
+    font-size: 1.125rem; /* Responsive size */
+    line-height: 1.6; /* Improved readability */
+    color: #333; /* Text color */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.why_csei li {
+    font-size: 1.125rem; /* Responsive size */
+    color: #333; /* Text color */
+    list-style-type: disc; /* Bullet points */
+    margin-bottom: 0.5rem; /* Space between items */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+/* Styles for why_dubai */
+.why_dubai {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 1rem; /* Space between items */
+    align-items: flex-start; /* Align items to the top */
+    background-color: #f4f4f4; /* Updated background color */
+    padding: 2rem 1rem;
+    margin-top: 1rem;
+}
+
+.why_dubai .dubai_content,
+.why_dubai .vision {
+    flex: 1; /* Allow content to grow and shrink equally */
+    padding: 1rem; /* Padding around content */
+    max-width: 100%; /* Ensure content doesn't overflow */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.why_dubai .dubai_content {
+    margin-right: 1rem; /* Space between the two sections */
+}
+
+.why_dubai .vision {
+    margin-left: 1rem; /* Space between the two sections */
+}
+
+.why_dubai h3 {
+    color: #08005e; /* Heading color */
+    font-size: 2rem; /* Responsive size */
+    margin-bottom: 1rem; /* Space below heading */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.why_dubai p {
+    font-size: 1.125rem; /* Responsive size */
+    line-height: 1.6; /* Improved readability */
+    color: #333; /* Text color */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.why_dubai li {
+    font-size: 15px; /* Responsive size */
+    color: #333; /* Text color */
+    list-style-type: disc; /* Bullet points */
+    margin-bottom: 0.5rem; /* Space between items */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+/* Styles for mission_center */
+.mission_center {
+    display: flex;
+    flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    margin: 30px;
+    border-radius: 20px;
+    padding: 20px;
+    height: auto; /* Allow height to adjust based on content */
+}
+
+.mission_center > div {
+    flex: 1; /* Ensure both divs take up equal space */
+    box-sizing: border-box; /* Ensure padding and border are included in width */
+}
+
+.mission_center .missiondiv {
+    margin-right: 1rem; /* Space between the two sections */
+}
+
+.mission_center .centerdiv {
+    margin-left: 1rem; /* Space between the two sections */
+}
+
+.mission_center:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+}
+
+.mission_center h3 {
+    color: #08005e; /* Heading color */
+    font-size: 2rem; /* Responsive size */
+    margin-bottom: 1rem; /* Space below heading */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+.mission_center p {
+    font-size: 1.125rem; /* Responsive size */
+    line-height: 1.6; /* Improved readability */
+    color: #333; /* Text color */
+    font-family: "Playfair Display", "Bookman", serif; /* Consistent font */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .six h1 {
+        font-size: 3rem; /* Smaller size on small screens */
+    }
+
+    .six p {
+        font-size: 1.5rem; /* Smaller size on small screens */
+    }
+
+    .six {
+        margin-bottom: 0.5rem; /* Reduce margin on small screens */
+    }
+
+    .about_div {
+        height: auto; /* Adjust height for small screens */
+        padding: 1rem; /* Less padding on small screens */
+    }
+
+    .about_content {
+        padding: 1.25rem; /* Less padding on small screens */
+    }
+
+    blockquote {
+        font-size: 1rem; /* Smaller font size on small screens */
+    }
+
+    blockquote:before,
+    blockquote:after {
+        font-size: 1.5rem; /* Smaller quote size */
+    }
+
+    .why_csei {
+        flex-direction: column; /* Stack items vertically on smaller screens */
+        align-items: center; /* Center items horizontally */
+    }
+
+    .why_csei .img_div {
+        margin-right: 0; /* Remove right margin on small screens */
+        margin-bottom: 1rem; /* Add bottom margin on small screens */
+    }
+
+    .why_csei .img_div img {
+        height: 300px;
+        width: 300px;
+    }
+
+    .why_dubai {
+        flex-direction: column; /* Stack items vertically on small screens */
+    }
+
+    .why_dubai .dubai_content ul {
+        padding-left: 1.5rem; /* Adjust padding to align with list items */
+    }
+
+    .why_dubai .dubai_content li {
+        font-weight: bold;
+        line-height: 1.5; /* Adjusted for better readability */
+        margin-bottom: 0.5rem; /* Space between list items */
+        color: #333; /* Text color for list items */
+    }
+
+    .why_dubai .dubai_content,
+    .why_dubai .vision {
+        margin: 0; /* Remove margins for stacked layout */
+    }
+}
+
+@media (max-width: 576px) {
+    .six h1 {
+        font-size: 2rem; /* Further smaller size on extra small screens */
+    }
+
+    .six p {
+        font-size: 1.25rem; /* Further smaller size on extra small screens */
+    }
+
+    .why_csei .img_div img,
+    .why_dubai .dubai_content img {
+        height: 200px; /* Further reduce image size on extra small screens */
+        width: auto;
+    }
+
+    .mission_center {
+        flex-direction: column; /* Stack items vertically on extra small screens */
+    }
+
+    .mission_center .missiondiv,
+    .mission_center .centerdiv {
+        margin-right: 0; /* Remove right margin on extra small screens */
+        margin-bottom: 1rem; /* Add bottom margin on extra small screens */
+    }
+}
+
+</style>
+<section id="aboutus" class="aboutus">
+    <div class="six">
+        <h1>Who We Are</h1>
+        <p>Learn more about who we are and what drives us</p>
+    </div>
+    <div class="about_div">
+        <div class="about_content">
+            <blockquote>
+                Creative Star Education Institutes (CSEI) is an educational center for the learning enthusiast, offering an open space for intellectual discovery. Our experience with numerous universities has led us to create a system that encourages students to engage deeply with their education while avoiding undue pressure.
+
+                Located in Dubai, UAE, a global business and tourism hub, CSEI provides more than just quality education. We focus on enhancing not only academic knowledge but also practical skills needed in today's fast-paced world.
+            </blockquote>
+        </div>
+    </div>
+
+    <div class="why_csei m-4" style="border-radius:10px">
+        <div class="img_div">
+            <img src="{% static 'images/card/og1.jpg' %}" alt="Why CSEI">
+        </div>
+        <div class="para_div">
+            <h3>Why Choose Us?</h3>
+            <p>Discover what sets us apart from the rest:</p>
+            <ul>
+                <li>Experienced and dedicated educators</li>
+                <li>Innovative teaching methods</li>
+                <li>State-of-the-art facilities</li>
+                <li>Commitment to student success</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="why_dubai m-4" style="border-radius:10px">
+        <div class="dubai_content">
+            <h3>Why Dubai?</h3>
+            <p>Dubai has become a dream city for many people. With rapid growth in the trading and business sector, from the last few years, many students have started choosing the UAE for their higher education and career. Apart from the affordable fees with the same quality education as any other western countries, there are many more benefits of choosing Dubai for education and any career pathway. <br>The main attraction from them are:</p>
+            <li>Tax-free salary</li>
+            <li>World’s business hub</li>
+            <li>Cultural and language diversity</li>
+            <li>Growing market in the world</li>
+            <li>Center for travel and tourism</li>
+            <li>One of the safest countries</li>
+            <li>Golden visa schema </li>
+
+
+        </div>
+        <div class="vision">
+            <h3>Our Vision</h3>
+            <p>Be an International Institute with excellent guide and support for the students to grow confidently in their career path by providing creative learning environment at affordable price. It is our foremost commitment to nourish the students with learning enthusiasm and motivation to develop critical thinking.</p>
+        </div>
+    </div>
+    <div class="mission_center m-3 p-3">
+        <div class="missiondiv">
+
+            <h3>Our Mission</h3>
+            <p>To provide the students a safe place to speak up and learn freely. To act as catalyst by providing them vast opportunity to explore and learn new things.</p>
+
+        </div>
+        <div class="centerdiv">
+
+            <h3>Our Center</h3>
+            <p>Our Academic center is based on Dubai city in UAE. For any one those who are traveling by using Metro or RTA buses its easy get our centers near by Abubaker Metro station exit 1 Speedex Center M04 And Dubai Academic City Building 12 Campus No: 303</p>
+        </div>
+    </div>
+
+
+
+</section>
+{% endblock %}
+

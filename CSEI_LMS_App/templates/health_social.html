@@ -162,6 +162,83 @@
             padding: 1rem;
         }
     }
+    @keyframes backgroundFade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes flyIn {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.health_social_top {
+    animation: backgroundFade 1s ease-in forwards, flyIn 1s ease-in forwards;
+}
+
+/* Adjust for mobile view */
+@media (max-width: 768px) {
+    .health_social_top h2 {
+        font-size: 2.5rem;
+        animation: flyIn 1s ease-in forwards;
+    }
+}
+    @keyframes zoomInFly {
+    0% {
+        transform: translateY(100%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+.course-title {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Start as invisible */
+}
+
+.course-title.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+.content {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateY(20px); /* Start 20px down */
+    opacity: 0; /* Start as invisible */
+}
+
+.content.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+    .content h3 {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Start as invisible */
+}
+
+.content h3.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+
+
 </style>
 
 <!-- Health and Social Care Management Top Section -->
@@ -210,5 +287,65 @@
         <a href="{% url 'apply_online' %}" class="apply-button">Apply Online</a>
     </div>
 </section>
+<script>document.addEventListener('DOMContentLoaded', function () {
+    const title = document.querySelector('.course-title');
 
+    function handleScroll() {
+        const titlePosition = title.getBoundingClientRect().top; // Get position relative to viewport
+        const windowHeight = window.innerHeight; // Get window height
+
+        // If the title is within the viewport
+        if (titlePosition < windowHeight && titlePosition > 0) {
+            title.classList.add('visible');
+        } else {
+            title.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const contents = document.querySelectorAll('.content'); // Select all content divs
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight; // Get window height
+
+        contents.forEach(content => {
+            const contentPosition = content.getBoundingClientRect().top; // Get position relative to viewport
+
+            // If the content is within the viewport
+            if (contentPosition < windowHeight && contentPosition > 0) {
+                content.classList.add('visible');
+            } else {
+                content.classList.remove('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const headings = document.querySelectorAll('.content h3'); // Select all h3 elements inside content
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight; // Get window height
+
+        headings.forEach(heading => {
+            const headingPosition = heading.getBoundingClientRect().top; // Get position relative to viewport
+
+            // If the heading is within the viewport
+            if (headingPosition < windowHeight && headingPosition > 0) {
+                heading.classList.add('visible');
+            } else {
+                heading.classList.remove('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+</script>
 {% endblock %}

@@ -60,10 +60,9 @@
     margin-left: 2rem;
 }
 
-/* Background for top section */
 .barista_top {
     height: 500px;
-    background-image: url("{% static 'images/bar4.jpg' %}"); /* Ensure this path is correct */
+    background-image: url("{% static 'images/bar4.jpg' %}");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -73,6 +72,12 @@
     align-items: center;
     color: #fff;
     text-align: center;
+    opacity: 0; /* Start with hidden */
+    transition: opacity 1s ease; /* Smooth transition */
+}
+
+.barista_top.visible {
+    opacity: 1; /* Fade in effect */
 }
 
 .barista_top h2 {
@@ -80,6 +85,14 @@
     font-weight: bold;
     margin: 0;
     color: #fff; /* Keep text color white */
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Start invisible */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Smooth transition for both */
+}
+
+.barista_top h2.visible {
+    transform: translateX(0); /* Move into position */
+    opacity: 1; /* Fade in */
 }
 
 /* Responsive styling */
@@ -92,6 +105,43 @@
         padding: 1rem;
     }
 }
+
+    /* Course Title */
+.course-title {
+    transform: translateX(-100%); /* Start off-screen */
+    opacity: 0; /* Start invisible */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for sliding and fading */
+}
+
+.course-title.visible {
+    transform: translateX(0); /* Move into position */
+    opacity: 1; /* Fade in */
+}
+
+/* Content */
+.content {
+    transform: scale(0.8); /* Start small */
+    opacity: 0; /* Start invisible */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for zooming and fading */
+}
+
+.content.visible {
+    transform: scale(1); /* Zoom in */
+    opacity: 1; /* Fade in */
+}
+
+/* Additional Text Animation */
+.content p, .content h3, .content ul {
+    transform: translateY(20px); /* Start below */
+    opacity: 0; /* Start invisible */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for flying up and fading */
+}
+
+.content p.visible, .content h3.visible, .content ul.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fade in */
+}
+
 </style>
 
 <!-- Barista Top Section -->
@@ -197,5 +247,86 @@
 
     </div>
 </section>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const baristaTop = document.querySelector('.barista_top');
+
+    // Fade in effect on page load
+    setTimeout(() => {
+        baristaTop.classList.add('visible');
+    }, 100); // Delay to let content load
+
+    // On scroll, apply a reveal effect (optional)
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Check if the top section is in view
+        if (scrollPosition + windowHeight > baristaTop.offsetTop) {
+            baristaTop.classList.add('visible');
+        }
+    });
+});
+    document.addEventListener('DOMContentLoaded', function() {
+    const baristaTop = document.querySelector('.barista_top');
+    const heading = baristaTop.querySelector('h2');
+
+    // Fade in effect on page load
+    setTimeout(() => {
+        heading.classList.add('visible');
+    }, 100); // Delay to let content load
+
+    // On scroll, apply a slide effect
+    window.addEventListener('scroll', function() {
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+
+        // Check if the heading is in view
+        if (scrollPosition + windowHeight > heading.offsetTop) {
+            heading.classList.add('visible');
+        }
+    });
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const sections = document.querySelectorAll('section');
+
+    // Function to check visibility
+    const checkVisibility = () => {
+        const windowHeight = window.innerHeight;
+
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+
+            // Check if section is in view
+            if (sectionTop < windowHeight * 0.75) { // 75% of the viewport height
+                const title = section.querySelector('.course-title');
+                if (title) title.classList.add('visible');
+
+                const contentItems = section.querySelectorAll('.content');
+                contentItems.forEach((content, index) => {
+                    setTimeout(() => {
+                        content.classList.add('visible');
+                    }, index * 150); // Staggered effect
+                });
+
+                const textItems = section.querySelectorAll('.content p, .content h3, .content ul');
+                textItems.forEach((text, index) => {
+                    setTimeout(() => {
+                        text.classList.add('visible');
+                    }, index * 150); // Staggered effect
+                });
+            }
+        });
+    };
+
+    // Initial check on page load
+    checkVisibility();
+
+    // On scroll
+    window.addEventListener('scroll', checkVisibility);
+});
+
+</script>
 
 {% endblock %}

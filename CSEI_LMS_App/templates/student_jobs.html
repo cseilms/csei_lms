@@ -82,23 +82,35 @@
         transform: translateY(-10px);
     }
 
-    @media (max-width: 768px) {
-        .job-support .counseling,
-        .job-support .service {
-            flex-direction: column;
-        }
-
-        .job-support .counseling_img,
-        .job-support .service_img {
-            margin-bottom: 1rem;
+    /* Mobile-specific styles */
+    @media (max-width: 576px) {
+        .bottom_div .btn-primary {
+            padding: 0.5rem 1rem; /* Smaller padding */
+            font-size: 1rem; /* Smaller font size */
         }
 
         .job-support img {
-            height: 300px;
+            height: auto; /* Ensure images maintain aspect ratio */
+            max-width: 100%; /* Prevent overflow */
+        }
+
+        .job-support, .bottom_div {
+            padding: 1rem; /* Reduce padding for smaller screens */
+            margin: 0; /* Prevent extra margin */
+        }
+
+        .job-support .counseling,
+        .job-support .service {
+            flex-direction: column; /* Stack elements vertically */
+            width: 100%; /* Full width */
+        }
+
+        .customer-logos .slide {
+            margin: 0 auto; /* Center logos */
+            padding: 0; /* Remove extra padding */
         }
     }
-
-    @media (max-width: 576px) {
+ @media (max-width: 576px) {
         .job-support h4 {
             font-size: 2rem;
         }
@@ -283,27 +295,151 @@
         background-color: #05004a;
         border-color: #05004a;
     }
+
+	@keyframes fly-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.fly-in {
+    animation: fly-in 1s ease forwards;
+}
+	/* Bottom to Top Animation for Text */
+@keyframes slide-up {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fly In Animation for Headings */
+@keyframes fly-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Scale Effect for Images */
+@keyframes scale-up {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.slide-up {
+    animation: slide-up 0.5s ease forwards;
+}
+
+.fly-in {
+    animation: fly-in 0.5s ease forwards;
+}
+
+.scale-up {
+    animation: scale-up 0.5s ease forwards;
+}
+/* Slide Down Animation for the Bottom Div */
+@keyframes slide-down {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fly In Animation for the Heading */
+@keyframes fly-in {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Fade In for Button */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-down {
+    animation: slide-down 0.5s ease forwards;
+}
+
+.fly-in {
+    animation: fly-in 0.5s ease forwards;
+}
+
+.fade-in {
+    animation: fade-in 0.5s ease forwards;
+}
+
+	/* Mobile-specific transition effects */
+@media (max-width: 576px) {
+    .slide-up-mobile {
+        animation: slide-up 0.5s ease forwards;
+    }
+
+    .fade-in-mobile {
+        animation: fade-in 0.5s ease forwards;
+    }
+}
+
+
+
 </style>
 
 <section id="job-support" class="job-support">
     <div class="top_div">
-        <h4 style="font-family: fangsong;">Job Support for Our Students</h4>
+<h4 class="fly-in-heading" style="font-family: fangsong;">Job Support for Our Students</h4>
 
         <div class="counseling m-4 p-3">
             <div class="counseling_img">
                 <img src="{% static 'images/placement.jpg' %}" alt="JobSupport">
             </div>
             <div class="counseling_para">
-                <h3>Career Counseling</h3>
-                <p>Many students have a clear vision of their future career path, while others are unsure of which direction to take. Our placement team helps students plan for life after the completion of any program by guiding them and helping them uncover other fields of interest in order to find the most suitable and stimulating career path. The team helps students with creating resumes, preparing for interviews, and assists with full-time and part-time internship opportunities to help boost their resumes.</p>
-            </div>
+                 <h3 class="fly-in">Career Counseling</h3>
+        <p class="slide-up">Many students have a clear vision of their future career path, while others are unsure of which direction to take. Our placement team helps students plan for life after the completion of any program by guiding them and helping them uncover other fields of interest in order to find the most suitable and stimulating career path. The team helps students with creating resumes, preparing for interviews, and assists with full-time and part-time internship opportunities to help boost their resumes.</p>
+
+                  </div>
         </div>
 
         <div class="service m-4 p-3">
             <div class="service_para">
-                <h3>Placement Service</h3>
-                <p>CSEI Academy has become the preferred choice for students. Placements at leading companies across various sectors including Healthcare, Hospitals, Insurance, Fashion, Banking, Technology, Real Estate, Hospitality, and more—students are given immense opportunities for employment choices. Our placement team works every day to provide the best industry learning exposure for our students.</p>
-            </div>
+
+        <h3 class="fly-in">Placement Service</h3>
+        <p class="slide-up">CSEI Academy has become the preferred choice for students. Placements at leading companies across various sectors including Healthcare, Hospitals, Insurance, Fashion, Banking, Technology, Real Estate, Hospitality, and more—students are given immense opportunities for employment choices. Our placement team works every day to provide the best industry learning exposure for our students.</p>
+
+                      </div>
             <div class="service_img">
                 <img src="{% static 'images/counsler1.jpg' %}" alt="Placement Service">
             </div>
@@ -314,18 +450,18 @@
 
 
 <div class="bottom_div">
-    <h3>What features do we have for student’s job support</h3>
+    <h3 class="fade-in-mobile">What features do we have for student’s job support</h3>
     <ol>
         <li>CV Writing classes by H.R Expert.</li>
-        <li>Before the start and at the mid-semester, there are classes about how you can use your knowledge in Dubai for part time/full time industry learning.</li>
+        <li>Classes about using knowledge in Dubai for part-time/full-time industry learning.</li>
         <li>Interview preparation classes by Placement & Counseling team.</li>
     </ol>
 
-        <button class="btn btn-primary m-3" type="button">
-            Book an appointment with our Career Consultant
-        </button>
-
+    <button class="btn btn-primary m-3 fade-in-mobile" type="button">
+        Book an appointment with our Career Consultant
+    </button>
 </div>
+
 
 
 <!--checking-->
@@ -472,6 +608,110 @@
             }]
         });
     });
+
+    $(document).ready(function() {
+        $('.fly-in-heading').addClass('fly-in');
+    });
+
+	 document.addEventListener("DOMContentLoaded", function() {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add classes for animation
+                    entry.target.classList.add('slide-up');
+                    if (entry.target.querySelector('h3')) {
+                        entry.target.querySelector('h3').classList.add('fly-in');
+                    }
+                    if (entry.target.querySelector('img')) {
+                        entry.target.querySelector('img').classList.add('scale-up');
+                    }
+                    observer.unobserve(entry.target); // Stop observing once animation is applied
+                }
+            });
+        }, options);
+
+        // Observe the elements
+        document.querySelectorAll('.counseling, .service').forEach(element => {
+            observer.observe(element);
+        });
+    });
+	 document.addEventListener("DOMContentLoaded", function() {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add classes for animation
+                    entry.target.classList.add('slide-down');
+                    if (entry.target.querySelector('h3')) {
+                        entry.target.querySelector('h3').classList.add('fly-in');
+                    }
+                    if (entry.target.querySelector('button')) {
+                        entry.target.querySelector('button').classList.add('fade-in');
+                    }
+                    observer.unobserve(entry.target); // Stop observing once animation is applied
+                }
+            });
+        }, options);
+
+        // Observe the bottom_div
+        observer.observe(document.querySelector('.bottom_div'));
+    });
+
+
+	  document.addEventListener("DOMContentLoaded", function() {
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add classes for animation
+                    if (entry.target.classList.contains('bottom_div')) {
+                        entry.target.classList.add('slide-down');
+                        entry.target.querySelector('h3').classList.add('fly-in');
+                        entry.target.querySelector('button').classList.add('fade-in');
+                    } else {
+                        entry.target.classList.add('slide-up');
+                        if (entry.target.querySelector('h3')) {
+                            entry.target.querySelector('h3').classList.add('fly-in');
+                        }
+                        if (entry.target.querySelector('img')) {
+                            entry.target.querySelector('img').classList.add('scale-up');
+                        }
+                    }
+                } else {
+                    // Remove classes for scroll back animation
+                    entry.target.classList.remove('slide-up', 'slide-down');
+                    if (entry.target.querySelector('h3')) {
+                        entry.target.querySelector('h3').classList.remove('fly-in');
+                    }
+                    if (entry.target.querySelector('button')) {
+                        entry.target.querySelector('button').classList.remove('fade-in');
+                    }
+                }
+            });
+        }, options);
+
+        // Observe the elements
+        document.querySelectorAll('.counseling, .service, .bottom_div').forEach(element => {
+            observer.observe(element);
+        });
+    });
 </script>
+
 
 {% endblock %}

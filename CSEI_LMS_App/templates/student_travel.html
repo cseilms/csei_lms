@@ -41,6 +41,10 @@
     border-radius: 5px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
     margin-bottom: 1rem;
+    max-width:500px;
+    margin-left:100px;
+    margin-right:100px;
+
     transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -228,60 +232,320 @@
     color: #333;
     text-align: center;
 }
+.info_section {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+    opacity: 1; /* Change to 1 when you want them visible */
+    transform: translateY(0); /* Reset transform */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.info_section img {
+    width: 40%;
+    border-radius: 5px;
+}
+
+.info_section_text {
+    width: 60%;
+    padding: 1rem;
+}
+.info_section, .info_section_pickup {
+    position: relative; /* Required for z-index to work */
+    z-index: 1; /* Ensure they are on top */
+}
+.fade-in {
+    opacity: 1; /* Make visible */
+    transform: translateY(0); /* Reset translation */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Smooth transition */
+}
+
 
 /* Animation for scrolling */
 .fade-in {
     opacity: 1;
     transform: translateY(0);
 }
+  @keyframes scaleEffect {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.travel_top {
+    animation: scaleEffect 0.5s ease-out forwards; /* Add animation for scaling effect */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.travel_top h2 {
+    animation: slideIn 0.5s ease-out forwards; /* Add animation for sliding effect */
+}
+@keyframes flyInLeft {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes flyInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.card {
+    opacity: 0; /* Start hidden */
+}
+
+.card-left {
+    animation: flyInLeft 0.5s ease-out forwards; /* Animate from left */
+}
+
+.card-right {
+    animation: flyInRight 0.5s ease-out forwards; /* Animate from right */
+}
+
+.title-fade {
+    animation: fadeIn 0.5s ease-out forwards; /* Fade-in effect for titles */
+    animation-delay: 0.3s; /* Delay to make it fade in after card */
+}
+
+.card_img {
+    padding: 2rem;
+}
+
+.card {
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    display: flex; /* Ensure flex display for card */
+    flex-direction: column; /* Column direction */
+    height: 100%; /* Take full height of parent */
+}
+
+.card-img-top {
+    height: 200px; /* Fixed height for images */
+    object-fit: cover; /* Ensure image covers the area */
+}
+
+.card-body {
+    flex: 1; /* This allows the body to take remaining space */
+}
+
+/* Ensure that all card elements are visually consistent */
+.card-title {
+    margin-bottom: 1rem; /* Consistent spacing */
+}
+@keyframes flyInBottom {
+    from {
+        transform: translateY(20px); /* Start slightly below */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateY(0); /* End at normal position */
+        opacity: 1; /* End fully visible */
+    }
+}
+
+.card-body {
+    opacity: 0; /* Start hidden */
+    animation: flyInBottom 0.6s ease-out forwards; /* Add animation for text */
+    animation-delay: 0.3s; /* Delay for the animation to start */
+}
+
+/* Add this class to apply the animation specifically to card-text */
+.card-body .card-text {
+    animation: flyInBottom 0.6s ease-out forwards; /* Apply animation to text */
+    animation-delay: 0.4s; /* Slightly delayed from the card body */
+}
+@keyframes flyInLeft {
+    from {
+        transform: translateX(100%); /* Start from the right */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* End at normal position */
+        opacity: 1; /* End fully visible */
+    }
+}
+
+.manage_park {
+    opacity: 0; /* Start hidden */
+    animation: flyInLeft 0.5s ease-out forwards; /* Fly in from the right */
+    animation-delay: 0.2s; /* Short delay for a fast appearance */
+    transform: translateY(20px); /* Slightly down for scroll effect */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for smooth appearance */
+}
+
+.manage_park h3 {
+    animation: flyInLeft 0.5s ease-out forwards; /* Apply animation to the heading */
+    animation-delay: 0.3s; /* Delay for heading */
+}
+@keyframes scaleEffect {
+    from {
+        transform: scale(0.8); /* Start small */
+        opacity: 0; /* Start invisible */
+        transform: translateY(20px); /* Start slightly lower */
+    }
+    to {
+        transform: scale(1); /* End at normal size */
+        opacity: 1; /* End fully visible */
+        transform: translateY(0); /* End at normal position */
+    }
+}
+
+.info_section_text h6 {
+    opacity: 0; /* Start hidden */
+    animation: scaleEffect 0.5s ease-out forwards; /* Apply the scaling and fly-in effect */
+    animation-delay: 0.2s; /* Delay for effect */
+}
+
+  @keyframes flyInLeft {
+    from {
+        transform: translateX(-100%); /* Start from the left */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* End at normal position */
+        opacity: 1; /* End fully visible */
+    }
+}
+.info_section_text p {
+    opacity: 0; /* Start hidden */
+    animation: flyInLeft 0.6s ease-out forwards; /* Apply animation */
+    animation-delay: 0.2s; /* Delay for a staggered effect */
+}
+.info_section {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    margin-bottom: 2rem;
+    opacity: 1; /* Set to 1 for visibility */
+    transform: translateY(0); /* Reset transform */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.info_section img {
+    width: 40%;
+    border-radius: 5px;
+}
+
+.info_section_text {
+    width: 60%;
+    padding: 1rem;
+}
+
+.info_section_text p {
+    opacity: 0; /* Start hidden */
+    animation: flyInLeft 0.6s ease-out forwards; /* Apply animation */
+    animation-delay: 0.2s; /* Delay for a staggered effect */
+}
+      @media (max-width: 768px) {
+        .travel_top h2 {
+            font-size: 2.5rem;
+        }
+        /* Additional responsive styles... */
+    }
+/* Initial state for elements before they come into view */
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-fade.in-view {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+}
+.scroll-fade {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.scroll-fade.in-view {
+    opacity: 1;
+    transform: translateY(0); /* End at normal position */
+}
+
 </style>
 
 <div class="travel_top">
   <h2>Travelling to CSEI Academy</h2>
 </div>
-
 <div class="card_img">
   <div class="row">
-    <div class="col-md-6 mb-3">
-      <div class="card">
+    <div class="col-md-6 mb-3 scroll-fade" style="max-width:450px">
+      <div class="card card-left">
         <img src="{% static 'images/logos/img.png' %}" class="card-img-top" alt="Car & Motor Cycle Parking">
         <div class="card-body">
-          <h5 class="card-title">Car & Motor Cycle Parking</h5>
+          <h5 class="card-title title-fade" style="color:#08005e;font-size:30px">Car & Motor Cycle Parking</h5>
           <p class="card-text">The CSEI Academy Dubai campus is located in the Dubai International Academic City (DIAC) zone. Our campus is near to Dubai International Airport and 30 minutes from EXPO City. Every effort has been made to ensure that the information supplied is correct at the time of publication. Students and their parents should check with service providers to ensure that published costs and timetables are current and correct for transportation.</p>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mb-3">
-      <div class="card">
+    <div class="col-md-6 mb-3 scroll-fade" style="max-width:450px">
+      <div class="card card-right">
         <img src="{% static 'images/logos/img_1.png' %}" class="card-img-top" alt="Walking & Cycling">
         <div class="card-body">
-          <h5 class="card-title">Walking & Cycling</h5>
-          <p class="card-text">There are pedestrian and bicycle accesses to the institute at Academic City Block 12, Campus 303 as well as our other Admission Centre located at Speedex Centre, near Abu Baker Metro Station, Deira, Dubai. The Academic City is located at Dubai Academic City Zone that has entrances leading to a well-lit pedestrian footpath to the main building and car parking area of Dubai International Academic City. There are bicycle spaces on site close to the main entrance.</p>
+          <h5 class="card-title title-fade" style="color:#08005e;font-size:30px">Walking & Cycling</h5>
+          <p class="card-text">There are pedestrian and bicycle accesses to the institute at Academic City Block 12, Campus 303. The Academic City is located at Dubai Academic City Zone that has entrances leading to a well-lit pedestrian footpath to the main building and car parking area of Dubai International Academic City. There are bicycle spaces on site close to the main entrance.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="find_us">
-  <div class="find_us_content">
-    <div class="find_us_para">
-      <h4>How to find us?</h4>
-      <h1>CSEI Academy Campus is Accessible by Car, Bus, Train or by Foot</h1>
-      <p>The CSEI Academy Dubai campus is located in the Dubai International Academic City (DIAC) zone. Our campus is near Dubai International Airport and 30 minutes from EXPO City. Every effort has been made to ensure that the information supplied is correct at the time of publication. Students and their parents should check with service providers to ensure that published costs and timetables are current and correct.</p>
-    </div>
-    <div class="find_us_img">
-      <img src="{% static 'images/parking.jpg' %}" alt="Parking">
-    </div>
-  </div>
-</div>
 
-<div class="manage_park">
+
+
+<div class="manage_park m-5 scroll-fade">
   <h3>Who Manages the College Car Parks?</h3>
   <p>Dubai International Academic City is accessible by metro, public bus, taxi, and ride-hailing services. There are various convenient metered parking options in and around Dubai International Academic City.</p>
 </div>
 
-<div class="info_section">
+<div class="info_section scroll-fade">
   <img src="{% static 'images/card/parking3.jpg' %}" alt="Parking" height="200px" width="200px">
   <div class="info_section_text">
     <h6>Parking</h6>
@@ -290,44 +554,110 @@
 </div>
 
 <div class="info_section">
-  <div class="info_section_text">
+  <div class="info_section_text scroll-fade">
     <h6>Students</h6>
     <p class="m-2">To park in the Institute’s car park, you must either register in advance for an E-permit & should have a student ID from the college under Dubai Academic City as it is required for free parking in the Academic City Zone.</p>
   </div>
   <img src="{% static 'images/card/travel1.jpg' %}" alt="Students" height="200px" width="200px">
 
-  <div class="info_section_text">
+  <div class="info_section_text scroll-fade">
     <h6>Staff</h6>
     <p class="m-2">To park in the college car park or Academic City parking, staff can either register their vehicle in advance for a free E-Permit, which will then allow them to park in the city parking. The staff should have the required credentials (Staff ID card to access the academy free parking). Without a permit or staff ID card, even if you pay the daily charge, you may still receive a Parking Charge Notice.</p>
   </div>
 </div>
 
-<div class="info_section_pickup">
+<div class="info_section_pickup scroll-fade">
   <h6>Picking up or Dropping off</h6>
   <p>The picking up or dropping off facility will be provided on request by the Academy driver as and when required. Please mail beforehand to arrange this service.</p>
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const sections = document.querySelectorAll('.info_section, .info_section_pickup');
+  document.addEventListener("DOMContentLoaded", function() {
+    const infoSections = document.querySelectorAll('.info_section, .info_section_pickup');
+    infoSections.forEach((section) => {
+        section.classList.add('fade-in'); // Assuming you have defined this class in your CSS
+        section.style.opacity = 1; // This will make the section visible
+        section.style.transform = 'translateY(0)'; // Reset the translateY
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const infoSections = document.querySelectorAll('.info_section_text');
+    infoSections.forEach((section) => {
+        const paragraphs = section.querySelectorAll('p');
+        paragraphs.forEach((para, index) => {
+            para.style.animationDelay = `${0.2 * index}s`; // Stagger the delay for each paragraph
+            para.style.opacity = 1; // Make visible
+        });
+    });
+});
 
-    function handleScroll() {
-      const scrollTop = window.pageYOffset;
-      const viewportHeight = window.innerHeight;
+    document.addEventListener("DOMContentLoaded", function() {
+        const infoSections = document.querySelectorAll('.info_section, .info_section_pickup');
+        infoSections.forEach((section) => {
+            section.classList.add('fade-in');
+        });
 
-      sections.forEach(section => {
-        const sectionTop = section.getBoundingClientRect().top + scrollTop;
-        const sectionHeight = section.offsetHeight;
+        const paragraphs = document.querySelectorAll('.info_section_text p');
+        paragraphs.forEach((para, index) => {
+            para.style.animationDelay = `${0.2 * index}s`;
+        });
+    });
+     document.addEventListener('DOMContentLoaded', () => {
+        const elements = document.querySelectorAll('.scroll-fade');
 
-        if (scrollTop + viewportHeight > sectionTop + sectionHeight * 0.2) {
-          section.classList.add('fade-in');
-        }
-      });
-    }
+        const checkScroll = () => {
+            const triggerBottom = window.innerHeight * 0.8; // Adjust based on when you want the effect to trigger
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial check
-  });
+            elements.forEach(element => {
+                const box = element.getBoundingClientRect();
+                if (box.top < triggerBottom) {
+                    element.classList.add('in-view');
+                } else {
+                    element.classList.remove('in-view'); // Optional: reset when out of view
+                }
+            });
+        };
+
+        window.addEventListener('scroll', checkScroll);
+        checkScroll(); // Run on initial load
+    });
+
+  document.addEventListener("DOMContentLoaded", function() {
+    // Select all sections to be animated on scroll
+    const elements = document.querySelectorAll('.scroll-fade');
+
+    // Function to add 'in-view' class to elements
+    const fadeInElements = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view'); // Add class to trigger fade-in
+                observer.unobserve(entry.target); // Stop observing once animated
+            }
+        });
+    };
+
+    // Create an Intersection Observer
+    const observer = new IntersectionObserver(fadeInElements, {
+        root: null, // Use the viewport as the root
+        threshold: 0.1 // Trigger when 10% of the element is in view
+    });
+
+    // Observe each element
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+
+    // Initial load animations for visible elements
+    const checkInitialLoad = () => {
+        elements.forEach(element => {
+            const box = element.getBoundingClientRect();
+            if (box.top < window.innerHeight * 0.8) {
+                element.classList.add('in-view');
+            }
+        });
+    };
+
+    checkInitialLoad(); // Run on initial load
+});
 </script>
-
 {% endblock %}

@@ -156,6 +156,72 @@
         padding: 1rem;
     }
 }
+
+    .food_beverage_top h2 {
+    transform: translateX(-100%); /* Start off-screen */
+    opacity: 0; /* Hidden initially */
+    transition: transform 0.8s ease, opacity 0.8s ease; /* Transition effect */
+}
+
+.food_beverage_top.visible h2 {
+    transform: translateX(0); /* Move to its position */
+    opacity: 1; /* Fully visible */
+}
+    .course-title {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 30px;
+    color: #08005e; /* Course title background */
+
+    border-radius: 15px;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Smooth transition */
+    opacity: 0; /* Start hidden */
+    transform: translateX(-100px); /* Start off-screen to the left */
+}
+
+.course-title.visible {
+    opacity: 1; /* Fade in */
+    transform: translateX(0); /* Move to original position */
+}
+
+    @keyframes flyIn {
+    from {
+        transform: translateY(50px); /* Start from below */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateY(0); /* End at original position */
+        opacity: 1; /* End visible */
+    }
+}
+
+.content {
+    opacity: 0; /* Start invisible */
+    animation-fill-mode: forwards; /* Maintain the final state of the animation */
+    animation-duration: 0.6s; /* Duration of the animation */
+    animation-timing-function: ease-out; /* Smooth easing */
+}
+
+@keyframes flyInRight {
+    from {
+        transform: translateX(100px); /* Start from the right */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* End at original position */
+        opacity: 1; /* End visible */
+    }
+}
+
+.content h3 {
+    opacity: 0; /* Start invisible */
+    animation-fill-mode: forwards; /* Maintain the final state of the animation */
+    animation-duration: 0.6s; /* Duration of the animation */
+    animation-timing-function: ease-out; /* Smooth easing */
+}
+
 </style>
 
 <section id="food_beverage_training" class="food_beverage_top">
@@ -237,5 +303,105 @@
         <a href="{% url 'apply_online' %}" class="apply-button">Apply Now</a>
     </div>
 </section>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const section = document.getElementById('food_beverage_training');
+    const h2 = section.querySelector('h2');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                section.classList.add('visible'); // Add visible class when in view
+            } else {
+                section.classList.remove('visible'); // Remove class when out of view
+            }
+        });
+    });
+
+    observer.observe(section);
+});
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const courseTitle = document.querySelector('.course-title');
+    const housekeepingTop = document.getElementById('food_beverage_training'); // Assuming this is your section ID
+    const heading = housekeepingTop.querySelector('h2'); // Adjust if your heading is different
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                housekeepingTop.classList.add('visible'); // Add visible class to the section when in view
+                heading.classList.add('visible'); // Add visible class to h2 when in view
+                courseTitle.classList.add('visible'); // Add visible class to h1 when in view
+            } else {
+                housekeepingTop.classList.remove('visible'); // Remove class when out of view
+                heading.classList.remove('visible'); // Remove class when out of view
+                courseTitle.classList.remove('visible'); // Remove class when out of view
+            }
+        });
+    });
+
+    observer.observe(housekeepingTop); // Observe the housekeeping_top section
+    observer.observe(courseTitle); // Observe the course-title section
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const contentSections = document.querySelectorAll('.content');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the section is in view
+    };
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.animation = 'flyIn 0.6s ease-out forwards'; // Trigger fly-in animation
+                entry.target.style.opacity = 1; // Make it visible
+            } else {
+                entry.target.style.opacity = 0; // Reset opacity when out of view
+                entry.target.style.animation = 'none'; // Reset animation
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    contentSections.forEach(section => {
+        observer.observe(section); // Observe each content section
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const contentSections = document.querySelectorAll('.content');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 // Trigger when 10% of the section is in view
+    };
+
+    const observerCallback = (entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const h3Element = entry.target.querySelector('h3');
+                if (h3Element) {
+                    h3Element.style.animation = 'flyInRight 0.6s ease-out forwards'; // Trigger fly-in animation for h3
+                    h3Element.style.opacity = 1; // Make it visible
+                }
+            } else {
+                const h3Element = entry.target.querySelector('h3');
+                if (h3Element) {
+                    h3Element.style.opacity = 0; // Reset opacity when out of view
+                    h3Element.style.animation = 'none'; // Reset animation
+                }
+            }
+        });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    contentSections.forEach(section => {
+        observer.observe(section); // Observe each content section
+    });
+});
+
+</script>
 
 {% endblock %}

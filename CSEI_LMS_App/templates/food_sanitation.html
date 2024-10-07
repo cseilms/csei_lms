@@ -122,6 +122,7 @@
 /* Background for top section */
 .food_safety_top {
     height: 500px;
+    max-width:100%;
     background-image: url("{% static 'images/food3.jpg' %}"); /* Ensure this path is correct */
     background-size: cover;
     background-position: center;
@@ -165,6 +166,59 @@
         padding: 1rem;
     }
 }
+
+    /*new*/
+    .food_safety_top {
+    position: relative;
+    overflow: hidden; /* To ensure content doesn't overflow */
+}
+
+.food_safety_top h2 {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateY(50px); /* Start 50px below */
+    opacity: 0; /* Start as invisible */
+}
+
+.food_safety_top h2.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+.course-title {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 0; /* Start as invisible */
+}
+
+.course-title.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+.content {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateY(20px); /* Start 20px down */
+    opacity: 0; /* Start as invisible */
+}
+
+.content.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+    .content h3 {
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    transform: translateX(100%); /* Start off-screen to the right */
+    opacity: 0; /* Start as invisible */
+}
+
+.content h3.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+
 </style>
 
 <section id="food_safety_training" class="food_safety_top">
@@ -241,4 +295,86 @@
     </div>
 </section>
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const heading = document.querySelector('#food_safety_training h2');
+
+    function handleScroll() {
+        const sectionPosition = heading.getBoundingClientRect().top; // Get position relative to viewport
+        const windowHeight = window.innerHeight; // Get window height
+
+        // If the section is within the viewport
+        if (sectionPosition < windowHeight && sectionPosition > 0) {
+            heading.classList.add('visible');
+        } else {
+            heading.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+
+    document.addEventListener('DOMContentLoaded', function () {
+    const title = document.querySelector('.course-title');
+
+    function handleScroll() {
+        const titlePosition = title.getBoundingClientRect().top; // Get position relative to viewport
+        const windowHeight = window.innerHeight; // Get window height
+
+        // If the title is within the viewport
+        if (titlePosition < windowHeight && titlePosition > 0) {
+            title.classList.add('visible');
+        } else {
+            title.classList.remove('visible');
+        }
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const contents = document.querySelectorAll('.content'); // Select all content divs
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight; // Get window height
+
+        contents.forEach(content => {
+            const contentPosition = content.getBoundingClientRect().top; // Get position relative to viewport
+
+            // If the content is within the viewport
+            if (contentPosition < windowHeight && contentPosition > 0) {
+                content.classList.add('visible');
+            } else {
+                content.classList.remove('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    const headings = document.querySelectorAll('.content h3'); // Select all h3 elements inside content
+
+    function handleScroll() {
+        const windowHeight = window.innerHeight; // Get window height
+
+        headings.forEach(heading => {
+            const headingPosition = heading.getBoundingClientRect().top; // Get position relative to viewport
+
+            // If the heading is within the viewport
+            if (headingPosition < windowHeight && headingPosition > 0) {
+                heading.classList.add('visible');
+            } else {
+                heading.classList.remove('visible');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Call it once to check on load
+});
+
+</script>
 {% endblock %}

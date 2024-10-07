@@ -6,7 +6,42 @@
   <component name="ChangeListManager">
     <list default="true" id="38e85d18-01e9-469a-a3fd-6a3aa715453f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/migrations/0002_alter_coursestudent_unique_together_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/migrations/0003_student_parent_address_student_parent_email_and_more.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/migrations/0004_rename_parent_address_student_address.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/Policies.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/Policies.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/aboutus.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/aboutus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/accommodation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/accreditation.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/accreditation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/apply_accommodation.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/apply_accommodation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/applyonline.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/applyonline.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/barista.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/barista.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/basepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/basepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/career_advice.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/career_advice.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/careerpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/careerpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/culinary_arts.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/culinary_arts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/food_beverage.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/food_beverage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/food_sanitation.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/food_sanitation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/health_social.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/health_social.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/housekeeping.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/housekeeping.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/human_resource.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/human_resource.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/indexpage.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/indexpage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/student_jobs.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/student_jobs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/student_travel.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/student_travel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/studnetvisa.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/studnetvisa.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/teampage.html" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/templates/teampage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/templates/tourism_hospitality.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSEI_LMS_App/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/CSEI_LMS_App/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/error.log" beforeDir="false" afterPath="$PROJECT_DIR$/error.log" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,22 +73,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/cseiLMS/static/images/logos&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/cseiLMS/static"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\cseiLMS\static\images\logos" />
-      <recent name="D:\cseiLMS\static\images\card" />
-      <recent name="D:\cseiLMS\static\images" />
       <recent name="D:\cseiLMS\static" />
-      <recent name="D:\cseiLMS\static\icons" />
+      <recent name="D:\cseiLMS\static\images\wallcat" />
+      <recent name="D:\cseiLMS\static\images" />
+      <recent name="D:\cseiLMS\static\assets1\img" />
+      <recent name="D:\cseiLMS\static\assets1" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -77,12 +112,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/CSEI_LMS_App/views.py</url>
-          <line>1622</line>
+          <line>1624</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/CSEI_LMS_App/views.py</url>
-          <line>1677</line>
+          <line>1679</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>

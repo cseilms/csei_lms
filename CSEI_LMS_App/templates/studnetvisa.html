@@ -61,6 +61,7 @@
     }
 
     .visa_card .card-title {
+    color:#08005e;
         font-size: 1.25rem; /* Smaller font size for card titles */
     }
 
@@ -68,10 +69,7 @@
         font-size: 1rem; /* Smaller font size for card text */
     }
 
-    .visa_card .btn-primary {
-        font-size: 0.875rem; /* Smaller font size for button */
-        padding: 0.5rem 1rem; /* Smaller padding for button */
-    }
+
     .card:hover {
     transform: translateY(-5px);
     box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
@@ -83,14 +81,169 @@
             width: 100%; /* Full width for cards on small screens */
         }
     }
+
+
+
+    .img_student {
+    height: 400px;
+    background-image: url("{% static 'images/visa1.jpg' %}");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    opacity: 0; /* Start hidden */
+    transition: opacity 1s ease-in; /* Fade-in transition */
+}
+
+.img_student.loaded {
+    opacity: 1; /* Fully visible */
+}
+.visa_para {
+    opacity: 0; /* Start hidden */
+    transform: translateX(-50px); /* Start off-screen to the left */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Transition effects */
+}
+
+.visa_para.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Move to original position */
+}
+
+@media (max-width: 768px) {
+    .visa_para {
+        transform: translateX(0); /* Reset for smaller screens */
+    }
+}
+    #typing-header {
+    font-size: 2.5rem; /* Adjust as needed */
+    color: #08005e; /* Change to your desired color */
+    font-family: "Playfair Display", "Bookman", serif;
+    border-right: 2px solid #08005e; /* Cursor effect */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide the overflow */
+    animation: blink-caret 0.75s step-end infinite; /* Cursor blink animation */
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #08005e; } /* Match with the text color */
+}
+.card {
+    perspective: 1000px; /* Needed for 3D flip effect */
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly down */
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Transition for appearance */
+}
+
+.card.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s; /* Flip transition */
+    transform-style: preserve-3d; /* Required for 3D effects */
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg); /* Flip effect on hover */
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide back side when not flipped */
+}
+
+.card-back {
+    transform: rotateY(180deg); /* Hide back side initially */
+}
+@media (max-width: 768px) {
+    .visa_para {
+        transform: translateX(0); /* Reset for smaller screens */
+        transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; /* Ensure transitions are applied */
+    }
+
+    .img_student {
+        height: 400px;
+        background-image: url("{% static 'images/visa1.jpg' %}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        opacity: 0; /* Start hidden */
+        transition: opacity 1s ease-in; /* Ensure transition is applied */
+    }
+}
+
+.visa_para {
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Increased duration */
+}
+.visa_para p {
+    font-size: 1.125rem;
+    line-height: 1.8; /* Adjusted line height for better readability */
+    color: #333;
+    font-family: "Playfair Display", "Bookman", serif;
+}
+
+.card {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Increased duration */
+}
+.visa_para {
+    opacity: 0; /* Start hidden */
+    transform: translateY(20px); /* Start slightly down */
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; /* Transition for appearance */
+}
+
+.visa_para.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+.card-body {
+    transform: scale(0.8); /* Start small */
+    opacity: 0; /* Start hidden */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out; /* Transition for scaling and opacity */
+}
+
+.card-body.visible {
+    transform: scale(1); /* Full size */
+    opacity: 1; /* Fully visible */
+}
+    .img_student, .visa_para {
+    opacity: 0; /* Start hidden */
+    transition: opacity 1s ease-in; /* Transition effect */
+}
+
+.img_student.loaded, .visa_para.visible {
+    opacity: 1; /* Fully visible */
+}
+
+/* Media query for mobile */
+@media (max-width: 768px) {
+    .img_student,
+    .visa_para {
+        transition: opacity 1s ease-in; /* Ensure transition is applied */
+    }
+}
+
+
 </style>
 
 <div class="container">
     <div class="img_student"></div>
     <div class="visa_para">
-        <h3>Sponsoring and Managing Student Visa</h3>
+        <h3 id="typing-header"></h3>
+
         <p>
-            Student visas, as the name implies, are awarded to applicants whose major reason for visiting the nation is to complete their further studies. Needless to mention, although getting into legal documents are important to ensure your admission to the course and permit to enter the country is critical, these legal documents are critical in any manner. Every country has its own set of immigration regulations. These could differ in terms of document requirements, acceptable proof of funds, and what all visas allow you to do aside from studying in the country. To say the least, studying abroad necessitates thorough planning. Students should always organize their admissions/application process backwards, keeping in mind institution deadlines. As per the regulations, students must take English eligibility tests and have all essential documentation on hand in order for their application to be processed smoothly.
+            Student visas, as the name implies, are awarded to applicants whose major reason for visiting the nation is to complete their further studies. <br>Needless to mention, although getting into legal documents are important to ensure your admission to the course and permit to enter the country is critical, these legal documents are critical in any manner.<br> Every country has its own set of immigration regulations. These could differ in terms of document requirements, acceptable proof of funds, and what all visas allow you to do aside from studying in the country.<br> To say the least, studying abroad necessitates thorough planning. Students should always organize their admissions/application process backwards, keeping in mind institution deadlines. As per the regulations, students must take English eligibility tests and have all essential documentation on hand in order for their application to be processed smoothly.
         </p>
     </div>
     <div class="visa_card">
@@ -122,7 +275,204 @@
                     </div>
                 </div>
             </div>
+
+         <a href="#" class="btn" style="background-color:#08005e;color:white;margin-left:200px;margin-right:200px;padding:20px;max-width:400px">For your visa process, click here</a>
+
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const imgStudentDiv = document.querySelector('.img_student');
+        imgStudentDiv.style.transition = 'opacity 1s ease-in'; // Transition effect
+        imgStudentDiv.style.opacity = 1; // Fade in
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const visaPara = document.querySelector('.visa_para');
+
+        function checkVisibility() {
+            const rect = visaPara.getBoundingClientRect();
+            const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                visaPara.classList.add('visible');
+                // Remove the scroll event listener after the element becomes visible
+                window.removeEventListener('scroll', checkVisibility);
+            }
+        }
+
+        // Listen for scroll events
+        window.addEventListener('scroll', checkVisibility);
+        // Check visibility on initial load
+        checkVisibility();
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible'); // Add class to make the card visible
+            }, index * 200); // Delay for each card (200ms staggered)
+        });
+    });
+     document.addEventListener("DOMContentLoaded", function() {
+        const cards = document.querySelectorAll('.card');
+
+        // Use a staggered approach for the appearance of cards
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible'); // Add class to make the card visible
+            }, index * 300); // Delay for each card (300ms staggered)
+        });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const imgStudentDiv = document.querySelector('.img_student');
+    imgStudentDiv.style.opacity = 1; // Fade in for both mobile and desktop
+
+    const visaPara = document.querySelector('.visa_para');
+
+    function checkVisibility() {
+        const rect = visaPara.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+            visaPara.classList.add('visible');
+            window.removeEventListener('scroll', checkVisibility);
+        }
+    }
+
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility(); // Check visibility on initial load
+
+
+    // Staggered appearance for cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, index * 300); // Delay for each card
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const imgStudentDiv = document.querySelector('.img_student');
+    imgStudentDiv.style.opacity = 1; // Fade in
+
+    const visaPara = document.querySelector('.visa_para');
+
+    function checkVisibility() {
+        const rect = visaPara.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+            visaPara.classList.add('visible');
+            window.removeEventListener('scroll', checkVisibility);
+        }
+    }
+
+    window.addEventListener('scroll', checkVisibility);
+    checkVisibility(); // Check visibility on initial load
+
+    // Staggered appearance for cards
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, index * 400); // Increased delay for each card (400ms staggered)
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const visaPara = document.querySelector('.visa_para');
+
+    function checkVisibility() {
+        const rect = visaPara.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+            visaPara.classList.add('visible');
+            window.removeEventListener('scroll', checkVisibility); // Stop checking after it becomes visible
+        }
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', checkVisibility);
+    // Check visibility on initial load
+    checkVisibility();
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const cardBodies = document.querySelectorAll('.card-body');
+
+    function checkVisibility() {
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        cardBodies.forEach(cardBody => {
+            const rect = cardBody.getBoundingClientRect();
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                cardBody.classList.add('visible'); // Add class to make the card body visible
+            }
+        });
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', checkVisibility);
+    // Check visibility on initial load
+    checkVisibility();
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const imgStudentDiv = document.querySelector('.img_student');
+    const visaPara = document.querySelector('.visa_para');
+    const typingHeader = document.getElementById("typing-header");
+    const cards = document.querySelectorAll('.card');
+
+    // Fade-in for the background image
+    imgStudentDiv.classList.add('loaded'); // Trigger fade-in
+    visaPara.classList.add('visible'); // Trigger visibility
+
+    // Check visibility function
+    const checkVisibility = () => {
+        const rect = visaPara.getBoundingClientRect();
+        const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+
+        if (rect.top <= windowHeight && rect.bottom >= 0) {
+            visaPara.classList.add('visible');
+            window.removeEventListener('scroll', checkVisibility); // Stop checking after it becomes visible
+        }
+
+        // Check visibility for card bodies
+        document.querySelectorAll('.card-body').forEach(cardBody => {
+            const rect = cardBody.getBoundingClientRect();
+            if (rect.top <= windowHeight && rect.bottom >= 0) {
+                cardBody.classList.add('visible');
+            }
+        });
+    };
+
+    // Initial visibility check
+    checkVisibility();
+
+    // Staggered appearance for cards
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.classList.add('visible');
+        }, index * 300); // Delay for each card
+    });
+
+    // Typing effect
+    const text = "Sponsoring and Managing Students Visa";
+    let index = 0;
+    const type = () => {
+        if (index < text.length) {
+            typingHeader.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    };
+    type();
+
+    // Attach scroll listener
+    window.addEventListener('scroll', checkVisibility);
+});
+
+</script>
+
 {% endblock %}

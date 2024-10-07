@@ -4,7 +4,8 @@
 {% block title %}Career Page{% endblock %}
 
 {% block content %}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
 <style>
     /* General Styles */
     body {
@@ -169,6 +170,170 @@
             margin: 1rem 0; /* Adjust margin */
         }
     }
+    @keyframes flyIn {
+    from {
+        transform: translateX(-100%);
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1; /* Fade in */
+    }
+}
+
+.header_content {
+    animation: flyIn 0.6s ease-out forwards; /* Animation applied here */
+}
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8); /* Start smaller */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: scale(1); /* End at normal size */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+@keyframes flyIn {
+    from {
+        transform: translateX(100%); /* Start off-screen to the right */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateX(0); /* End at original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.row_div img {
+    animation: zoomIn 0.6s ease-out forwards; /* Animation for the image */
+}
+
+.row_div p {
+    animation: flyIn 0.6s ease-out forwards; /* Animation for the paragraph */
+    animation-delay: 0.3s; /* Delay the paragraph animation slightly */
+}
+
+/* Existing styles remain unchanged */
+@keyframes slideInUp {
+    from {
+        transform: translateY(100%); /* Start from below */
+        opacity: 0; /* Start invisible */
+    }
+    to {
+        transform: translateY(0); /* End at original position */
+        opacity: 1; /* Fully visible */
+    }
+}
+
+.animate-up {
+    animation: slideInUp 0.6s ease forwards; /* Animation applied here */
+}
+.row_div img {
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+.row_div img:hover {
+    transform: rotate(-3deg); /* Small tilt effect */
+}
+/* Base styles for mobile view */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+}
+
+/* Header Section */
+.header_section {
+    padding: 2rem;
+}
+
+/* Row Containers */
+.row_div {
+    max-width: 95%; /* Allow for a small margin */
+    margin: 1rem auto; /* Center align */
+    padding: 1rem; /* Adjust padding */
+}
+
+/* Email Section */
+.email_section {
+    max-width: 95%; /* Ensure it doesn’t stretch too wide */
+    margin: 1rem auto; /* Center align */
+}
+
+/* Job Listings Container */
+.job_container {
+    max-width: 95%; /* Limit width for mobile */
+    margin: 1rem auto; /* Center align */
+}
+
+/* Job Listings */
+.job_listing {
+    width: 100%; /* Full width on mobile */
+    margin: 0.5rem 0; /* Adjust margin */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .header_section h3 {
+        font-size: 2.5rem; /* Adjust header size */
+    }
+
+    .header_section p {
+        font-size: 1.2rem; /* Adjust text size */
+    }
+
+    .row_div {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: center; /* Center align */
+    }
+
+    .row_div img {
+        width: 100%; /* Full width on mobile */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .job_listing {
+        margin: 1rem 0; /* Adjust margin */
+    }
+}
+
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0; /* Start invisible */
+            transform: translateY(20px); /* Start slightly below */
+        }
+        to {
+            opacity: 1; /* Fully visible */
+            transform: translateY(0); /* End at original position */
+        }
+    }
+
+    .fade-in {
+        opacity: 0; /* Start invisible */
+        animation: fadeIn 0.6s ease forwards; /* Apply fade-in animation */
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .row_div p {
+            animation: fadeIn 0.6s ease forwards; /* Apply fade-in animation */
+        }
+    }
+
+    .fade-in {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.6s ease, transform 0.6s ease; /* Transition effects */
+}
+
+.fade-in.show {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+
 </style>
 
 <header class="header_section">
@@ -184,11 +349,11 @@
         <p>Founded on the premise of academic excellence and corporate ethics, we provide rich opportunities in professional development that adds value to the personal and professional lives of our students, staff, and faculty members, as well as the communities in which we serve as a vocational institute.</p>
     </div>
 
-    <div class="row_div">
+    <div class="row_div fade-in">
         <p>Our recently expanded Academic City campus presents an ideal learning environment conducive to entrepreneurship, creativity, and innovation, where students benefit from state-of-the-art facilities in the heart of Dubai, United Arab Emirates.</p>
     </div>
 
-    <div class="email_section">
+    <div class="email_section fade-in">
         <p>You can mail us your updated resumes at <a href="mailto:placement@cseiacademy.ae" style="color: #007bff;">placement@cseiacademy.ae</a></p>
     </div>
 
@@ -196,7 +361,7 @@
         View Job Openings
     </button>
 
-    <div class="job_container" id="jobContainer">
+    <div class="job_container fade-in" id="jobContainer">
         <h4 style="text-align: center; width: 100%; display: none;" id="joinTeamMessage">Join our team! We are always looking for talented individuals.</h4>
 
         {% for job in job_vacancies %}
@@ -210,25 +375,73 @@
         </div>
         {% endfor %}
 
-        <div class="no_jobs">
+        <div class="no_jobs fade-in">
             <p>No job vacancies available at the moment.</p>
         </div>
     </div>
 </section>
-
 <script>
     document.getElementById('viewJobsButton').addEventListener('click', function() {
         const jobContainer = document.getElementById('jobContainer');
-        jobContainer.style.display = jobContainer.style.display === 'none' || jobContainer.style.display === '' ? 'flex' : 'none';
+        const isVisible = jobContainer.style.display === 'flex';
 
-        // Show or hide the "Join our team!" message
+        jobContainer.style.display = isVisible ? 'none' : 'flex';
+
+        // Toggle "Join our team!" message visibility
         const joinTeamMessage = document.getElementById('joinTeamMessage');
-        joinTeamMessage.style.display = jobContainer.style.display === 'flex' ? 'block' : 'none';
+        joinTeamMessage.style.display = !isVisible ? 'block' : 'none';
 
-        // Show "No job vacancies available" message if necessary
+        // Show "No job vacancies" message if no jobs available
         const noJobsMessage = document.querySelector('.no_jobs');
-        noJobsMessage.style.display = jobContainer.style.display === 'flex' && !noJobsMessage.previousElementSibling ? 'none' : 'block';
+        noJobsMessage.style.display = !isVisible && !jobContainer.children.length ? 'block' : 'none';
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const elementsToAnimate = document.querySelectorAll('.animate-up');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-up');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        elementsToAnimate.forEach(element => {
+            observer.observe(element);
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const elementsToAnimate = document.querySelectorAll('.fade-in');
+
+        const options = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is in view
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show'); // Add the show class
+                    observer.unobserve(entry.target); // Stop observing
+                }
+            });
+        }, options);
+
+        elementsToAnimate.forEach(element => {
+            observer.observe(element); // Start observing each element
+        });
     });
 </script>
+
 
 {% endblock %}

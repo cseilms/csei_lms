@@ -1,0 +1,183 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Health and Social Care Management Courses{% endblock %}
+
+{% block content %}
+
+<link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    /* General styles */
+    body {
+        background-color: #f9f9f9;
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .health-social-management {
+        padding: 2rem 1rem;
+        text-align: center;
+        margin: 20px auto;
+        max-width: 1200px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Updated box shadow */
+        transition: transform 0.3s ease; /* Added transition */
+    }
+
+    .health-social-management:hover {
+        transform: scale(1.02); /* Slight zoom on hover */
+    }
+
+    /* Left-to-right animation */
+    @keyframes moveInRight {
+        0% {
+            transform: translateX(100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .move-in {
+        animation: moveInRight 0.5s ease forwards;
+    }
+
+    .health-social-management h2 {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: #08005e;
+        margin-bottom: 1.5rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 3px solid #cf5320;
+        display: inline-block;
+    }
+
+    .course-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 -10px;
+    }
+
+    .level-course-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 320px;
+        height: 180px;
+        padding: 1rem;
+        font-size: 16px;
+        font-weight: bold;
+        margin: 10px;
+        color: #fff;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        transform: translateY(20px);
+        background-color: #08005e;
+    }
+
+    .level-course-card:hover {
+        transform: scale(1.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Updated hover shadow */
+    }
+
+    .level-course-card h3 {
+        margin: 0;
+        line-height: 1.2;
+        color: #fff;
+        text-align: center;
+        transition: opacity 0.5s ease;
+    }
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: inherit;
+    }
+
+    a:hover {
+        text-decoration: none;
+        color: grey;
+    }
+
+    @media (max-width: 768px) {
+        .level-course-card {
+            font-size: 0.9rem;
+            width: 90%;
+            height: auto;
+        }
+
+        .health-social-management h2 {
+            font-size: 2rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .health-social-management h2 {
+            font-size: 1.5rem;
+            padding: 0.3rem;
+        }
+
+        .level-course-card {
+            font-size: 0.8rem;
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .level-course-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+        animation: fadeInUp 0.5s forwards;
+    }
+</style>
+
+<!-- Top Section -->
+<section class="health-social-management">
+    <h2 class="move-in">UK Qualification Diploma Programs</h2>
+
+    <div class="course-container">
+        <div class="level-course-card">
+            <h3><a class="text-white" href="{% url 'Level4DiplomaHSM' %}">Level 4: Health and Social Care Management</a></h3>
+        </div>
+        <div class="level-course-card">
+            <h3><a class="text-white" href="{% url 'Level5DiplomaHSM' %}">Level 5: Health and Social Care Management</a></h3>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Fade-in effect on load for cards
+    const cards = document.querySelectorAll('.level-course-card');
+    window.addEventListener('load', () => {
+        cards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('visible');
+                const text = card.querySelector('h3');
+                text.style.opacity = 0; // Start text as invisible
+                setTimeout(() => {
+                    text.style.opacity = 1; // Fade in text
+                }, 100); // Delay slightly for text transition
+            }, index * 100); // Staggered effect
+        });
+    });
+</script>
+
+{% endblock %}

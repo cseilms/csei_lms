@@ -7,7 +7,7 @@
 <style>
     .policies_para {
         height: auto; /* Allow the height to adjust based on content */
-        background-image: linear-gradient(to right, gray, white);
+
         padding: 20px; /* Add padding for spacing */
         margin-bottom: 100px; /* Ensure there's space for the footer */
     }
@@ -21,7 +21,7 @@
     .policies_items, .policies_terms {
         margin: 20px;
         padding: 20px;
-        background-color: white;
+
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
@@ -36,6 +36,13 @@
         text-decoration: underline;
         font-style: italic;
         margin-top: 1rem;
+    }
+    .card-seperate{
+    margin:20px;
+    padding:20px;
+     background-image: linear-gradient(to right, gray, white);
+     border-radius:10px;
+
     }
 
     .policies_items p, .policies_items .pol,
@@ -73,7 +80,83 @@
             padding: 5px;
         }
     }
+    h5{
+     color: #08005e;
+    }
+    a {
+    color: #08005e; /* Link color */
+    text-decoration: none; /* Remove underline */
+}
 
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #4a0e8c; /* Slightly darker shade on hover */
+}
+/* new */
+.policies_img {
+    opacity: 0;
+    transition: opacity 1s ease; /* Transition effect */
+    will-change: opacity; /* Hint to the browser to optimize */
+}
+
+.policies_img.visible {
+    opacity: 1; /* Fully visible */
+}
+.policies_items h3, .policies_terms h3 {
+    transform: translateY(-50px); /* Start 50px above its normal position */
+    opacity: 0; /* Start invisible */
+    transition: transform 0.5s ease, opacity 0.5s ease; /* Transition for movement and opacity */
+}
+
+.policies_items h3.visible, .policies_terms h3.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+/* Add this to your existing CSS */
+.fade-in {
+    opacity: 0; /* Start invisible */
+    transform: translateX(-50px); /* Start from the left */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for smooth effect */
+}
+
+.fade-in.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Move to original position */
+}
+/* Add this to your existing CSS */
+.card-seperate {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start from below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for smooth effect */
+}
+
+.card-seperate.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+
+/* Add this to your existing CSS */
+.card-seperate h5 {
+    opacity: 0; /* Start invisible */
+    transform: translateY(20px); /* Start slightly below */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for smooth effect */
+}
+
+.card-seperate h5.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateY(0); /* Move to original position */
+}
+/* Add this to your existing CSS */
+.card-seperate {
+    opacity: 0; /* Start invisible */
+    transform: translateX(-50px); /* Start from the left */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for smooth effect */
+}
+
+.card-seperate.visible {
+    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Move to original position */
+}
 </style>
 
 <div class="policies">
@@ -83,10 +166,10 @@
 
     <div class="policies_para">
         <div class="policies_items">
-            <h3>Your Privacy Matters</h3>
-            <p>At CSEI Academy, we understand the importance of your privacy, and we are committed to safeguarding your personal information. This Privacy Policy is designed to explain how we collect, use, and protect your data in a manner that respects your privacy.</p>
-
-            <h5>Information We Collect</h5>
+            <h3 style="color: #08005e;font-size:40px">Your Privacy Matters</h3>
+            <p  style="margin:20px;padding:10px;" class="fade-in">At CSEI Academy, we understand the importance of your privacy, and we are committed to safeguarding your personal information. This Privacy Policy is designed to explain how we collect, use, and protect your data in a manner that respects your privacy.</p>
+            <div class="card-seperate">
+                 <h5>Information We Collect</h5>
             <p>We collect various types of information to provide you with the best academic coaching experience:</p>
             <ul>
                 <li class="pol">Personal Details: This may include your name, email address, phone number, and other contact information, which we use to stay in touch with you.</li>
@@ -95,6 +178,8 @@
                 <li class="pol">Website Interaction: We gather data about your interactions with our website, including your device type and pages you visit. This helps us enhance your browsing experience.</li>
             </ul>
 
+            </div>
+           <div class="card-seperate">
             <h5>How We Use Your Information</h5>
             <p>We use the information we collect in the following ways:</p>
             <ul>
@@ -104,7 +189,8 @@
                 <li class="pol">Communication: To keep you informed about appointments, inquiries, and updates.</li>
                 <li class="pol">Compliance: To meet legal and regulatory requirements.</li>
             </ul>
-
+           </div>
+            <div class="card-seperate">
             <h5>Sharing Your Information</h5>
             <p>We may share your information under specific circumstances:</p>
             <ul>
@@ -112,7 +198,8 @@
                 <li class="pol">Legal Obligations: We may disclose information when required by law or to protect our rights and the safety of others.</li>
                 <li class="pol">Business Transitions: In the event of a merger, acquisition, or sale of assets, your data may be transferred to another entity.</li>
             </ul>
-
+            </div>
+<div class="card-seperate">
             <h5>Your Choices</h5>
             <p>We respect your choices regarding your personal information:</p>
             <ul>
@@ -120,49 +207,165 @@
                 <li class="pol">Consent Withdrawal: You have the right to withdraw your consent for data collection and processing.</li>
                 <li class="pol">Marketing Opt-Out: You can choose to opt out of receiving marketing communications from us.</li>
             </ul>
-
+</div>
+            <div class="card-seperate">
             <h5>Data Security</h5>
             <p>While we employ security measures to protect your information, please note that no internet transmission can be entirely secure.</p>
-
+            </div>
+            <div class="card-seperate">
             <h5>Updates to this Policy</h5>
             <p>We may update this Privacy Policy periodically to reflect changes in our practices. Please review it occasionally to stay informed about how we handle your data.</p>
-
+            </div>
+            <div class="card-seperate">
             <h5>Contact Us</h5>
             <p>If you have any questions, concerns, or requests related to your privacy or this Privacy Policy, please reach out to us at <a href="mailto:admission@cseiacademy.ae">admission@cseiacademy.ae</a>.</p>
-        </div>
+            </div>
+            </div>
         <div class="policies_terms">
-            <h3>Terms and Conditions CSEI ACADEMY</h3>
-            <p>Welcome to the CSEI ACADEMY website. By accessing and using this website, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before using our website.</p>
-
-            <h5>Acceptance of Terms</h5>
+            <h3  style="color: #08005e;font-size:40px">Terms and Conditions CSEI ACADEMY</h3>
+            <p class="fade-in" style="margin:20px;padding:10px;">Welcome to the CSEI ACADEMY website. By accessing and using this website, you agree to comply with and be bound by the following terms and conditions. Please read these terms carefully before using our website.</p>
+<div class="card-seperate">
+            <h5 >Acceptance of Terms</h5>
             <p>By using this website, you acknowledge that you have read, understood, and agreed to these terms and conditions. If you do not agree with any part of these terms, please refrain from using this website.</p>
-
+</div>
+            <div class="card-seperate">
             <h5>Use of Website</h5>
             <p>You may use this website for your personal, non-commercial purposes only. Any commercial use is prohibited without our prior written consent.</p>
             <p>You are responsible for ensuring that your use of this website complies with all applicable laws and regulations.</p>
-
+            </div>
+            <div class="card-seperate">
             <h5>Intellectual Property</h5>
             <p>The content, design, and graphics on this website are the property of CSEI ACADEMY and are protected by intellectual property laws. You may not reproduce, distribute, modify, or display any part of this website without our prior written consent.</p>
-
+            </div>
+            <div class="card-seperate">
             <h5>User Accounts</h5>
             <p>If you create an account on our website, you are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.</p>
             <p>You agree to provide accurate and complete information when creating your account and to update it as necessary.</p>
-
+            </div>
+                <div class="card-seperate">
             <h5>Privacy</h5>
             <p>Your use of this website is also governed by our Privacy Policy. Please review our Privacy Policy to understand how we collect, use, and protect your personal information.</p>
-
+                </div>
+            <div class="card-seperate">
             <h5>Limitation of Liability</h5>
             <p>CSEI ACADEMY is not liable for any direct, indirect, incidental, consequential, or special damages arising from your use of this website or any content therein. We do not guarantee that this website will be error-free, uninterrupted, or free of viruses or other harmful components.</p>
-
+            </div>
+            <div class="card-seperate">
             <h5>Links to Third-Party Websites</h5>
             <p>This website may contain links to third-party websites. These links are provided for your convenience and do not endorse or control the content of any third-party websites. Your use of third-party websites is subject to their respective terms and conditions.</p>
-
+            </div>
+            <div class="card-seperate">
             <h5>Changes to Terms and Conditions</h5>
-            <p>CSEI ACADEMY reserves the right to modify or update these terms and conditions at any time. Any changes will be effective immediately upon posting on this website. It is your responsibility to review these terms periodically for updates.</p>
-
+            <p >CSEI ACADEMY reserves the right to modify or update these terms and conditions at any time. Any changes will be effective immediately upon posting on this website. It is your responsibility to review these terms periodically for updates.</p>
+            </div>
+            <div class="card-seperate">
             <h5>Contact Information</h5>
             <p>If you have any questions or concerns about these terms and conditions, please contact us at <a href="mailto:admission@cseiacademy.ae">admission@cseiacademy.ae</a></p>
-        </div>
+            </div>
+       </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const img = document.querySelector('.policies_img');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    img.classList.add('visible');
+                } else {
+                    img.classList.remove('visible'); // Optional: Remove class when out of view
+                }
+            });
+        });
+
+        observer.observe(img);
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const img = document.querySelector('.policies_img');
+    const headingItems = document.querySelectorAll('.policies_items h3, .policies_terms h3'); // Select both h3 elements
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                img.classList.add('visible');
+                entry.target.classList.add('visible'); // Add visibility class to the observed element
+            } else {
+                img.classList.remove('visible');
+                entry.target.classList.remove('visible'); // Optional: Remove class when out of view
+            }
+        });
+    });
+
+    observer.observe(img);
+    headingItems.forEach(heading => observer.observe(heading)); // Observe each heading
+});
+    document.addEventListener("DOMContentLoaded", function() {
+    const fadeInItems = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add visible class
+            } else {
+                entry.target.classList.remove('visible'); // Optional: remove class when out of view
+            }
+        });
+    });
+
+    fadeInItems.forEach(item => observer.observe(item)); // Observe each paragraph
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    const cardItems = document.querySelectorAll('.card-seperate');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add visible class
+            } else {
+                entry.target.classList.remove('visible'); // Optional: remove class when out of view
+            }
+        });
+    });
+
+    cardItems.forEach(item => observer.observe(item)); // Observe each card-seperate
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const headings = document.querySelectorAll('.card-seperate h5');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add visible class
+            } else {
+                entry.target.classList.remove('visible'); // Optional: remove class when out of view
+            }
+        });
+    });
+
+    headings.forEach(heading => observer.observe(heading)); // Observe each h5
+});
+    document.addEventListener("DOMContentLoaded", function() {
+    const cardItems = document.querySelectorAll('.card-seperate');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible'); // Add visible class
+            } else {
+                entry.target.classList.remove('visible'); // Optional: remove class when out of view
+            }
+        });
+    });
+
+    cardItems.forEach(item => observer.observe(item)); // Observe each card-seperate
+});
+
+
+</script>
+
 {% endblock %}

@@ -23,14 +23,22 @@ urlpatterns = [
     path('barista/', views.barista_training, name='barista_training'),
     path('housekeeping/', views.housekeeping, name='housekeeping'),
     path('blog_news/', views.blog_news, name='blog_news'),
-
+path('scholarship/', views.scholarship, name='scholarship'),
     path('human_resource/', views.human_resource, name='human_resource'),
     path('culinary_arts/', views.culinary_arts, name='culinary_arts'),
     path('health_social/', views.health_social, name='health_social'),
     path('food_sanitation/', views.food_sanitation, name='food_sanitation'),
     path('food_beverage/', views.food_beverage, name='food_beverage'),
     path('enquiry_view/', views.enquiry_view, name='enquiry_view'),
-
+    path('Tourism_Hospitality/', views.Tourism_Hospitality, name='Tourism_Hospitality'),
+    path('health_social_OTH/', views.health_social_OTH, name='health_social_OTH'),
+ path('Level4DiplomaTHM/', views.Level4DiplomaTHM, name='Level4DiplomaTHM'),
+ path('Level5DiplomaTHM/', views.Level5DiplomaTHM, name='Level5DiplomaTHM'),
+ path('Level4DiplomaHSM/', views.Level4DiplomaHSM, name='Level4DiplomaHSM'),
+ path('Level5DiplomaHSM/', views.Level5DiplomaHSM, name='Level5DiplomaHSM'),
+ path('business_management_OTH/', views.business_management_OTH, name='business_management_OTH'),
+ path('Level4DiplomaBM/', views.Level4DiplomaBM, name='Level4DiplomaBM'),
+ path('Level5DiplomaBM/', views.Level5DiplomaBM, name='Level5DiplomaBM'),
     # Registration
     path('student_register/', views.student_register, name='student_register'),
     path('teacher_register/', views.teacher_register, name='teacher_register'),
@@ -120,4 +128,5 @@ urlpatterns = [
 path('student/<int:student_id>/courses/', views.student_courses, name='student_courses'),
     path('student/<int:student_id>/essay-exams/', views.student_essay_exam_list, name='student_essay_exam_list'),
 path('student_course_detail/<int:course_id>/', views.student_course_detail, name='student_course_detail'),
+path('indexpage',views.indexpage,name='indexpage')
 ]

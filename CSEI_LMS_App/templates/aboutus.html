@@ -113,8 +113,8 @@ blockquote:after {
 }
 
 .why_csei .img_div img {
-    max-width: 100%; /* Responsive image size */
-    height: auto; /* Maintain aspect ratio */
+    width: 400px; /* Responsive image size */
+    height: 300px; /* Maintain aspect ratio */
     border-radius: 8px; /* Rounded corners */
     display: block; /* Ensure no extra space below image */
 }
@@ -327,11 +327,179 @@ blockquote:after {
     }
 }
 
+    /* new */
+/* Initial state */
+.scroll-effect {
+    transform: translateX(-100px); /* Start off-screen to the left */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state */
+.scroll-effect.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+    /* Initial state for the paragraph */
+.fly-up-effect {
+    transform: translateY(50px); /* Start slightly below */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state for the paragraph */
+.fly-up-effect.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+/* Initial state for the about_div */
+.about_div {
+    transform: scale(0.8); /* Start slightly smaller */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.about_div.visible {
+    transform: scale(1); /* Grow to original size */
+    opacity: 1; /* Fully visible */
+}
+
+/* Initial state for blockquote */
+blockquote {
+    transform: translateY(20px); /* Start slightly below */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+blockquote.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+/* Initial state for the image */
+.img_div {
+    transform: translateX(-100px); /* Start off-screen to the left */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.img_div.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+/* Initial state for the text content */
+.para_div {
+    transform: translateX(100px); /* Start off-screen to the right */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.para_div.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+/* Initial state for the why_dubai section */
+.why_dubai {
+    transform: translateY(50px); /* Start slightly below */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.why_dubai.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+/* Initial state for Why Dubai heading */
+.why_dubai h3 {
+    transform: translateX(-100px); /* Start off-screen to the left */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.why_dubai h3.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+/* Initial state for Our Vision heading */
+.vision h3 {
+    transform: translateX(100px); /* Start off-screen to the right */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.vision h3.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+/* Initial state for mission_center */
+.mission_center {
+    transform: translateY(-50px); /* Start slightly above */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.mission_center.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+/* Initial state for Our Center heading */
+.centerdiv h3 {
+    transform: translateX(100px); /* Start off-screen to the right */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.centerdiv h3.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+/* Initial state for Our Mission heading */
+.missiondiv h3 {
+    transform: translateX(100px); /* Start off-screen to the right */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.missiondiv h3.visible {
+    transform: translateX(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+    /* Initial state for the paragraphs */
+.missiondiv p,
+.centerdiv p {
+    transform: translateY(50px); /* Start slightly below */
+    opacity: 0; /* Fully transparent */
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out; /* Smooth transition */
+}
+
+/* Final state when visible */
+.missiondiv p.visible,
+.centerdiv p.visible {
+    transform: translateY(0); /* Move to original position */
+    opacity: 1; /* Fully visible */
+}
+
+
 </style>
 <section id="aboutus" class="aboutus">
     <div class="six">
-        <h1>Who We Are</h1>
-        <p>Learn more about who we are and what drives us</p>
+     <h1 class="scroll-effect">Who We Are</h1>
+
+      <p class="fly-up-effect">Learn more about who we are and what drives us</p>
+
     </div>
     <div class="about_div">
         <div class="about_content">
@@ -395,4 +563,303 @@ blockquote:after {
 
 
 </section>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const header = document.querySelector('.scroll-effect');
+    const paragraph = document.querySelector('.fly-up-effect');
+
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+            element.classList.add('visible');
+        } else {
+            element.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    function checkAllVisibility() {
+        checkVisibility(header);
+        checkVisibility(paragraph);
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', checkAllVisibility);
+    checkAllVisibility(); // Initial check on page load
+});
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Elements to check visibility
+    const aboutDiv = document.querySelector('.about_div');
+    const blockquote = document.querySelector('blockquote');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of all elements
+    function checkAllVisibility() {
+        if (checkVisibility(aboutDiv)) {
+            aboutDiv.classList.add('visible');
+        } else {
+            aboutDiv.classList.remove('visible'); // Remove class when not in view
+        }
+
+        if (checkVisibility(blockquote)) {
+            blockquote.classList.add('visible');
+        } else {
+            blockquote.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Select elements
+    const imgDiv = document.querySelector('.why_csei .img_div');
+    const paraDiv = document.querySelector('.why_csei .para_div');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of both elements
+    function checkAllVisibility() {
+        if (checkVisibility(imgDiv)) {
+            imgDiv.classList.add('visible');
+        } else {
+            imgDiv.classList.remove('visible'); // Remove class when not in view
+        }
+
+        if (checkVisibility(paraDiv)) {
+            paraDiv.classList.add('visible');
+        } else {
+            paraDiv.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Select elements
+    const whyDubaiDiv = document.querySelector('.why_dubai');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of the why_dubai section
+    function checkAllVisibility() {
+        if (checkVisibility(whyDubaiDiv)) {
+            whyDubaiDiv.classList.add('visible');
+        } else {
+            whyDubaiDiv.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+
+    document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Select elements
+    const whyDubaiHeading = document.querySelector('.why_dubai h3');
+    const visionHeading = document.querySelector('.vision h3');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of both headings
+    function checkAllVisibility() {
+        if (checkVisibility(whyDubaiHeading)) {
+            whyDubaiHeading.classList.add('visible');
+        } else {
+            whyDubaiHeading.classList.remove('visible'); // Remove class when not in view
+        }
+
+        if (checkVisibility(visionHeading)) {
+            visionHeading.classList.add('visible');
+        } else {
+            visionHeading.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Select elements
+    const missionCenter = document.querySelector('.mission_center');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of the mission_center section
+    function checkAllVisibility() {
+        if (checkVisibility(missionCenter)) {
+            missionCenter.classList.add('visible');
+        } else {
+            missionCenter.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Select elements
+    const missionHeading = document.querySelector('.missiondiv h3');
+    const centerHeading = document.querySelector('.centerdiv h3');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of both headings
+    function checkAllVisibility() {
+        if (checkVisibility(missionHeading)) {
+            missionHeading.classList.add('visible');
+        } else {
+            missionHeading.classList.remove('visible'); // Remove class when not in view
+        }
+
+        if (checkVisibility(centerHeading)) {
+            centerHeading.classList.add('visible');
+        } else {
+            centerHeading.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+document.addEventListener('DOMContentLoaded', function () {
+    // Debounce function
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            const context = this;
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func.apply(context, args), wait);
+        };
+    }
+
+    // Select elements
+    const missionParagraph = document.querySelector('.missiondiv p');
+    const centerParagraph = document.querySelector('.centerdiv p');
+
+    // Check visibility of an element
+    function checkVisibility(element) {
+        const rect = element.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > 0;
+    }
+
+    // Check visibility of both paragraphs
+    function checkAllVisibility() {
+        if (checkVisibility(missionParagraph)) {
+            missionParagraph.classList.add('visible');
+        } else {
+            missionParagraph.classList.remove('visible'); // Remove class when not in view
+        }
+
+        if (checkVisibility(centerParagraph)) {
+            centerParagraph.classList.add('visible');
+        } else {
+            centerParagraph.classList.remove('visible'); // Remove class when not in view
+        }
+    }
+
+    // Check visibility on scroll and also on load
+    window.addEventListener('scroll', debounce(checkAllVisibility, 100));
+    checkAllVisibility(); // Initial check on page load
+});
+
+
+</script>
+
+
 {% endblock %}

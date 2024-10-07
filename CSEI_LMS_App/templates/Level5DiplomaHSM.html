@@ -1,0 +1,594 @@
+{% extends 'basepage.html' %}
+{% load static %}
+
+{% block title %}Level 4 Diploma in Tourism and Hospitality Management{% endblock %}
+
+{% block content %}
+<link rel="icon" type="image/x-icon" href="{% static 'images/card/logocsei.jpg' %}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<style>
+
+   html, body {
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    box-sizing: border-box; /* Ensure box-sizing applies to all elements */
+}
+.containerdiv {
+    display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
+    width: 100%; /* Full width */
+    height: 440px; /* Full viewport height */
+    padding: 0; /* No padding */
+}
+
+.left-side, .right-side {
+    flex: 1; /* Equal space allocation */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px; /* Padding inside each side */
+}
+
+.left-side {
+    background-color: gray;
+    color: white;
+}
+
+.right-side {
+    background-image: url('{% static "images/h2.jpg" %}');
+    background-size: cover;
+    background-position: center;
+    height: 100%; /* Full height of the parent container */
+    min-width: 300px; /* Minimum width for responsive design */
+}
+
+  .scrollmenu {
+    position: sticky; /* Make the menu sticky */
+    top: 0; /* Stick to the top of the viewport */
+    z-index: 1000; /* Ensure it stays above other content */
+    overflow: auto;
+    white-space: nowrap;
+    padding: 10px 0;
+    font-size:
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a slight shadow for depth */
+
+}
+
+
+    .scrollmenu a {
+        display: inline-block;
+        color: black;
+        text-align: center;
+        padding: 14px 20px;
+        text-decoration: none;
+        margin: 0 10px;
+        border-radius: 5px;
+          margin: 0 30px;
+        font-size:20px;
+        transition: background-color 0.3s;
+    }
+
+    .scrollmenu a:hover {
+        background-color: #777;
+        color: white;
+    }
+
+    .content {
+        padding: 20px;
+        max-width: 1000px;
+        margin: 20px auto;
+        background-color: white;
+    }
+
+    .section {
+        padding: 30px;
+        margin-bottom: 40px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .section h2{
+    font-size:50px;
+    }
+    h1, h2 {
+        color: #08005e;
+        margin: 0;
+        opacity: 0; /* Initial opacity for animation */
+        transform: translateX(-50px); /* Start from the left */
+        transition: opacity 0.5s, transform 0.5s; /* Smooth transition */
+    }
+
+    h1.visible, h2.visible {
+        opacity: 1; /* Fade in */
+        transform: translateX(0); /* Move to original position */
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 36px;
+    }
+
+    h2 {
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    p {
+        margin: 10px 0;
+        font-size: 18px;
+    }
+
+    ul {
+        margin-left: 20px;
+        padding-left: 0;
+    }
+
+
+       .bottom_content {
+    display: flex;
+    height: 500px;
+}
+
+.left_bottom, .right_bottom {
+    width: 50%;
+    position: relative; /* Enable positioning for overlay */
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    text-align: center; /* Center text */
+    padding: 20px; /* Add some padding */
+}
+
+.left_bottom {
+    background-image: url('{% static "images/dm1.jpg" %}');
+    background-size: cover;
+    position: relative; /* Required for absolute overlay */
+    padding:20px;
+
+
+}
+
+.right_bottom {
+    background-color: #c8c6c680;
+    position: relative; /* Required for absolute overlay */
+    padding:20px;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+     background-color: rgba(173, 216, 230, 0.5); /* Light blue with transparency */
+       z-index: 1; /* Below text but above background */
+
+
+}
+
+h1, h6 {
+    position: relative; /* Make headings stack above overlay */
+    z-index: 2; /* Ensure text is above the overlay */
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(20px); /* Start from below */
+    margin-bottom:50px;
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transition for fade and slide */
+}
+
+h1.visible, h6.visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Slide to original position */
+}
+.bottom_content h1{
+font-size:50px
+}
+.bottom_content h6{
+font-size:20px
+}
+
+
+
+    /* Mobile styles */
+    @media (max-width: 768px) {
+        .containerdiv {
+            flex-direction: column; /* Allow stacking on smaller screens */
+        }
+
+        .left-side, .right-side {
+            width: 100%; /* Take full width on mobile */
+        }
+
+        .right-side {
+            height: 300px; /* Adjust height for mobile */
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 1;
+            position: relative;
+        }
+
+        .scrollmenu {
+            margin: 2px;
+        }
+
+        .scrollmenu a {
+            margin: 0 5px;
+            padding: 10px;
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        h1 {
+            font-size: 26px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 22px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+
+    }
+     @media (max-width: 768px) {
+        .containerdiv {
+            flex-direction: column; /* Stack left and right sides */
+            height: auto; /* Allow height to adjust based on content */
+        }
+
+        .left-side, .right-side {
+            width: 100%; /* Full width for both sides */
+            height: auto; /* Adjust height for smaller screens */
+        }
+
+        .right-side {
+            background-size: cover;
+            height: 300px; /* Fixed height for the background image */
+        }
+
+        .scrollmenu {
+            margin: 5px; /* Reduce margin for mobile */
+            padding: 5px 0; /* Reduce padding for mobile */
+        }
+
+        .scrollmenu a {
+            margin: 0 5px; /* Adjust spacing between links */
+            padding: 10px; /* Adjust padding for smaller screens */
+        }
+
+        .content {
+            padding: 15px; /* Adjust padding for content */
+        }
+
+        .section {
+            padding: 20px; /* Reduce section padding for mobile */
+        }
+
+        h1 {
+            font-size: 26px; /* Adjust font size for headings */
+        }
+
+        h2 {
+            font-size: 20px; /* Adjust font size for subheadings */
+        }
+
+        p {
+            font-size: 16px; /* Adjust font size for paragraphs */
+        }
+
+        .bottom_content {
+            flex-direction: column; /* Stack bottom content sections */
+            height: auto; /* Adjust height for better display */
+        }
+
+        .left_bottom, .right_bottom {
+            width: 100%; /* Full width for bottom sections */
+            padding: 10px; /* Adjust padding for bottom sections */
+        }
+
+        .left_bottom h1, .right_bottom h1 {
+            font-size: 30px; /* Adjust font size for mobile */
+        }
+
+        .left_bottom h6, .right_bottom h6 {
+            font-size: 16px; /* Adjust font size for mobile */
+        }
+    }
+
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 22px; /* Further adjust font size for smaller devices */
+        }
+
+        .section h2 {
+            font-size: 18px; /* Adjust subheading font size */
+        }
+
+        p {
+            font-size: 14px; /* Adjust paragraph font size */
+        }
+    }
+</style>
+
+<div class="containerdiv container-effect">
+    <div class="left-side">
+        <h1 class="heading" id="typing-header"></h1>
+        <p id="qualification-number"><strong>Qualification Number:</strong>610/1537/4</p>
+    </div>
+    <div class="right-side">
+        <!-- Optional content or image can go here -->
+    </div>
+</div>
+
+<div class="scrollmenu">
+    <a href="#overview">Overview</a>
+    <a href="#entry-requirements">Entry Requirements</a>
+    <a href="#qualification-structure">Qualification Structure</a>
+    <a href="#duration-delivery">Duration and Delivery</a>
+    <a href="#progression">Progression</a>
+</div>
+
+<div class="content">
+    <div class="section">
+            <h2 id="overview" class="heading">Overview</h2>
+        <p>The objective of the OTHM Level 5 Diploma in Health and Social Care Management qualification is to equip learners with the underpinning knowledge, understanding and skills required for a career or further study in the health and social care sector at a managerial level. The programme enables learners to demonstrate their skills by producing evidence from their work or training activities.</p>
+        <br>
+        <p>The Level 5 units give learners the opportunity to progress in specific subject occupational areas. Learners will develop and enhance knowledge and skills in the areas of effective partnership working, managing the care of vulnerable individuals, team management, professional supervision practices, health education, promoting wellbeing and how to complete a research project on a relevant Health and Social Care topic.</p>
+    <p>Successful completion of this qualification will equip learners with industry-specific and practical skills, enabling them to apply their knowledge in the workplace, enhance their career prospects and allow progression to further study.</p>
+    </div>
+
+
+  <div class="section" >
+       <h2 id="entry-requirements" class="heading">Entry Requirements</h2>
+        <p>These qualifications are designed for learners who are typically aged 18 and above.</p><p>The entry profile for learners is likely to include at least one of the following:</p>
+        <ul>
+            <li>Relevant Level 4 Diploma qualification or equivalent qualification</li>
+            <li>GCE Advanced level in 3 subjects or equivalent qualification</li>
+            <li>Mature learners (over 21) with relevant management experience (learners must check with the delivery centre regarding this experience prior to registering for the programme)</li>
+        </ul>
+    </div>
+
+        <div class="section" >
+        <h2 id="english-requirements" class="heading">English Requirements</h2>
+        <p>If a learner is not from a majority English-speaking country, they must provide evidence of English language competency.</p>
+
+        </div>
+
+       <div class="section" >
+        <h2 id="equivalences" class="heading">Equivalences</h2>
+           <p>OTHM qualifications at RQF Level 5 represent practical knowledge, skills, capabilities and competences that are assessed in academic terms as being equivalent to Foundation Degrees, Higher National Diploma (HND) and Year 2 of a three-year UK Bachelor's degree</p>
+    </div>
+
+     <div class="section">
+       <h2 id="qualification-structure" class="heading">Qualification Structure</h2>
+         <p>The OTHM Level 5 Diploma in Health and Social Care Management consists of 6 mandatory units for a combined total of 120 credits, 1200 hours Total Qualification Time (TQT) and 600 Guided Learning Hours (GLH) for the completed qualification</p>
+     </div>
+
+     <div class="section">
+       <h2 id="mandatory_units" class="heading">Mandatory units</h2>
+
+         <ul>
+            <li>Working in Partnership in Health and Social Care (20 credits)</li>
+            <li>Managing the Safeguarding and Protection of Vulnerable Individuals (20 credits)</li>
+            <li>Health Education and Promoting Wellbeing (20 credits)</li>
+            <li>Team Management in Health and Social Care (20 credits)</li>
+            <li>Professional Supervision Practice in Health and Social Care (20 credits)</li>
+            <li>Research Methods in Health and Social Care (20 credits)</li>
+        </ul>
+    </div>
+
+
+        <div class="section">
+        <h2 id="duration-delivery" class="heading">Duration and Delivery</h2>
+            <p>The qualification is designed to be delivered over one academic year for full-time study but it is also flexible in its delivery in order to accommodate part-time and distance learning.</p>
+            <p>The qualification is delivered face-to-face, through lectures, tutorials, seminars, distance, online by approved centres only.</p>
+               </div>
+
+
+        <div class="section" >
+        <h2 id="assessment-verification" class="heading">Assessment and Verification</h2>
+            <p>All units within this qualification are internally assessed by the centre and externally verified by OTHM. The qualifications are criterion referenced, based on the achievement of all the specified learning outcomes.</p>
+            <p>To achieve a ‘pass’ for a unit, learners must provide evidence to demonstrate that they have fulfilled all the learning outcomes and meet the standards specified by all assessment criteria. Judgement that the learners have successfully fulfilled the assessment criteria is made by the Assessor.</p>
+            <p>The Assessor should provide an audit trail showing how the judgement of the learners’ overall achievement has been arrived at.</p>
+
+    </div>
+
+
+    <div class="section" >
+        <h2 id="progression" class="heading">Progression</h2>
+        <p>Successful completion of the OTHM Level 5 Diploma in Health and Social Care Management qualification provides learners the opportunity for a wide range of academic progressions including progression to relevant OTHM Level 6 Diplomas.</p>
+        <p>The Level 5 Diploma in Health and Social Care Management has been developed with career progression and professional recognition in mind</p>
+        <p>As this qualification is approved and regulated by Ofqual (Office of the Qualifications and Examinations Regulation), learners are eligible to gain direct entry into Final year of a three-year UK Bachelor’s degree.</p>
+    </div>
+</div>
+
+</div>
+<div class="bottom_content">
+    <div class="left_bottom">
+        <div class="overlay"></div> <!-- Light blue overlay -->
+        <h1 class="text-light heading">Quality, Standards & Recognitions</h1>
+        <h6 class="text-light">By complying with our regulators and meeting university progression requirements, we ensure the high-quality standards of all our qualifications and assessments.</h6>
+    </div>
+    <div class="right_bottom">
+        <!-- Light blue overlay -->
+        <h1 class="heading">University Progressions</h1>
+        <h6>The local and global recognition has enabled our graduates to enhance their employability skills as well as to join degree and master top-up programmes.</h6>
+    </div>
+</div>
+<script>
+    // Change background color when scrolling
+window.addEventListener('scroll', () => {
+    const scrollmenu = document.querySelector('.scrollmenu');
+    if (window.scrollY > 0) {
+        scrollmenu.style.backgroundColor = '#e0e0e0'; // Darker shade
+    } else {
+        scrollmenu.style.backgroundColor = '#f1f1f1'; // Original shade
+    }
+});
+
+    // Slow typing effect for the heading
+    const headerText = "OTHM Level 5 Diploma in Health and Social Care Management";
+    const typingSpeed = 100; // Speed in milliseconds
+
+    function typeWriter(element, text, index) {
+        if (index < text.length) {
+            element.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(() => typeWriter(element, text, index), typingSpeed);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const headerElement = document.getElementById('typing-header');
+        typeWriter(headerElement, headerText, 0);
+    });
+
+    // Smooth scroll for navigation links
+    document.querySelectorAll('.scrollmenu a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Fade-in zoom effect on scroll for sections
+    const sections = document.querySelectorAll('.section');
+    const sectionObserverOptions = {
+        root: null,
+        threshold: 0.1
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, sectionObserverOptions);
+
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+    });
+
+    // Fade-in effect on scroll for container
+    const container = document.querySelector('.container-effect');
+    const containerObserverOptions = {
+        root: null,
+        threshold: 0.1
+    };
+
+    const containerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, containerObserverOptions);
+
+    if (container) {
+        containerObserver.observe(container);
+    }
+
+    // Left to right animation for headings
+    const headings = document.querySelectorAll('.heading');
+    const headingObserverOptions = {
+        root: null,
+        threshold: 0.1
+    };
+
+    const headingObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    }, headingObserverOptions);
+
+    headings.forEach(heading => {
+        headingObserver.observe(heading);
+    });
+
+    // Fade-in effect on scroll for bottom content headings and paragraphs
+const bottomContentHeadings = document.querySelectorAll('.left_bottom h1, .left_bottom h6, .right_bottom h1, .right_bottom h6');
+
+const bottomContentHeadingObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        } else {
+            entry.target.classList.remove('visible');
+        }
+    });
+}, {
+    root: null,
+    threshold: 0.1
+});
+
+bottomContentHeadings.forEach(heading => {
+    bottomContentHeadingObserver.observe(heading);
+});
+
+</script>
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
